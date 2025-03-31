@@ -1,66 +1,78 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import React, { useState } from "react";
+import { Home, User, Heart, Image, Hammer } from "lucide-react";
 import colors from "../../utils/style/colors";
-import { useTheme } from "../../utils/hooks";
+import { Link } from "react-router-dom";
 
-const StyledLink = styled(Link)`
-  padding: 15px;
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  color: white;
-  border-radius: 15px;
-  ${(props) => props.$isFullLink && ``}
+const Header = () => {
+  const [activeIcon, setActiveIcon] = useState("home");
 
-  &:hover {
-    background-color: ${colors.primary}; 
-  }
-`;
-
-const CustomDiv = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: ${colors.secondary};
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 20px;
-  margin-top: 1%;
-  padding: 5px;
-`;
-
-const CustomTitle = styled.p`
-  color: white;
-  font-size: 2rem;
-`;
-
-function Header() {
-  const { theme, toggleTheme } = useTheme();
+  const handleIconClick = (iconName) => {
+    setActiveIcon(iconName);
+  };
 
   return (
-    <CustomDiv>
-      <CustomTitle className="px-2">Arthur</CustomTitle>
-      <nav>
-        <StyledLink to="/">
-          Accueil
-        </StyledLink>
-        <StyledLink to="/about">
-          À propos
-        </StyledLink>
-        <StyledLink to="/projects">
-          Projets
-        </StyledLink>
-        <StyledLink to="/">
-          Mon CV
-        </StyledLink>
-        <StyledLink onClick={() => toggleTheme()}>
-          {theme == "light" ? "☀️" : "🌙"}
-        </StyledLink>
-      </nav>
-    </CustomDiv>
+    <div className="w-full flex justify-center fixed bottom-5">
+      <div className="bg-gray-100 rounded-full py-3 px-6 flex items-center gap-6 shadow-md">
+        <Link
+          className={`cursor-pointer p-2 rounded-full ${
+            activeIcon === "home"
+              ? "bg-[" + colors.secondary + "] text-white"
+              : "text-gray-900"
+          }`}
+          onClick={() => handleIconClick("home")}
+          to="/"
+        >
+          <Home size={24} />
+        </Link>
+
+        <Link
+          className={`cursor-pointer p-2 rounded-full ${
+            activeIcon === "user"
+              ? "bg-[" + colors.secondary + "] text-white"
+              : "text-gray-900"
+          }`}
+          onClick={() => handleIconClick("user")}
+          to="/about"
+        >
+          <User size={24} />
+        </Link>
+
+        <Link
+          className={`cursor-pointer p-2 rounded-full ${
+            activeIcon === "hammer"
+              ? "bg-[" + colors.secondary + "] text-white"
+              : "text-gray-900"
+          }`}
+          onClick={() => handleIconClick("hammer")}
+          to="/projects"
+        >
+          <Hammer size={24} />
+        </Link>
+
+        <Link
+          className={`cursor-pointer p-2 rounded-full ${
+            activeIcon === "heart"
+              ? "bg-[" + colors.secondary + "] text-white"
+              : "text-gray-900"
+          }`}
+          onClick={() => handleIconClick("heart")}
+        >
+          <Heart size={24} />
+        </Link>
+
+        <Link
+          className={`cursor-pointer p-2 rounded-full ${
+            activeIcon === "image"
+              ? "bg-[" + colors.secondary + "] text-white"
+              : "text-gray-900"
+          }`}
+          onClick={() => handleIconClick("image")}
+        >
+          <Image size={24} />
+        </Link>
+      </div>
+    </div>
   );
-}
+};
 
 export default Header;

@@ -47,7 +47,7 @@ const CardsContainer = styled.div`
     flex-wrap: wrap;
     justify-content: center;
 
-    max-width: 1200px;
+    max-width: 60%;
     margin: 0 auto;
 
     margin-left: -10px;
@@ -61,8 +61,15 @@ const ProjectCardWrapper = styled.div`
     box-sizing: border-box;
 `;
 
+
+
 function Projets() {
   return (
+    <div>
+      <div className="justify-center text-center">
+        <h1 className="mb-2 text-4xl font-extrabold leading-none tracking-tight text-gray-900">Dolore labore magna id consectetur commodo enim do ipsum nisi ipsum reprehenderit ea nisi pariatur.</h1>
+        <p>Officia ut consectetur qui dolor minim esse magna aliquip elit ullamco. Mollit minim laborum ad labore est dolore. Esse ut irure deserunt commodo mollit reprehenderit dolore et reprehenderit mollit ut cupidatat. Ut aute cupidatat sint tempor ea. Exercitation velit Lorem cupidatat ut sint occaecat proident aute amet nisi nostrud. Incididunt non est eiusmod officia consectetur proident ea deserunt cupidatat mollit nisi ut irure.</p>
+      </div>
     <ProjectsWrapper>
       <CardsContainer>
         {projets.map((projet, index) => (
@@ -76,6 +83,7 @@ function Projets() {
         ))}
       </CardsContainer>
     </ProjectsWrapper>
+    </div>
   );
 }
 
