@@ -4,7 +4,7 @@ const colors = {
   tertiary: '#7a95db',
   quaternary: '#9db6ff',
   quinary: '#c1d9ff',
-  senary: '#424656',
+  senary: '#27282F',
   backgroundLight: '#F9F9FC',
   // Darker tone similar to secondary
   bg_light_1: '#f0f4ff',

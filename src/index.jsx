@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import GlobalStyle from "./utils/style/GlobalStyle";
 import { ThemeProvider } from "./utils/context";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 import "./utils/style/index.css";
 
@@ -22,6 +23,7 @@ createRoot(document.getElementById("root")).render(
           <Route path="/projects" element={<Projets />} />
           <Route path="/about" element={<About />} />
         </Routes>
+        <Footer />
       </Router>
     </ThemeProvider>
   </StrictMode>

@@ -2,16 +2,13 @@ import profile from "../../assets/NoBG.png";
 import TypeWriter from "../../components/TypeWriter";
 import colors from "../../utils/style/colors";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-function Home_Top(){
-    const [title, setTitle] = useState("");
+function Home_Top() {
+  const [title, setTitle] = useState("");
 
-    return (
-        <div
-      className="h-200"
-      style={{ backgroundColor: colors.bg_light_2
- }}
-    >
+  return (
+    <div className="h-200" style={{ backgroundColor: colors.bg_light_2 }}>
       <div className="container mx-auto p-4 flex items-center justify-start">
         <div className="ml-[10%] mr-[10%]">
           <img
@@ -27,10 +24,27 @@ function Home_Top(){
             Je suis {title} <TypeWriter title={title} setTitle={setTitle} />
           </h2>
 
-          <p>
+          <p className="mb-7">
             Je suis passioné d'informatique depuis plusieurs années, j'adore
             coder et découvrir de nouvelles technos.
           </p>
+
+          <Link
+            to="contact"
+            className="mt-20 px-6 py-3 text-white rounded-lg shadow-lg transition"
+            style={{
+              backgroundColor: colors.button,
+              transition: "background-color 0.3s",
+            }}
+            onMouseEnter={(e) =>
+              (e.target.style.backgroundColor = colors.button_hover)
+            }
+            onMouseLeave={(e) =>
+              (e.target.style.backgroundColor = colors.button)
+            }
+          >
+            Envoyez moi un message !
+          </Link>
         </div>
       </div>
     </div>

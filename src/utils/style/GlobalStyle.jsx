@@ -1,15 +1,16 @@
 import { createGlobalStyle } from "styled-components";
 import { ThemeContext } from "../context/";
 import { useContext } from "react";
+import colors from "./colors";
 
 const StyledGlobalStyle = createGlobalStyle`
     * {
-        font-family: Helvetica, sans-serif;
+        font-family: Heebo, sans-serif;
     }
  
     body {
         background-color: ${({ isDarkMode }) =>
-          isDarkMode ? "#31313a" : "hsl(221, 41%, 95%)"};
+          isDarkMode ? "#31313a" : colors.bg_light_1};
         margin: 0;  
     }
 `;

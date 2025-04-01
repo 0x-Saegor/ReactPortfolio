@@ -4,7 +4,7 @@ const skills = ["react", "html", "css", "js", "php", "git", "mysql", "java", "py
 
 const SkillIcons = () => {
 return (
-    <div className="flex flex-wrap justify-center gap-4 p-4">
+    <div className="flex flex-wrap justify-center gap-4 p-4 mb-4">
         {skills.map((skill) => (
             <div key={skill} className="relative group">
                 <img
