@@ -2,67 +2,56 @@ import React from "react";
 import { Home, User, Heart, Image, Hammer } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import colors from "../../utils/style/colors";
+import styled from "styled-components";
 
 const Header = () => {
   const location = useLocation(); // Get the current route
 
+  const CustomLink = ({ to, children }) => {
+    const isActive = location.pathname === to;
+    return (
+      <StyledLink isActive={isActive} to={to}>
+        {children}
+      </StyledLink>
+    );
+  };
+
+  const StyledLink = styled(Link)`
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 9999px;
+    background-color: ${({ isActive }) =>
+      isActive ? colors.secondary : "transparent"};
+    color: ${({ isActive }) => (isActive ? "white" : "text-gray-900")};
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  `;
+
   return (
     <div className="w-full flex justify-center fixed bottom-5">
       <div className="bg-gray-100 rounded-full py-3 px-6 flex items-center gap-6 shadow-md">
-        <Link
-          className={`cursor-pointer p-2 rounded-full ${
-            location.pathname === "/"
-              ? `bg-[${colors.secondary}] text-white`
-              : "text-gray-900"
-          }`}
-          to="/"
-        >
+        <CustomLink to="/">
           <Home size={24} />
-        </Link>
+        </CustomLink>
 
-        <Link
-          className={`cursor-pointer p-2 rounded-full ${
-            location.pathname === "/about"
-              ? `bg-[${colors.secondary}] text-white`
-              : "text-gray-900"
-          }`}
-          to="/about"
-        >
+        <CustomLink to="/about">
           <User size={24} />
-        </Link>
+        </CustomLink>
 
-        <Link
-          className={`cursor-pointer p-2 rounded-full ${
-            location.pathname === "/projects"
-              ? `bg-[${colors.secondary}] text-white`
-              : "text-gray-900"
-          }`}
-          to="/projects"
-        >
+        <CustomLink to="/projects">
           <Hammer size={24} />
-        </Link>
+        </CustomLink>
 
-        <Link
-          className={`cursor-pointer p-2 rounded-full ${
-            location.pathname === "/favorites"
-              ? `bg-[${colors.secondary}] text-white`
-              : "text-gray-900"
-          }`}
-          to="/"
-        >
+        <CustomLink to="/favorites">
           <Heart size={24} />
-        </Link>
+        </CustomLink>
 
-        <Link
-          className={`cursor-pointer p-2 rounded-full ${
-            location.pathname === "/gallery"
-              ? `bg-[${colors.secondary}] text-white`
-              : "text-gray-900"
-          }`}
-          to="/"
-        >
+        <CustomLink to="/gallery">
           <Image size={24} />
-        </Link>
+        </CustomLink>
       </div>
     </div>
   );
