@@ -8,9 +8,9 @@ const StyledLink = styled(Link)`
 cursor: pointer;
 padding: 0.5rem;
 border-radius: 9999px;
-background-color: ${({ isActive }) =>
-  isActive ? colors.secondary : "transparent"};
-color: ${({ isActive }) => (isActive ? "white" : "text-gray-900")};
+background-color: ${({ $isActive }) =>
+  $isActive ? colors.secondary : "transparent"};
+color: ${({ $isActive }) => ($isActive ? "white" : "text-gray-900")};
 text-decoration: none;
 
 &:hover {
