@@ -43,22 +43,7 @@ function Home_Projects() {
       </div>
 
       <div
-        className={`mt-4 grid grid-cols-${
-          projets
-            .filter(
-              (projet) =>
-                activeProjects === "All" || projet.category === activeProjects
-            )
-            .slice(0, 6).length < 3
-            ? projets
-                .filter(
-                  (projet) =>
-                    activeProjects === "All" ||
-                    projet.category === activeProjects
-                )
-                .slice(0, 6).length
-            : 3
-        } gap-4`}
+        className={`mt-4 grid grid-cols-3 gap-4`}
       >
         {projets
           .filter(
