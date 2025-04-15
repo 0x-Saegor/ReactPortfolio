@@ -1,10 +1,10 @@
-import profile from "../../assets/NoBG.png";
-import TypeWriter from "../../components/TypeWriter";
-import colors from "../../utils/style/colors";
+import profile from "../../../assets/NoBG.png";
+import TypeWriter from "../../../components/TypeWriter";
+import colors from "../../../utils/style/colors";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Home_Top() {
+function Top() {
   const [title, setTitle] = useState("");
 
   return (
@@ -51,4 +51,4 @@ function Home_Top() {
   );
 }
 
-export default Home_Top;
+export default Top;

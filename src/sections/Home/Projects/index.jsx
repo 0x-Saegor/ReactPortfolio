@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import colors from "../../utils/style/colors";
-import default_card from "../../assets/projects-1.jpg";
-import projets from "../../assets/projets";
+import colors from "../../../utils/style/colors";
+import default_card from "../../../assets/projects-1.jpg";
+import projets from "../../../assets/projets";
 import { useState } from "react";
 
-function Home_Projects() {
+function Projects() {
   const [activeProjects, setActiveProjects] = useState("All");
 
   return (
@@ -71,4 +71,4 @@ function Home_Projects() {
   );
 }
 
-export default Home_Projects;
+export default Projects;

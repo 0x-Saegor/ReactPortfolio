@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import SkillIcons from "../../components/SkillIcon";
-import colors from "../../utils/style/colors";
+import SkillIcons from "../../../components/SkillIcon";
+import colors from "../../../utils/style/colors";
 
-function Home_About() {
+function About() {
   return (
     <div className="h-160 flex items-center">
       <div className="container mx-auto p-4 flex justify-between items-center">
@@ -44,4 +44,4 @@ function Home_About() {
   );
 }
 
-export default Home_About;
+export default About;
