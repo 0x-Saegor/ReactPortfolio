@@ -5,19 +5,45 @@ import colors from "../../utils/style/colors";
 import styled from "styled-components";
 
 const StyledLink = styled(Link)`
-cursor: pointer;
-padding: 0.5rem;
-border-radius: 9999px;
-background-color: ${({ $isActive }) =>
-  $isActive ? colors.secondary : "transparent"};
-color: ${({ $isActive }) => ($isActive ? "white" : "text-gray-900")};
-text-decoration: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  background-color: ${({ $isActive }) =>
+    $isActive ? colors.secondary : "transparent"};
+  color: ${({ $isActive }) => ($isActive ? "white" : "text-gray-900")};
+  text-decoration: none;
 
-&:hover {
-  opacity: 0.9;
-}
+  &:hover {
+    opacity: 0.9;
+  }
 `;
 
+const HeaderContainer = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: #f3f4f6;
+  padding: 1rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+    flex-direction: row;
+    justify-content: space-around;
+    border-radius: 0;
+    padding: 0.5rem 0;
+  }
+`;
 
 const Header = () => {
   const location = useLocation(); // Get the current route
@@ -32,32 +58,27 @@ const Header = () => {
   };
 
   return (
-    <div
-      className="flex fixed top-1/2 left-5 z-100 h-auto items-center transform -translate-y-1/2"
-      style={{ position: "fixed" }}
-    >
-      <div className="bg-gray-100 rounded-full py-3 px-3 flex flex-col items-center gap-6 shadow-md">
-        <CustomLink to="/">
-          <Home size={24} />
-        </CustomLink>
+    <HeaderContainer>
+      <CustomLink to="/">
+        <Home size={24} />
+      </CustomLink>
 
-        <CustomLink to="/about">
-          <User size={24} />
-        </CustomLink>
+      <CustomLink to="/about">
+        <User size={24} />
+      </CustomLink>
 
-        <CustomLink to="/projects">
-          <Hammer size={24} />
-        </CustomLink>
+      <CustomLink to="/projects">
+        <Hammer size={24} />
+      </CustomLink>
 
-        <CustomLink to="/favorites">
-          <Heart size={24} />
-        </CustomLink>
+      <CustomLink to="/favorites">
+        <Heart size={24} />
+      </CustomLink>
 
-        <CustomLink to="/gallery">
-          <Image size={24} />
-        </CustomLink>
-      </div>
-    </div>
+      <CustomLink to="/gallery">
+        <Image size={24} />
+      </CustomLink>
+    </HeaderContainer>
   );
 };
 
