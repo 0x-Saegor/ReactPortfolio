@@ -1,13 +1,17 @@
 // Timeline.jsx
 import React from "react";
 import TimelineItem from "../../../components/TimelineItem";
+import superprof from "../../../assets/timeline/superprof.png";
+import ng from "../../../assets/timeline/ng.png";
+import echalotes from "../../../assets/timeline/echalotes.jpg";
+import asten from "../../../assets/timeline/asten.png";
 
 const experiences = [
   {
     title: "Professeur particulier mathématiques",
     company: "Freelance",
     date: "Mars 2025 - Aujourd'hui",
-    logo: "/src/assets/timeline/superprof.png",
+    logo: superprof,
     side: "left",
     points: [
       "J'aide les élèves à régler leurs difficultés avec les mathématiques à travers des exercices et des activités",
@@ -18,7 +22,7 @@ const experiences = [
     title: "Stage dans le domaine cyber, informatique, big data, innovation",
     company: "NAVAL GROUP",
     date: "Avril 2023 - Avril 2023",
-    logo: "/src/assets/timeline/ng.png",
+    logo: ng,
     side: "right",
     points: [
       "Approfondissement de la cybersécurité des systèmes embarqués et réseaux",
@@ -30,7 +34,7 @@ const experiences = [
     title: "Agent agricole - ramassage d'échalotes",
     company: "SAS CABON Ploudaniel",
     date: "Juillet 2022 - Juillet 2022",
-    logo: "/src/assets/timeline/echalotes.jpg",
+    logo: echalotes,
     side: "left",
     points: ["Ramassage d'échalotes durant l'été 2022 et l'été 2023"],
   },
@@ -39,7 +43,7 @@ const experiences = [
       "Stage de découverte des domaines de l'informatique et cybersécurité",
     company: "Groupe Asten",
     date: "Juillet 2021 - Juillet 2021",
-    logo: "/src/assets/timeline/asten.png",
+    logo: asten,
     side: "right",
     points: [
       "Découverte du développement de logiciels et applications autour du big data",

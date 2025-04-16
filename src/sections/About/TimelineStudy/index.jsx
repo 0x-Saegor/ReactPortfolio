@@ -1,13 +1,16 @@
 // Timeline.jsx
 import React from "react";
 import TimelineItem from "../../../components/TimelineItem";
+import sfnd from "../../../assets/timeline/sfnd.png"
+import iut from "../../../assets/timeline/iut.jpg"
+
 
 const experiences = [
   {
     title: "Étudiant en BUT Informatique",
     company: "IUT de Vannes",
     date: "Sept. 2024 - Juin 2027",
-    logo: "/src/assets/timeline/iut.jpg",
+    logo: iut,
     side: "right",
     points: [
       "Formation en informatique avec un focus sur le développement logiciel, les bases de données et les réseaux",
@@ -18,7 +21,7 @@ const experiences = [
     title: "Baccalauréat général, Mathématiques et informatique",
     company: "Saint François Notre Dame Lesneven",
     date: "Sept. 2021 - Juin 2024",
-    logo: "/src/assets/timeline/sfnd.png",
+    logo: sfnd,
     side: "left",
     points: [
       "Obtention du baccalauréat mention très bien",
