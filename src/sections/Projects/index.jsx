@@ -4,7 +4,7 @@ import default_card from "../../assets/projects-1.jpg";
 import projets from "../../assets/projets";
 import { useState } from "react";
 
-function Projects({max}) {
+function Projects({ max }) {
   const [activeProjects, setActiveProjects] = useState("All");
 
   return (
@@ -13,7 +13,7 @@ function Projects({max}) {
       style={{ backgroundColor: colors.bg_light_1 }}
     >
       <div className="container p-4 mx-auto w-full items-center flex justify-center">
-        <div className="flex place-items-center space-x-4">
+        <div className="flex flex-wrap place-items-center space-x-4">
           <Link
             style={activeProjects === "All" ? { color: colors.primary } : {}}
             className={`${activeProjects === "All" ? "font-bold" : ""}`}
@@ -43,25 +43,25 @@ function Projects({max}) {
       </div>
 
       <div
-        className={`mt-4 grid grid-cols-3 gap-4`}
+        className={`mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4`}
       >
         {projets
           .filter(
             (projet) =>
               activeProjects === "All" || projet.category === activeProjects
           )
-          .slice(0, (max != 0 ? max : projets.length)) // Limit to 6 projects
+          .slice(0, max !== 0 ? max : projets.length)
           .map((projet, index) => (
             <div key={index} className="relative group">
               <img
                 src={projet.image || default_card}
                 alt="Image"
-                className="w-100 rounded"
+                className="w-full rounded"
               />
-              <h1 className="absolute bottom-18 left-5 right-0 opacity-100 transition-opacity text-2xl text-black font-bold p-1 rounded-xl uppercase">
+              <h1 className="absolute bottom-18 left-5 right-0 opacity-100 transition-opacity text-xl md:text-2xl text-black font-bold p-1 rounded-xl uppercase">
                 {projet.title}
               </h1>
-              <h1 className="absolute bottom-10 left-5 right-0 opacity-100 transition-opacity text-l text-black p-1 rounded-xl text-gray-600">
+              <h1 className="absolute bottom-10 left-5 right-0 opacity-100 transition-opacity text-sm md:text-l text-black p-1 rounded-xl text-gray-600">
                 {projet.label}
               </h1>
             </div>

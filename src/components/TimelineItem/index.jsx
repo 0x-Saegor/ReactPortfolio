@@ -7,10 +7,10 @@ const TimelineItem = ({ title, company, date, logo, points, side }) => {
   const isLeft = side === "left";
 
   return (
-    <div className="grid grid-cols-9 items-start gap-4 mb-12">
+    <div className="grid grid-cols-9 items-start gap-4 mb-12 md:gap-6">
       {/* Left Side */}
       <div
-        className={clsx("col-span-4", {
+        className={clsx("col-span-9 md:col-span-4", {
           "order-1 text-right": isLeft,
           "order-3 text-left": !isLeft,
         })}
@@ -47,14 +47,14 @@ const TimelineItem = ({ title, company, date, logo, points, side }) => {
 
       {/* Icon */}
       <div className="col-span-1 flex justify-center relative order-2">
-        <div className="bg-white p-2 rounded-full border-4 border-gray-800 shadow-md z-10">
+        <div className="bg-white p-2 rounded-full border-4 border-gray-800 shadow-md z-10 hidden md:block">
           <img src={logo} alt={company} className="w-10 h-10 object-contain" />
         </div>
       </div>
 
       {/* Right Side */}
       <div
-        className={clsx("col-span-4", {
+        className={clsx("col-span-9 md:col-span-4", {
           "order-3": isLeft,
           "order-1 text-right": !isLeft,
         })}

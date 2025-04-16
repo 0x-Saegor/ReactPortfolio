@@ -58,15 +58,21 @@ const TimelineJob = () => {
     <div className="items-center text-center">
       <h1 className="text-3xl font-bold text-center">Mes expériences professionnelles</h1>
       <div className="relative max-w-5xl mx-auto py-6 px-4">
-        {/* Vertical line */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-700"></div>
+        {/* Vertical line - hidden on devices smaller than 768px */}
+        <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-700 hidden md:block"></div>
 
         {experiences.map((exp, idx) => (
-          <TimelineItem key={idx} {...exp} />
+          <div
+            key={idx}
+            className="mb-8 sm:mb-12" // Adjust spacing for small devices
+          >
+            <TimelineItem {...exp} />
+          </div>
         ))}
       </div>
     </div>
   );
 };
+
 
 export default TimelineJob;
