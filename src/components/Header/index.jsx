@@ -21,7 +21,7 @@ const StyledLink = styled(Link)`
 const HeaderContainer = styled.div`
   position: fixed;
   top: 50%;
-  left: 5%;
+  left: 2%;
   transform: translateY(-50%);
   z-index: 100;
   display: flex;

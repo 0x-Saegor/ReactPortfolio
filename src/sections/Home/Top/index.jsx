@@ -21,8 +21,8 @@ function Top() {
           />
         </div>
         <div className="text-center md:text-left">
-          <p className="text-lg">Hey ! Je suis </p>
-          <h1 className="text-3xl md:text-4xl font-bold">Arthur</h1>
+          <p className="text-lg">Je suis </p>
+          <h1 className="text-3xl md:text-4xl font-bold">Arthur Le Gall</h1>
           <h2 className="text-2xl md:text-3xl font-bold">
             Je suis {title} <TypeWriter title={title} setTitle={setTitle} />
           </h2>

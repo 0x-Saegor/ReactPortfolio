@@ -23,20 +23,17 @@ const TimelineItem = ({ title, company, date, logo, points, side }) => {
           <p className="text-sm text-gray-300 italic mb-2">{company}</p>
           <ul
             className={clsx("text-sm", {
-              "pl-5 list-disc text-left": !isLeft,
-              "pr-5 text-right list-none": isLeft,
+              "pl-5 text-left": !isLeft,
+              "pr-5 text-right": isLeft,
             })}
           >
             {points.map((point, i) => (
               <li
                 key={i}
                 className={clsx("mb-1", {
-                  "relative pr-4": isLeft,
+                  "relative": isLeft,
                 })}
               >
-                {isLeft && (
-                  <span className="absolute right-0 top-1.5 w-1.5 h-1.5 bg-white rounded-full" />
-                )}
                 {point}
               </li>
             ))}
@@ -56,7 +53,7 @@ const TimelineItem = ({ title, company, date, logo, points, side }) => {
       <div
         className={clsx("col-span-9 md:col-span-4", {
           "order-3": isLeft,
-          "order-1 text-right": !isLeft,
+          "order-1": !isLeft,
         })}
       ></div>
     </div>
