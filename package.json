@@ -10,7 +10,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postbuild": "echo 'arthurlg.fr' > dist/CNAME"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
