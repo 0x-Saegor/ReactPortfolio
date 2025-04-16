@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import colors from "../../../utils/style/colors";
-import default_card from "../../../assets/projects-1.jpg";
-import projets from "../../../assets/projets";
+import colors from "../../utils/style/colors";
+import default_card from "../../assets/projects-1.jpg";
+import projets from "../../assets/projets";
 import { useState } from "react";
 
-function Projects() {
+function Projects({max}) {
   const [activeProjects, setActiveProjects] = useState("All");
 
   return (
@@ -50,7 +50,7 @@ function Projects() {
             (projet) =>
               activeProjects === "All" || projet.category === activeProjects
           )
-          .slice(0, 6) // Limit to 6 projects
+          .slice(0, (max != 0 ? max : projets.length)) // Limit to 6 projects
           .map((projet, index) => (
             <div key={index} className="relative group">
               <img
