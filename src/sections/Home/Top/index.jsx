@@ -27,7 +27,7 @@ function Top() {
             Je suis {title} <TypeWriter title={title} setTitle={setTitle} />
           </h2>
 
-          <p className="mb-4">
+          <p>
             Je suis passioné d'informatique depuis plusieurs années, j'adore
             coder et découvrir de nouvelles technos.
           </p>
