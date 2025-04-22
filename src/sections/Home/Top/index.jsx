@@ -1,4 +1,4 @@
-import profile from "../../../assets/NoBG.png";
+import profile from "../../../assets/NoBG.webp";
 import TypeWriter from "../../../components/TypeWriter";
 import colors from "../../../utils/style/colors";
 import { useState } from "react";
@@ -18,6 +18,12 @@ function Top() {
             src={profile}
             alt="Photo de profil"
             className="w-40 md:w-90 rounded-full mx-auto md:mx-0"
+            onLoad={(e) => (e.target.style.opacity = 1)}
+            style={{ opacity: 0, transition: "opacity 0.5s" }}
+            onError={(e) => {
+              e.target.src = "https://via.placeholder.com/150";
+              e.target.style.opacity = 1;
+            }}
           />
         </div>
         <div className="text-center md:text-left">
