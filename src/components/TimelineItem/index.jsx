@@ -7,12 +7,12 @@ const TimelineItem = ({ title, company, date, logo, points, side }) => {
   const isLeft = side === "left";
 
   return (
-    <div className="grid grid-cols-9 items-start gap-4 mb-12 md:gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-9 items-start mb-8">
       {/* Left Side */}
       <div
         className={clsx("col-span-9 md:col-span-4", {
-          "order-1 text-right": isLeft,
-          "order-3 text-left": !isLeft,
+          "order-1 text-center md:text-right": isLeft,
+          "order-3 text-center md:text-left": !isLeft,
         })}
       >
         <div
@@ -23,17 +23,13 @@ const TimelineItem = ({ title, company, date, logo, points, side }) => {
           <p className="text-sm text-gray-300 italic mb-2">{company}</p>
           <ul
             className={clsx("text-sm", {
-              "pl-5 text-left": !isLeft,
-              "pr-5 text-right": isLeft,
+              "text-center md:pl-5 md:text-left": !isLeft,
+              "text-center md:pr-5 md:text-right": isLeft,
             })}
           >
+            {" "}
             {points.map((point, i) => (
-              <li
-                key={i}
-                className={clsx("mb-1", {
-                  "relative": isLeft,
-                })}
-              >
+              <li key={i} className={clsx("mb-1")}>
                 {point}
               </li>
             ))}
@@ -43,7 +39,7 @@ const TimelineItem = ({ title, company, date, logo, points, side }) => {
       </div>
 
       {/* Icon */}
-      <div className="col-span-1 flex justify-center relative order-2">
+      <div className="hidden md:flex col-span-1 justify-center relative order-2">
         <div className="bg-white p-2 rounded-full border-4 border-gray-800 shadow-md z-10 hidden md:block">
           <img src={logo} alt={company} className="w-10 h-10 object-contain" />
         </div>
