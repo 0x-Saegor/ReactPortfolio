@@ -48,10 +48,10 @@ const HeaderContainer = styled.div`
 const Header = () => {
   const location = useLocation(); // Get the current route
 
-  const CustomLink = ({ to, children }) => {
+  const CustomLink = ({ to, children, onClick }) => {
     const isActive = location.pathname === to;
     return (
-      <StyledLink $isActive={isActive} to={to}>
+      <StyledLink $isActive={isActive} to={to} onClick={onClick}>
         {children}
       </StyledLink>
     );
@@ -59,18 +59,33 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <CustomLink to="/">
+      <CustomLink
+        to="/"
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
+      >
         <Home size={24} />
       </CustomLink>
 
-      <CustomLink to="/about">
+      <CustomLink
+        to="/about"
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
+      >
         <User size={24} />
       </CustomLink>
 
-      <CustomLink to="/projects">
+      <CustomLink
+        to="/projects"
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
+      >
         <Hammer size={24} />
       </CustomLink>
-{/* 
+      {/* 
       <CustomLink to="/favorites">
         <Heart size={24} />
       </CustomLink>
