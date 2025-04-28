@@ -36,6 +36,9 @@ function About() {
             onMouseLeave={(e) =>
               (e.target.style.backgroundColor = colors.button)
             }
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
           >
             En savoir plus
           </Link>

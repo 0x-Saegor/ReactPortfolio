@@ -70,14 +70,14 @@ const Header = () => {
       <CustomLink to="/projects">
         <Hammer size={24} />
       </CustomLink>
-
+{/* 
       <CustomLink to="/favorites">
         <Heart size={24} />
       </CustomLink>
 
       <CustomLink to="/gallery">
         <Image size={24} />
-      </CustomLink>
+      </CustomLink> */}
     </HeaderContainer>
   );
 };

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import colors from "../../utils/style/colors";
-import default_card from "../../assets/projects-1.jpg";
-import projets from "../../assets/projets";
+import projets from "../../assets/projets.jsx";
 import { useState } from "react";
+import CardProject from "../../components/CardProjects";
 
 function Projects({ max }) {
   const [activeProjects, setActiveProjects] = useState("All");
@@ -52,19 +52,7 @@ function Projects({ max }) {
           )
           .slice(0, max !== 0 ? max : projets.length)
           .map((projet, index) => (
-            <div key={index} className="relative group">
-              <img
-                src={projet.image || default_card}
-                alt="Image"
-                className="w-full rounded"
-              />
-              <h1 className="absolute bottom-18 left-5 right-0 opacity-100 transition-opacity text-xl md:text-2xl text-black font-bold p-1 rounded-xl uppercase">
-                {projet.title}
-              </h1>
-              <h1 className="absolute bottom-10 left-5 right-0 opacity-100 transition-opacity text-sm md:text-l text-black p-1 rounded-xl text-gray-600">
-                {projet.label}
-              </h1>
-            </div>
+            <CardProject key={projet.id || index} projet={projet} index={index} />
           ))}
       </div>
     </div>
