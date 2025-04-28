@@ -138,7 +138,7 @@ Please change the parent <Route path="${L}"> to <Route path="${L==="/"?"*":`${L}
     border-radius: 0;
     padding: 0.5rem 0;
   }
-`,cS=()=>{const l=Ca(),u=({to:r,children:c})=>{const o=l.pathname===r;return w.jsx(uS,{$isActive:o,to:r,children:c})};return w.jsxs(rS,{children:[w.jsx(u,{to:"/",children:w.jsx(nS,{size:24})}),w.jsx(u,{to:"/about",children:w.jsx(iS,{size:24})}),w.jsx(u,{to:"/projects",children:w.jsx(eS,{size:24})})]})};/*!
+`,cS=()=>{const l=Ca(),u=({to:r,children:c,onClick:o})=>{const d=l.pathname===r;return w.jsx(uS,{$isActive:d,to:r,onClick:o,children:c})};return w.jsxs(rS,{children:[w.jsx(u,{to:"/",onClick:()=>{window.scrollTo({top:0,behavior:"smooth"})},children:w.jsx(nS,{size:24})}),w.jsx(u,{to:"/about",onClick:()=>{window.scrollTo({top:0,behavior:"smooth"})},children:w.jsx(iS,{size:24})}),w.jsx(u,{to:"/projects",onClick:()=>{window.scrollTo({top:0,behavior:"smooth"})},children:w.jsx(eS,{size:24})})]})};/*!
  * Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  * Copyright 2024 Fonticons, Inc.
