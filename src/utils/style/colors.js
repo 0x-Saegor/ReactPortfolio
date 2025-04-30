@@ -13,7 +13,8 @@ const colors = {
   bg_light_4: '#d2dfff',
   bg_light_5: '#c8d8ff',
   button: '#4a90e2',
-  button_hover: '#3a78c2' // Added hover color for button
+  button_hover: '#3a78c2', // Added hover color for button
+  button_hover_senary: '#4a4b52', // Lighter senary hover color
 };
 
 export default colors

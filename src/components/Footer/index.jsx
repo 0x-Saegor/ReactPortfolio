@@ -14,7 +14,9 @@ function Footer() {
       }}
     >
       <div className="mx-4 w-full md:w-1/2">
-        <h1 className="font-bold text-lg md:text-xl mb-4">Pourquoi ce site ?</h1>
+        <h1 className="font-bold text-lg md:text-xl mb-4">
+          Pourquoi ce site ?
+        </h1>
         <div className="flex flex-col gap-y-4">
           <p className="text-gray-400 text-sm md:text-base">
             Cela fait longtemps que je souhaitais me faire un portfolio, je
