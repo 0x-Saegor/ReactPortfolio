@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import SkillIcons from "../../../components/SkillIcon";
 import colors from "../../../utils/style/colors";
+import useTheme from "../../../utils/hooks";
 
 function About() {
+  const {theme,toggleTheme} = useTheme()
+
   return (
-    <div className="h-auto md:h-160 flex items-center">
+    <div className="h-auto md:h-160 flex items-center" style={{backgroundColor:(theme === 'light' ? colors.bg_light_1 : colors.bg_dark_1)}}>
       <div className="container mx-auto p-4 flex flex-col md:flex-row justify-between items-center">
         <div className="w-full md:w-[30%] mb-6 md:mb-0 md:ml-12">
           <h1 className="text-2xl md:text-3xl font-bold text-center md:text-left">
@@ -25,7 +28,7 @@ function About() {
           <SkillIcons />
           <Link
             to="about"
-            className="mt-6 md:mt-20 px-6 py-3 text-white rounded-lg shadow-lg transition"
+            className="mt-6 sm:mt-6 px-6 py-3 text-white rounded-lg shadow-lg transition"
             style={{
               backgroundColor: colors.button,
               transition: "background-color 0.3s",

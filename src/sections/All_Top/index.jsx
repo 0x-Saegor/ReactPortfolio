@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import useTheme from "../../utils/hooks";
 
 function capitalizeFirstLetter(val) {
   return String(val).charAt(0).toUpperCase() + String(val).slice(1);
@@ -12,11 +13,12 @@ function capitalizeFirstLetter(val) {
 function All_Top({ page_name }) {
   const location = useLocation(); // Get the current route
   const pageTitle = capitalizeFirstLetter(location.pathname.split("/")[1]);
+  const {theme, toggleTheme} = useTheme()
 
   return (
     <div
       className="h-100 flex flex-col items-center justify-center text-center px-4 sm:px-8"
-      style={{ backgroundColor: colors.bg_light_3 }}
+      style={{backgroundColor:(theme === 'light' ? colors.bg_light_3 : colors.bg_dark_2)}}
     >
       <h1 className="font-bold text-2xl sm:text-3xl lg:text-4xl uppercase">
         {page_name}

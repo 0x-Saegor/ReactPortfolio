@@ -2,9 +2,11 @@
 import React from "react";
 import clsx from "clsx";
 import colors from "../../utils/style/colors";
+import useTheme from "../../utils/hooks";
 
 const TimelineItem = ({ title, company, date, logo, points, side }) => {
   const isLeft = side === "left";
+  const {theme, toggleTheme} = useTheme()
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-9 items-start mb-8">
@@ -17,7 +19,7 @@ const TimelineItem = ({ title, company, date, logo, points, side }) => {
       >
         <div
           className="text-white p-4 rounded-2xl shadow-lg"
-          style={{ backgroundColor: colors.secondary }}
+          style={{backgroundColor:(theme === 'light' ? colors.secondary : colors.bg_dark_4)}}
         >
           <h3 className="text-lg font-bold">{title}</h3>
           <p className="text-sm text-gray-300 italic mb-2">{company}</p>
@@ -40,7 +42,7 @@ const TimelineItem = ({ title, company, date, logo, points, side }) => {
 
       {/* Icon */}
       <div className="hidden md:flex col-span-1 justify-center relative order-2">
-        <div className="bg-white p-2 rounded-full border-4 border-gray-800 shadow-md z-10 hidden md:block">
+        <div className="bg-white p-2 rounded-full border-4 border-gray-800 shadow-md z-10 hidden md:block" style={{borderColor:(theme === 'light' ? '#1e2939' : colors.bg_dark_5)}}>
           <img src={logo} alt={company} className="w-10 h-10 object-contain" />
         </div>
       </div>

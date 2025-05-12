@@ -1,5 +1,5 @@
 import carcassonne from "./projects/carcassonne.png";
-import captureCarcassonne from "./projects/captureCarcassonne.png";
+import captureCarcassonne from "./projects/captureCarcassonne.webp";
 
 import marienbad from "./projects/marienbad.png";
 import shiny from "./projects/shiny.png";

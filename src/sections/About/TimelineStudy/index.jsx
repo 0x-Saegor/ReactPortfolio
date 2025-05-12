@@ -3,6 +3,8 @@ import React from "react";
 import TimelineItem from "../../../components/TimelineItem";
 import sfnd from "../../../assets/timeline/sfnd.png";
 import iut from "../../../assets/timeline/iut.jpg";
+import useTheme from "../../../utils/hooks";
+import colors from "../../../utils/style/colors";
 
 const experiences = [
   {
@@ -30,15 +32,32 @@ const experiences = [
 ];
 
 const TimelineStudy = () => {
+  const {theme, toggleTheme} = useTheme()
+
   return (
     <div className="my-50 items-center text-center">
       <h1 className="text-3xl font-bold text-center">Mon parcours scolaire</h1>
-      <div className="relative max-w-5xl mx-auto py-6 px-4">
-        {/* Vertical line */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-700 hidden md:block"></div>
-
+      <div className="relative max-w-5xl mx-auto py-6 px-4 grid grid-cols-2 gap-5">
         {experiences.map((exp, idx) => (
-          <TimelineItem key={idx} {...exp} />
+          <div
+            key={idx}
+            className="p-6 rounded-lg border-3"
+            style={{
+              backgroundColor: theme === "light" ? colors.bg_light_3 : colors.bg_dark_4,
+              borderColor: theme === "light" ? colors.primary : colors.button_hover_senary,
+            }}
+          >
+            <h2 className="text-xl font-semibold">{exp.title}</h2>
+            <p className="text-lg italic">{exp.company}</p>
+            <p className="text-sm text-gray-500">{exp.date}</p>
+            <ul className="text-left">
+              {exp.points.map((point, pointIdx) => (
+                <li key={pointIdx} className="mt-2">
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
         ))}
       </div>
     </div>

@@ -7,7 +7,7 @@ function Footer() {
     <div
       className="mt-20 text-white flex flex-col md:flex-row items-center justify-center gap-y-10 md:gap-x-20 w-full p-6"
       style={{
-        backgroundColor: colors.senary,
+        backgroundColor: colors.bg_dark_2,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

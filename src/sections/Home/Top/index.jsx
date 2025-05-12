@@ -1,16 +1,18 @@
 import profile from "../../../assets/NoBG.webp";
 import TypeWriter from "../../../components/TypeWriter";
+import { useTheme } from "../../../utils/hooks";
 import colors from "../../../utils/style/colors";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Top() {
   const [title, setTitle] = useState("");
+  const {theme, toggleTheme} = useTheme();
 
   return (
     <div
       className="h-auto md:h-200"
-      style={{ backgroundColor: colors.bg_light_2 }}
+      style={{ backgroundColor: (theme === 'light' ? colors.bg_light_2 : colors.bg_dark_2) }}
     >
       <div className="container mx-auto p-4 flex flex-col md:flex-row items-center md:justify-start">
         <div className="mb-6 md:mb-0 md:ml-[10%] md:mr-[10%] flex-shrink-0">
@@ -39,7 +41,7 @@ function Top() {
           </p>
 
           <Link
-            to="contact"
+            to="mailto:arthurleg29@gmail.com?subject=Prise%20de%20contact"
             className="mt-6 px-6 py-3 text-white rounded-lg shadow-lg transition inline-block"
             style={{
               backgroundColor: colors.button,

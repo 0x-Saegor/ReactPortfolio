@@ -3,26 +3,29 @@ import colors from "../../utils/style/colors";
 import projets from "../../assets/projets.jsx";
 import { useState } from "react";
 import CardProject from "../../components/CardProjects";
+import useTheme from "../../utils/hooks/index.jsx";
 
 function Projects({ max }) {
   const [activeProjects, setActiveProjects] = useState("All");
+    const {theme, toggleTheme} = useTheme();
+
 
   return (
     <div
       className="flex flex-col justify-center items-center"
-      style={{ backgroundColor: colors.bg_light_1 }}
+      style={{ backgroundColor: (theme === 'light' ? colors.bg_light_1 : colors.bg_dark_) }}
     >
       <div className="container p-4 mx-auto w-full items-center flex justify-center">
         <div className="flex flex-wrap place-items-center space-x-4">
           <Link
-            style={activeProjects === "All" ? { color: colors.primary } : {}}
+            style={activeProjects === "All" ? { color: (theme === 'light' ? colors.primary : colors.secondary) } : {}}
             className={`${activeProjects === "All" ? "font-bold" : ""}`}
             onClick={() => setActiveProjects("All")}
           >
             Toutes les catégories
           </Link>
           <Link
-            style={activeProjects === "Web" ? { color: colors.primary } : {}}
+            style={activeProjects === "Web" ? { color: (theme === 'light' ? colors.primary : colors.secondary) } : {}}
             className={activeProjects === "Web" ? "font-bold" : ""}
             onClick={() => setActiveProjects("Web")}
           >
@@ -31,7 +34,7 @@ function Projects({ max }) {
           <Link
             style={
               activeProjects === "Programmation"
-                ? { color: colors.primary }
+                ? { color: (theme === 'light' ? colors.primary : colors.secondary) }
                 : {}
             }
             className={activeProjects === "Programmation" ? "font-bold" : ""}

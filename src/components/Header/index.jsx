@@ -1,16 +1,16 @@
-import React from "react";
-import { Home, User, Heart, Image, Hammer } from "lucide-react";
+import { Home, User, Hammer, Sun, Moon } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import colors from "../../utils/style/colors";
 import styled from "styled-components";
+import useTheme from "../../utils/hooks"
 
 const StyledLink = styled(Link)`
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 9999px;
-  background-color: ${({ $isActive }) =>
-    $isActive ? colors.secondary : "transparent"};
-  color: ${({ $isActive }) => ($isActive ? "white" : "text-gray-900")};
+  background-color: ${({ $isActive, $theme }) =>
+    $isActive ? ($theme === 'light' ? colors.secondary : colors.bg_dark_5) : "transparent"};
+  color: ${({ $isActive, $theme }) => ($isActive ? "white" : ($theme === 'light' ? "text-gray-900" : "black"))};
   text-decoration: none;
 
   &:hover {
@@ -48,10 +48,12 @@ const HeaderContainer = styled.div`
 const Header = () => {
   const location = useLocation(); // Get the current route
 
+  const {theme, toggleTheme} = useTheme()
+
   const CustomLink = ({ to, children, onClick }) => {
     const isActive = location.pathname === to;
     return (
-      <StyledLink $isActive={isActive} to={to} onClick={onClick}>
+      <StyledLink $isActive={isActive} to={to} onClick={onClick} $theme={theme}>
         {children}
       </StyledLink>
     );
@@ -85,14 +87,9 @@ const Header = () => {
       >
         <Hammer size={24} />
       </CustomLink>
-      {/* 
-      <CustomLink to="/favorites">
-        <Heart size={24} />
+      <CustomLink onClick={toggleTheme}>
+        {theme === 'light' ? <Sun size={24} /> : <Moon size={24} />}
       </CustomLink>
-
-      <CustomLink to="/gallery">
-        <Image size={24} />
-      </CustomLink> */}
     </HeaderContainer>
   );
 };

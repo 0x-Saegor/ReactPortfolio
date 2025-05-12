@@ -10,8 +10,10 @@ const StyledGlobalStyle = createGlobalStyle`
  
     body {
         background-color: ${({ isDarkMode }) =>
-          isDarkMode ? "#31313a" : colors.bg_light_1};
+          isDarkMode ? colors.bg_dark_1 : colors.bg_light_1};
         margin: 0;  
+        color: ${({ isDarkMode }) =>
+          isDarkMode ? "#dfdfdf" : "#000000"};
     }
 `;
 

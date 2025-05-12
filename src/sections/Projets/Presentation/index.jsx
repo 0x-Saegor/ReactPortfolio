@@ -3,9 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import colors from "../../../utils/style/colors";
 
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import useTheme from "../../../utils/hooks";
 
 function Presentation({ projectId }) {
   let projet = projets[projectId];
+  const {theme, toggleTheme} = useTheme
 
   return (
     <div className="flex flex-col md:flex-row items-center text-center px-6 py-6 md:py-12 gap-10">
@@ -20,13 +22,13 @@ function Presentation({ projectId }) {
           href={projet.url}
           className="flex p-5 w-50 h-5 rounded-full items-center justify-center text-white gap-3 my-5 mx-auto"
           target="_blank"
-          style={{ backgroundColor: colors.senary }}
+          style={{backgroundColor:(theme === 'light' ? colors.senary : colors.bg_dark_5)}}
           onMouseEnter={(e) =>
             (e.target.style.backgroundColor = colors.button_hover_senary)(
               e.target.child
             )
           }
-          onMouseLeave={(e) => (e.target.style.backgroundColor = colors.senary)}
+          onMouseLeave={(e) => (e.target.style.backgroundColor = (theme === 'light' ? colors.senary : colors.bg_dark_5))}
         >
           <FontAwesomeIcon icon={faGithub} />
           Github du projet
