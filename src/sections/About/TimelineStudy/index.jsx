@@ -32,12 +32,12 @@ const experiences = [
 ];
 
 const TimelineStudy = () => {
-  const {theme, toggleTheme} = useTheme()
+  const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className="my-50 items-center text-center">
-      <h1 className="text-3xl font-bold text-center">Mon parcours scolaire</h1>
-      <div className="relative max-w-5xl mx-auto py-6 px-4 grid grid-cols-2 gap-5">
+    <div className="my-12 items-center text-center">
+      <h1 className="text-3xl font-bold text-center mb-8">Mon parcours scolaire</h1>
+      <div className="relative max-w-5xl mx-auto py-6 px-4 grid grid-cols-1 sm:grid-cols-2 gap-5">
         {experiences.map((exp, idx) => (
           <div
             key={idx}
