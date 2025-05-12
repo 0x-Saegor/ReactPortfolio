@@ -1,4 +1,4 @@
-import { Home, User, Hammer, Sun, Moon } from "lucide-react";
+import { Home, User, Hammer, Sun, Moon, Github } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import colors from "../../utils/style/colors";
 import styled from "styled-components";
@@ -86,6 +86,13 @@ const Header = () => {
         }}
       >
         <Hammer size={24} />
+      </CustomLink>
+      <CustomLink
+        onClick={() => {
+          window.open("https://github.com/0x-Saegor", "_blank");
+        }}
+      >
+        <Github size={24} />
       </CustomLink>
       <CustomLink onClick={toggleTheme}>
         {theme === 'light' ? <Sun size={24} /> : <Moon size={24} />}
