@@ -44,14 +44,14 @@ function Top() {
             to="mailto:arthurleg29@gmail.com?subject=Prise%20de%20contact"
             className="mt-6 px-6 py-3 text-white rounded-lg shadow-lg transition inline-block"
             style={{
-              backgroundColor: colors.button,
+              backgroundColor: colors.secondary,
               transition: "background-color 0.3s",
             }}
             onMouseEnter={(e) =>
-              (e.target.style.backgroundColor = colors.button_hover)
+              (e.target.style.backgroundColor = colors.primary)
             }
             onMouseLeave={(e) =>
-              (e.target.style.backgroundColor = colors.button)
+              (e.target.style.backgroundColor = colors.secondary)
             }
           >
             Envoyez moi un message !

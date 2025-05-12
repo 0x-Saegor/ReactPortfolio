@@ -19,13 +19,15 @@ function Footer() {
         </h1>
         <div className="flex flex-col gap-y-4">
           <p className="text-gray-400 text-sm md:text-base">
-            Cela fait longtemps que je souhaitais me faire un portfolio, je
-            n'avais jusque là pas pris le temps de le faire
+            Ce portfolio est bien plus qu'un simple site web. C'est une vitrine
+            de mes compétences, de ma passion pour le développement et de mon
+            envie constante d'apprendre et de progresser.
           </p>
           <p className="text-gray-400 text-sm md:text-base">
-            Lors de ma recherche d'alternance j'ai constaté que React JS était
-            fortement demandé, je me suis formé et ai donc créé ce portfolio
-            avec React.
+            J'ai choisi React JS pour sa flexibilité et sa popularité dans le
+            monde du développement web moderne. Ce projet m'a permis de
+            perfectionner mes compétences tout en créant un outil qui reflète
+            mon parcours et mes ambitions.
           </p>
         </div>
       </div>

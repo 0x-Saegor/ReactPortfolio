@@ -30,14 +30,14 @@ function About() {
             to="about"
             className="mt-6 sm:mt-6 px-6 py-3 text-white rounded-lg shadow-lg transition"
             style={{
-              backgroundColor: colors.button,
+              backgroundColor: colors.secondary,
               transition: "background-color 0.3s",
             }}
             onMouseEnter={(e) =>
-              (e.target.style.backgroundColor = colors.button_hover)
+              (e.target.style.backgroundColor = colors.primary)
             }
             onMouseLeave={(e) =>
-              (e.target.style.backgroundColor = colors.button)
+              (e.target.style.backgroundColor = colors.secondary)
             }
             onClick={() => {
               window.scrollTo({ top: 0, behavior: "smooth" });
