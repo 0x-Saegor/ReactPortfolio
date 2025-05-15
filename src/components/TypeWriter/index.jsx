@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
+const titles = ["développeur", "étudiant", "secouriste"];
 
 function TypeWriter({ setTitle }) {
-    const titles = ["développeur", "étudiant"];
     const [index, setIndex] = useState(0);
     const [charIndex, setCharIndex] = useState(0);
 
@@ -22,7 +22,7 @@ function TypeWriter({ setTitle }) {
 
             return () => clearTimeout(timeout);
         }
-    }, [charIndex, index, setTitle, titles]);
+    }, [charIndex, index, setTitle]);
 
     return null;
 }
