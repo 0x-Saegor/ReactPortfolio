@@ -18,7 +18,7 @@ const experiences = [
     side: "left",
     points: [
       "Je participe aux développement de logiciels et d'applications pour l'entreprise.",
-      "Je suis en contact avec VueJS, Golang, React Native, Docker et Ansible.",
+      "J'utilise VueJS, Golang, React Native, Docker et Ansible.",
     ],
   },
   {
