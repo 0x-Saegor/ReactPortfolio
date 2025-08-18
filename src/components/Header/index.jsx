@@ -1,4 +1,4 @@
-import { Home, User, Hammer, Sun, Moon, Github } from "lucide-react";
+import { Home, User, Hammer, Sun, Moon, Github, Edit3 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import colors from "../../utils/style/colors";
 import styled from "styled-components";
@@ -93,6 +93,13 @@ const Header = () => {
         }}
       >
         <Github size={24} />
+      </CustomLink>
+      <CustomLink
+        onClick={() => {
+          window.open("https://blog.arthurlg.fr", "_blank");
+        }}
+      >
+        <Edit3 size={24} />
       </CustomLink>
       <CustomLink onClick={toggleTheme}>
         {theme === 'light' ? <Sun size={24} /> : <Moon size={24} />}
