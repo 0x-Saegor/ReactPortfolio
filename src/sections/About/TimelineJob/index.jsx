@@ -5,16 +5,28 @@ import superprof from "../../../assets/timeline/superprof.png";
 import ng from "../../../assets/timeline/ng.png";
 import echalotes from "../../../assets/timeline/echalotes.jpg";
 import asten from "../../../assets/timeline/asten.png";
+import alcatel from "../../../assets/timeline/alcatel.jpg";
 import useTheme from "../../../utils/hooks";
 import colors from "../../../utils/style/colors";
 
 const experiences = [
   {
+    title: "Développeur logiciel en alternance",
+    company: "Alcatel Lucent Enterprise",
+    date: "Juillet 2025 - Aujourd'hui",
+    logo: alcatel,
+    side: "left",
+    points: [
+      "Je participe aux développement de logiciels et d'applications pour l'entreprise.",
+      "Je suis en contact avec VueJS, Golang, React Native, Docker et Ansible.",
+    ],
+  },
+  {
     title: "Professeur particulier mathématiques",
     company: "Freelance",
     date: "Mars 2025 - Aujourd'hui",
     logo: superprof,
-    side: "left",
+    side: "right",
     points: [
       "J'aide les élèves à régler leurs difficultés avec les mathématiques à travers des exercices et des activités",
       "Utilisation de métaphores et comparaisons pour vulgariser les problèmes mathématiques",
@@ -25,7 +37,7 @@ const experiences = [
     company: "NAVAL GROUP",
     date: "Avril 2023 - Avril 2023",
     logo: ng,
-    side: "right",
+    side: "left",
     points: [
       "Approfondissement de la cybersécurité des systèmes embarqués et réseaux",
       "Développement d'applications et programmation dans le domaine industriel",
@@ -37,7 +49,7 @@ const experiences = [
     company: "SAS CABON Ploudaniel",
     date: "Juillet 2022 - Juillet 2022",
     logo: echalotes,
-    side: "left",
+    side: "right",
     points: ["Ramassage d'échalotes durant l'été 2022 et l'été 2023"],
   },
   {
@@ -46,7 +58,7 @@ const experiences = [
     company: "Groupe Asten",
     date: "Juillet 2021 - Juillet 2021",
     logo: asten,
-    side: "right",
+    side: "left",
     points: [
       "Découverte du développement de logiciels et applications autour du big data",
       "Initiation à la cybersécurité et à l'hébergement/infogérance de données",
