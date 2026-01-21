@@ -1,40 +1,28 @@
-# 🚀 Portfolio – Arthur Le Gall
+*# Portfolio – Arthur Le Gall
 
-Welcome to my personal portfolio website! Built with **React** and **Vite**, this site showcases my projects, skills, and passion for development.
+My personal portfolio website built with React and Vite. This site showcases my projects, skills, and experience as a developer.
 
-🌐 [Visit the website](https://arthurlg.fr/)
-
----
-
-## 📚 Table of Contents
-
-* [🚀 Portfolio – Arthur Le Gall](#-portfolio--arthur-le-gall)
-
-  * [📚 Table of Contents](#-table-of-contents)
-  * [🛠️ Installation](#️-installation)
-  * [▶️ Usage](#️-usage)
-  * [📸 Preview](#-preview)
-  * [📩 Contact](#-contact)
+[Visit the website](https://arthurlg.fr/)
 
 ---
 
-## 🛠️ Installation
+## Installation
 
-To run this project locally, follow these steps:
+To run this project locally:
 
-1. **Clone the repository**
+1. Clone the repository
 
    ```bash
    git clone https://github.com/0x-Saegor/ReactPortfolio.git
    ```
 
-2. **Navigate to the project folder**
+2. Navigate to the project folder
 
    ```bash
    cd portfolio
    ```
 
-3. **Install dependencies**
+3. Install dependencies
 
    ```bash
    npm install
@@ -42,27 +30,27 @@ To run this project locally, follow these steps:
 
 ---
 
-## ▶️ Usage
+## Usage
 
-Start the development server with:
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-Your local server will be accessible at `http://localhost:5173` (or whichever port Vite chooses).
+The site will be available at `http://localhost:5173` (or whichever port Vite assigns).
 
 ---
 
-## 📸 Preview
+## Preview
 
 ![image](https://github.com/user-attachments/assets/e24fcacc-eef6-4a9c-9880-451b44b66a6c)
 
-
 ---
 
-## 📩 Contact
+## Contact
 
-Feel free to reach out via [my website](https://arthurlg.fr/) or directly through the message button!
+Feel free to reach out via [my website](https://arthurlg.fr/) or use the contact form.
 
 ---
+*
