@@ -1,4 +1,4 @@
-*# Portfolio – Arthur Le Gall
+# Portfolio – Arthur Le Gall
 
 My personal portfolio website built with React and Vite. This site showcases my projects, skills, and experience as a developer.
 
