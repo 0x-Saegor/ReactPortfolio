@@ -19,7 +19,7 @@ To run this project locally:
 2. Navigate to the project folder
 
    ```bash
-   cd portfolio
+   cd ReactPortfolio
    ```
 
 3. Install dependencies
@@ -45,12 +45,3 @@ The site will be available at `http://localhost:5173` (or whichever port Vite as
 ## Preview
 
 ![image](https://github.com/user-attachments/assets/e24fcacc-eef6-4a9c-9880-451b44b66a6c)
-
----
-
-## Contact
-
-Feel free to reach out via [my website](https://arthurlg.fr/) or use the contact form.
-
----
-*
