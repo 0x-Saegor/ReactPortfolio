@@ -4,7 +4,7 @@ import colors from "../../../utils/style/colors";
 import useTheme from "../../../utils/hooks";
 
 function About() {
-  const {theme,toggleTheme} = useTheme()
+  const {theme,_} = useTheme()
 
   return (
     <div className="h-auto md:h-160 flex items-center" style={{backgroundColor:(theme === 'light' ? colors.bg_light_1 : colors.bg_dark_1)}}>
@@ -17,8 +17,6 @@ function About() {
             Je suis étudiant en BUT informatique à l'IUT de Vannes, j'aime coder
             et découvrir de nouvelles choses. Je connais différents langages :
             python, java, javascript et différentes technologies comme ReactJS.
-            Ce portfolio est temporaire, je suis en cours de création de mon
-            vrai portfolio en utilisant ReactJS.
           </p>
         </div>
         <div className="w-full md:w-[60%] flex flex-col items-center">

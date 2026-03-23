@@ -1,6 +1,17 @@
 import React from "react";
 
-const skills = ["react", "html", "css", "js", "php", "git", "mysql", "java", "python", "docker"];
+const skills = [
+    "react",
+    "vuejs",
+    "js",
+    "php",
+    "python",
+    "java",
+    "golang",
+    "mysql",
+    "docker",
+    "git"
+];
 
 const SkillIcons = () => {
 return (

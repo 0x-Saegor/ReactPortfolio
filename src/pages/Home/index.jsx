@@ -9,7 +9,7 @@ function Home() {
 
       <About />
 
-      <Projects max={6} />
+      <Projects max={3} />
 
     </>
   );

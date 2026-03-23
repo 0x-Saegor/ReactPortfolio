@@ -7,8 +7,11 @@ import useTheme from "../../utils/hooks/index.jsx";
 
 function Projects({ max }) {
   const [activeProjects, setActiveProjects] = useState("All");
-    const {theme, toggleTheme} = useTheme();
+  const { theme, _ } = useTheme();
 
+  const categories = Array.from(
+    new Set(projets.map((projet) => projet.category).filter(Boolean))
+  );
 
   return (
     <div
@@ -24,31 +27,24 @@ function Projects({ max }) {
           >
             Toutes les catégories
           </Link>
-          <Link
-            style={activeProjects === "Web" ? { color: (theme === 'light' ? colors.primary : colors.secondary) } : {}}
-            className={activeProjects === "Web" ? "font-bold" : ""}
-            onClick={() => setActiveProjects("Web")}
-          >
-            Web
-          </Link>
-          <Link
-            style={
-              activeProjects === "Programmation"
-                ? { color: (theme === 'light' ? colors.primary : colors.secondary) }
-                : {}
-            }
-            className={activeProjects === "Programmation" ? "font-bold" : ""}
-            onClick={() => setActiveProjects("Programmation")}
-          >
-            Programmation
-          </Link>
+          {categories.map((category) => (
+            <Link
+              key={category}
+              style={activeProjects === category ? { color: (theme === "light" ? colors.primary : colors.secondary) } : {}}
+              className={activeProjects === category ? "font-bold" : ""}
+              onClick={() => setActiveProjects(category)}
+            >
+              {category}
+            </Link>
+          ))}
         </div>
       </div>
 
       <div
         className={`mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4`}
       >
-        {projets
+        {[...projets]
+          .reverse()
           .filter(
             (projet) =>
               activeProjects === "All" || projet.category === activeProjects

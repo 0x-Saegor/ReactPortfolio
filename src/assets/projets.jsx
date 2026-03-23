@@ -3,6 +3,9 @@ import captureCarcassonne from "./projects/captureCarcassonne.webp";
 
 import marienbad from "./projects/marienbad.png";
 import shiny from "./projects/shiny.png";
+import data from "./projects/data.png";
+import poc from "./projects/poc.png";
+import hacking from "./projects/hacking.png";
 
 const projets = [
   {
@@ -66,6 +69,27 @@ const projets = [
     image: shiny,
     category: "Web",
     url: "https://github.com/0x-Saegor/OpenClassroom-React-Formation",
+  },
+  {
+    title: "Data Transfer Server",
+    label: "Serveur de transfert de données performant et sécurisé.",
+    category: "Web",
+    image: data,
+    url: "https://github.com/0x-Saegor/data-transfer-server",
+  },
+  {
+    title: "POC Cluster Config",
+    label: "Preuve de concept pour le déploiement et la configuration de cluster.",
+    category: "Système",
+    image: poc,
+    url: "https://github.com/0x-Saegor/POC-ClusterConfig",
+  },
+  {
+    title: "Gamehacking Journey",
+    label: "Exploration, apprentissage et développement d'outils liés au game hacking.",
+    category: "Cyber",
+    image: hacking,
+    url: "https://github.com/0x-Saegor/Gamehacking-Journey",
   },
 ];
 
