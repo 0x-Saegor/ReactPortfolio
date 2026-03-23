@@ -5,13 +5,13 @@ import colors from "../../../utils/style/colors";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import useTheme from "../../../utils/hooks";
 
-function Presentation({ projectId }) {
+function Presentation({ projectId, reverse = false }) {
   let projet = projets[projectId];
-  const {theme, toggleTheme} = useTheme
+  const {theme, _} = useTheme
 
   return (
-    <div className="flex flex-col md:flex-row items-center text-center px-6 py-6 md:py-12 gap-10">
-      <div className="w-full md:w-[50%] lg:w-[40%] xl:w-[30%] ml-auto">
+    <div className={`flex flex-col ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} items-center text-center px-6 py-6 md:py-12 gap-10`}>
+      <div className={`w-full md:w-[50%] lg:w-[40%] xl:w-[30%] ${reverse ? 'mr-auto' : 'ml-auto'}`}>
         <h1 className="text-xl md:text-2xl lg:text-3xl font-bold mb-6">
           {projet.title}
         </h1>
@@ -34,7 +34,7 @@ function Presentation({ projectId }) {
           Github du projet
         </a>{" "}
       </div>
-      <div className="w-full md:w-[50%] lg:w-[40%] xl:w-[40%] mr-auto">
+      <div className={`w-full md:w-[50%] lg:w-[40%] xl:w-[40%] ${reverse ? 'ml-auto' : 'mr-auto'}`}>
         <img
           src={projet.screenshot}
           alt="Image du projet"
