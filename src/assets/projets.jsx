@@ -73,7 +73,7 @@ const projets = [
   },
   {
     title: "Data Transfer Server",
-    label: "Serveur de transfert de données performant et sécurisé.",
+    label: "Frontend en Vue et backend en Go, l'objectif est de pouvoir tester la solidité et la vitesse d'un réseau.",
     category: "Web",
     image: data,
     url: "https://github.com/0x-Saegor/data-transfer-server",
