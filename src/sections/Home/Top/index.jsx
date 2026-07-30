@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 function Top() {
   const [title, setTitle] = useState("");
-  const {theme, toggleTheme} = useTheme();
+  const {theme} = useTheme();
 
   return (
     <div
@@ -19,13 +19,9 @@ function Top() {
           <img
             src={profile}
             alt="Photo de profil"
+            width={360}
+            height={540}
             className="w-40 md:w-90 rounded-full mx-auto md:mx-0"
-            onLoad={(e) => (e.target.style.opacity = 1)}
-            style={{ opacity: 0, transition: "opacity 0.5s" }}
-            onError={(e) => {
-              e.target.src = "https://via.placeholder.com/150";
-              e.target.style.opacity = 1;
-            }}
           />
         </div>
         <div className="text-center md:text-left">
