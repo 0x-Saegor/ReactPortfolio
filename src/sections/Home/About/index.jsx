@@ -20,9 +20,9 @@ function About() {
         <div>
           <SectionTitle eyebrow="À propos" title="Cybersécurité et développement logiciel">
             J'ai commencé par le code : applications web, outils en
-            Python, puis du Go et du Vue en alternance. Depuis la deuxième année de
-            BUT, je me tourne de plus en plus vers la cybersécurité, sans lâcher le
-            développement logiciel.
+            Python, puis du Go et du Vue en alternance. La cybersécurité, j'en fais
+            depuis le lycée avec les CTF, et je l'ai prolongée en BUT avec le parcours
+            déploiement d'applications communicantes et sécurisées.
           </SectionTitle>
           <Reveal>
             <p className="mb-3 text-sm font-semibold text-ink">Côté cyber</p>

@@ -10,6 +10,7 @@ const studies = [
     date: "Sept. 2024 - Juin 2027",
     logo: iut,
     points: [
+      "Parcours B : déploiement d'applications communicantes et sécurisées",
       "En alternance depuis la deuxième année",
       "Troisième année : analyse et test d'intrusion, installation de services, virtualisation, chaîne de production",
       "Projets en équipe : plateforme de challenges, applications web et mobiles",

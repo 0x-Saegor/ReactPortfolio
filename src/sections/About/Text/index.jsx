@@ -1,7 +1,7 @@
 import Reveal from "../../../components/Reveal";
 
 const facts = [
-  { label: "Formation", value: "BUT Informatique, IUT de Vannes (2024-2027)" },
+  { label: "Formation", value: "BUT Informatique, parcours déploiement d'applications communicantes et sécurisées, IUT de Vannes (2024-2027)" },
   { label: "Alternance", value: "Développeur logiciel chez Alcatel-Lucent Enterprise" },
   { label: "Objectif", value: "Cycle ingénieur cybersécurité en alternance, 2027-2030" },
   { label: "À côté", value: "Réserviste Gendarmerie, secouriste PSE2, escalade" },
@@ -18,13 +18,13 @@ function Text() {
               Depuis toujours j'adore découvrir de nouvelles choses. Lorsque j'ai
               découvert l'informatique en classe de 3<sup>e</sup> avec un stage, j'ai
               tout de suite su que c'était un domaine qui me passionnerait. Depuis, je
-              n'ai cessé d'apprendre, d'abord en développement, puis de plus en plus en
-              cybersécurité.
+              n'ai cessé d'apprendre, en développement comme en cybersécurité, que je
+              pratique depuis le lycée avec les CTF.
             </p>
             <p>
               Mon alternance chez Alcatel-Lucent Enterprise m'apprend à travailler sur
-              du vrai code en équipe, et mes deux dernières années de BUT m'ont fait
-              travailler la sécurité et l'administration système. Les CTF, Root-Me
+              du vrai code en équipe, et au BUT je suis le parcours déploiement
+              d'applications communicantes et sécurisées. Les CTF, Root-Me
               et HackTheBox complètent le tout en pratique.
             </p>
             <p>

@@ -52,9 +52,10 @@ function Top() {
           </p>
 
           <p className="hero-in mx-auto mt-6 max-w-xl leading-relaxed text-muted md:mx-0 md:text-lg" style={{ "--hero-delay": "260ms" }}>
-            Étudiant en 3<sup>e</sup> année de BUT Informatique à l'IUT de Vannes et
-            développeur en alternance chez Alcatel-Lucent Enterprise. Après plusieurs
-            années de programmation, je me spécialise en <strong className="text-ink">cybersécurité et développement logiciel</strong>.
+            Étudiant en 3<sup>e</sup> année de BUT Informatique (parcours déploiement
+            d'applications communicantes et sécurisées) à l'IUT de Vannes et développeur
+            en alternance chez Alcatel-Lucent Enterprise. Je fais de la <strong className="text-ink">cybersécurité</strong> depuis
+            le lycée et du <strong className="text-ink">développement logiciel</strong> au quotidien.
             Je cherche une alternance en cybersécurité pour mon cycle d'ingénieur, de 2027 à 2030.
           </p>
 
