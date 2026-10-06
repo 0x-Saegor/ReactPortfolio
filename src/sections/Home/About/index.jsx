@@ -1,51 +1,57 @@
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import SkillIcons from "../../../components/SkillIcon";
-import colors from "../../../utils/style/colors";
-import useTheme from "../../../utils/hooks";
+import SectionTitle from "../../../components/SectionTitle";
+import Reveal from "../../../components/Reveal";
+
+const cyber = [
+  "Audit et test d'intrusion",
+  "Sécurité web",
+  "Réseau et pare-feu",
+  "Rétro-ingénierie",
+  "OSINT",
+  "Durcissement Linux",
+];
 
 function About() {
-  const {theme,_} = useTheme()
-
   return (
-    <div className="h-auto md:h-160 flex items-center" style={{backgroundColor:(theme === 'light' ? colors.bg_light_1 : colors.bg_dark_1)}}>
-      <div className="container mx-auto p-4 flex flex-col md:flex-row justify-between items-center">
-        <div className="w-full md:w-[30%] mb-6 md:mb-0 md:ml-12">
-          <h1 className="text-2xl md:text-3xl font-bold text-center md:text-left">
-            A propos de moi
-          </h1>
-          <p className="text-center md:text-left">
-            Je suis étudiant en BUT informatique à l'IUT de Vannes, j'aime coder
-            et découvrir de nouvelles choses. Je connais différents langages :
-            python, java, javascript et différentes technologies comme ReactJS.
-          </p>
+    <section className="mx-auto max-w-6xl px-6 pt-16 md:pt-24">
+      <div className="grid gap-12 md:grid-cols-2 md:gap-16">
+        <div>
+          <SectionTitle eyebrow="À propos" title="Du développement à la cybersécurité">
+            J'ai commencé par le code : jeux en réseau, applications web, outils en
+            Python, puis du Go et du Vue en alternance. Depuis la deuxième année de
+            BUT, mes cours et mes projets tournent autour du réseau, de
+            l'administration système et de la sécurité.
+          </SectionTitle>
+          <Reveal>
+            <p className="mb-3 text-sm font-semibold text-ink">Côté cyber</p>
+            <ul className="flex flex-wrap gap-2">
+              {cyber.map((item) => (
+                <li
+                  key={item}
+                  className="rounded-full border border-line bg-surface px-3 py-1 text-sm text-ink"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <Link
+              to="/about"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="group mt-8 inline-flex items-center gap-2 font-semibold text-accent hover:text-accent-hover"
+            >
+              Mon parcours et mes CTF
+              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Reveal>
         </div>
-        <div className="w-full md:w-[60%] flex flex-col items-center">
-          <h1 className="text-lg md:text-xl font-bold text-center">
-            Quelques compétences que je maîtrise
-          </h1>
+        <Reveal delay={120} className="rounded-2xl border border-line bg-surface p-6 shadow-soft md:p-8">
+          <h3 className="mb-6 text-lg font-bold text-ink">Les outils que j'utilise</h3>
           <SkillIcons />
-          <Link
-            to="about"
-            className="mt-6 sm:mt-6 px-6 py-3 text-white rounded-lg shadow-lg transition"
-            style={{
-              backgroundColor: colors.secondary,
-              transition: "background-color 0.3s",
-            }}
-            onMouseEnter={(e) =>
-              (e.target.style.backgroundColor = colors.primary)
-            }
-            onMouseLeave={(e) =>
-              (e.target.style.backgroundColor = colors.secondary)
-            }
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-          >
-            En savoir plus
-          </Link>
-        </div>
+        </Reveal>
       </div>
-    </div>
+    </section>
   );
 }
 

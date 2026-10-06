@@ -1,39 +1,33 @@
-import colors from "../../utils/style/colors";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { ChevronRight } from "lucide-react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import useTheme from "../../utils/hooks";
-
-function capitalizeFirstLetter(val) {
-  return String(val).charAt(0).toUpperCase() + String(val).slice(1);
-}
-
-function All_Top({ page_name }) {
-  const location = useLocation(); // Get the current route
-  const pageTitle = capitalizeFirstLetter(location.pathname.split("/")[1]);
-  const {theme, toggleTheme} = useTheme()
-
+function All_Top({ page_name, children }) {
   return (
-    <div
-      className="h-100 flex flex-col items-center justify-center text-center px-4 sm:px-8"
-      style={{backgroundColor:(theme === 'light' ? colors.bg_light_3 : colors.bg_dark_2)}}
-    >
-      <h1 className="font-bold text-2xl sm:text-3xl lg:text-4xl uppercase">
-        {page_name}
-      </h1>
-      <div className="flex flex-col sm:flex-row gap-y-2 sm:gap-y-0 sm:gap-x-3 text-gray-500 items-center mt-4">
-        <Link to="/" className="hover:text-gray-700">
-          Home
-        </Link>
-        <FontAwesomeIcon icon={faArrowRight} className="hidden sm:inline" />
-        <Link to={location.pathname} className="hover:text-gray-700">
-          {pageTitle}
-        </Link>
+    <header className="relative overflow-hidden border-b border-line bg-bg-alt">
+      {/* halo décoratif discret */}
+      <div
+        className="pointer-events-none absolute -top-24 left-1/2 h-72 w-[40rem] -translate-x-1/2 rounded-full bg-accent opacity-10 blur-3xl"
+        aria-hidden="true"
+      />
+      <div className="relative mx-auto flex max-w-4xl flex-col items-center px-6 py-20 text-center md:py-28">
+        <nav aria-label="Fil d'Ariane" className="mb-4 flex items-center gap-1 text-sm text-muted">
+          <Link to="/" className="transition-colors hover:text-accent">
+            Accueil
+          </Link>
+          <ChevronRight size={14} aria-hidden="true" />
+          <span className="text-ink">{page_name}</span>
+        </nav>
+        <h1 className="text-3xl font-bold text-ink sm:text-4xl lg:text-5xl">{page_name}</h1>
+        {children && <p className="mt-4 max-w-2xl text-base text-muted md:text-lg">{children}</p>}
       </div>
-    </div>
+    </header>
   );
 }
+
+All_Top.propTypes = {
+  page_name: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
 
 export default All_Top;
