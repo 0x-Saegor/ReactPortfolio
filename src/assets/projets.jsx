@@ -67,9 +67,9 @@ const projets = [
       "Démarche complète : reconnaissance, analyse, validation des failles",
       "Vulnérabilités classées par criticité",
       "Recommandations de correction pour chaque point relevé",
-      "Article détaillé sur mon blog pour l'audit de la machine Linux",
+      "Article détaillé sur mon blog : l'audit de Kioptrix Level 2",
     ],
-    blog: "https://blog.arthurlg.fr",
+    blog: "https://blog.arthurlg.fr/posts/exploitation-kioptrix-level-2/",
   },
   {
     id: "transavia",
