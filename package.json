@@ -11,7 +11,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "postbuild": "echo arthurlg.fr > dist/CNAME && cp dist/index.html dist/404.html"
+    "postbuild": "node scripts/postbuild.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
