@@ -1,66 +1,69 @@
-// Timeline.jsx
-import React from "react";
-import TimelineItem from "../../../components/TimelineItem";
-import sfnd from "../../../assets/timeline/sfnd.png";
-import iut from "../../../assets/timeline/iut.jpg";
-import useTheme from "../../../utils/hooks";
-import colors from "../../../utils/style/colors";
+import SectionTitle from "../../../components/SectionTitle";
+import Reveal from "../../../components/Reveal";
+import sfnd from "../../../assets/timeline/sfnd.webp";
+import iut from "../../../assets/timeline/iut.webp";
 
-const experiences = [
+const studies = [
   {
-    title: "Étudiant en BUT Informatique",
-    company: "IUT de Vannes",
+    title: "BUT Informatique",
+    company: "IUT de Vannes, Université Bretagne Sud",
     date: "Sept. 2024 - Juin 2027",
     logo: iut,
-    side: "right",
     points: [
-      "Formation en informatique avec un focus sur le développement logiciel, les bases de données et les réseaux",
-      "Participation à des projets collaboratifs et apprentissage des méthodologies agiles",
+      "En alternance depuis la deuxième année",
+      "Troisième année orientée réseau et sécurité : services réseau complexes, analyse et test d'intrusion, virtualisation, chaîne de production",
+      "Projets en équipe : plateforme de challenges, applications web et mobiles",
     ],
   },
   {
-    title: "Baccalauréat général, Mathématiques et informatique",
-    company: "Saint François Notre Dame Lesneven",
+    title: "Baccalauréat général, mention très bien",
+    company: "Saint-François Notre-Dame, Lesneven",
     date: "Sept. 2021 - Juin 2024",
     logo: sfnd,
-    side: "left",
     points: [
-      "Obtention du baccalauréat mention très bien",
-      "Spécialisation en mathématiques et informatique avec des projets personnels",
+      "Spécialités mathématiques et informatique (NSI)",
+      "Premiers CTF : 404CTF 2023 et finale du NoBrackets à l'European Cyber Week",
     ],
   },
 ];
 
-const TimelineStudy = () => {
-  const { theme, toggleTheme } = useTheme();
+const certifications = ["Cambridge English B2 (2024)", "Certificat Voltaire, 737 points (2023)", "PSE2, Croix-Rouge française"];
 
+const TimelineStudy = () => {
   return (
-    <div className="my-12 items-center text-center">
-      <h1 className="text-3xl font-bold text-center mb-8">Mon parcours scolaire</h1>
-      <div className="relative max-w-5xl mx-auto py-6 px-4 grid grid-cols-1 sm:grid-cols-2 gap-5">
-        {experiences.map((exp, idx) => (
-          <div
-            key={idx}
-            className="p-6 rounded-lg border-3"
-            style={{
-              backgroundColor: theme === "light" ? colors.bg_light_3 : colors.bg_dark_4,
-              borderColor: theme === "light" ? colors.primary : colors.button_hover_senary,
-            }}
-          >
-            <h2 className="text-xl font-semibold">{exp.title}</h2>
-            <p className="text-lg italic">{exp.company}</p>
-            <p className="text-sm text-gray-500">{exp.date}</p>
-            <ul className="text-left">
-              {exp.points.map((point, pointIdx) => (
-                <li key={pointIdx} className="mt-2">
-                  {point}
-                </li>
-              ))}
-            </ul>
-          </div>
+    <section className="mx-auto max-w-5xl px-6 pb-8">
+      <SectionTitle eyebrow="Formation" title="Mon parcours scolaire" center />
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        {studies.map((study, index) => (
+          <Reveal key={study.title} delay={index * 100}>
+            <div className="h-full rounded-2xl border border-line bg-surface p-6 shadow-soft">
+              <div className="flex items-center gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-line bg-white">
+                  <img src={study.logo} alt="" className="h-9 w-9 object-contain" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-accent">{study.date}</p>
+                  <h3 className="text-lg font-bold text-ink">{study.title}</h3>
+                </div>
+              </div>
+              <p className="mt-3 text-sm italic text-muted">{study.company}</p>
+              <ul className="mt-3 space-y-1.5 text-sm leading-relaxed text-muted">
+                {study.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
         ))}
       </div>
-    </div>
+      <Reveal className="mt-8 flex flex-wrap justify-center gap-2">
+        {certifications.map((cert) => (
+          <span key={cert} className="rounded-full border border-line bg-surface px-3 py-1 text-sm text-muted">
+            {cert}
+          </span>
+        ))}
+      </Reveal>
+    </section>
   );
 };
 

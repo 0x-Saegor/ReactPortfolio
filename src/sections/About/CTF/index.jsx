@@ -1,10 +1,11 @@
-import colors from "../../../utils/style/colors";
-import useTheme from "../../../utils/hooks";
-import interiutImg from "../../../assets/ctf/Interiut.jpg";
+import { Trophy, Users, User, ExternalLink } from "lucide-react";
+import interiutImg from "../../../assets/ctf/Interiut.webp";
+import SectionTitle from "../../../components/SectionTitle";
+import Reveal from "../../../components/Reveal";
 
 const ctfData = [
   {
-    name: "CTF IUT de Vannes",
+    name: "Bl'Hack CTF, IUT de Vannes",
     date: "Décembre 2025",
     rank: "Challmaker",
     description:
@@ -12,79 +13,186 @@ const ctfData = [
     team: false,
   },
   {
-    name: "NoBrackets CTF",
-    date: "Novembre 2023",
-    rank: "4ème / 51 équipes",
-    description: "Finale du NoBrackets CTF.",
+    name: "HelloWorld",
+    date: "Septembre 2025",
+    rank: "4e / 19 équipes",
+    description: "Premier CTF au format box, organisé par GCC-ENSIBS et HACK2G2.",
+    team: true,
+  },
+  {
+    name: "404CTF",
+    date: "Mai 2025",
+    rank: "159e / 2 893 participants",
+    description: "Deuxième participation au CTF organisé par la DGSE et HackademINT.",
+    team: false,
+  },
+  {
+    name: "CTF InterIUT",
+    date: "Mai 2025",
+    rank: "2e / 25 équipes",
+    description: "Équipe Alt+kids de l'IUT de Vannes, 8 heures d'épreuves.",
+    team: true,
+  },
+  {
+    name: "CTF IUT de Vannes",
+    date: "Décembre 2024",
+    rank: "6e / 17 équipes",
+    description: "3e équipe parmi les premières années.",
     team: true,
   },
   {
     name: "Pass Ton Hack",
     date: "Février 2024",
-    rank: "3ème / 270 équipes",
+    rank: "3e / 270 équipes",
     description: "Compétition nationale de cybersécurité.",
+    team: true,
+  },
+  {
+    name: "NoBrackets CTF",
+    date: "Novembre 2023",
+    rank: "4e / 70 équipes",
+    description: "Qualifiés pour la finale à l'European Cyber Week, encore au lycée.",
     team: true,
   },
   {
     name: "404CTF",
     date: "Mai 2023",
-    rank: "39ème / 2877 participants",
-    description: "CTF organisé par la DGSE et Télécom SudParis.",
+    rank: "39e / 2 847 participants",
+    description: "Mon premier CTF, organisé par la DGSE et Télécom SudParis.",
     team: false,
   },
 ];
 
-function CTF() {
-  const { theme } = useTheme();
+// Points Root-Me par catégorie (relevé d'octobre 2026)
+const rootme = {
+  score: "2 065",
+  solved: 117,
+  categories: [
+    { name: "Web serveur", points: 1025 },
+    { name: "Réseau", points: 275 },
+    { name: "Web client", points: 170 },
+    { name: "Forensic", points: 160 },
+    { name: "Cracking", points: 150 },
+    { name: "Stéganographie", points: 125 },
+    { name: "Programmation", points: 105 },
+  ],
+};
 
+const maxPoints = Math.max(...rootme.categories.map((c) => c.points));
+
+function CTF() {
   return (
-    <div className="items-center text-center py-12">
-      <h1 className="text-3xl font-bold text-center">Compétitions CTF</h1>
-      <p className="mt-4 text-sm md:text-base leading-relaxed max-w-3xl mx-auto px-4">
-        Je me suis lancé dans les CTFs (Capture The Flag, compétitions de cybersécurité contenant différents challenges de multiples catégories) en 2023. C'est vraiment comme un escape game : chaque challenge fonctionne différemment et force à toujours plus se creuser la tête.
-      </p>
-      <p className="mt-4 text-sm md:text-base leading-relaxed max-w-3xl mx-auto px-4">
-        Avec l'arrivée de l'IA, je trouve moins intéressant de participer dans des compétitions où nos adversaires peuvent valider des challenges en quelques secondes en utilisant des agents. C'est pourquoi je me suis mis au challmaking : c'est un nouveau moyen de me creuser la tête, l'objectif étant de concevoir des challenges que les joueurs ne puissent pas valider avec de l'IA.
-      </p>
-      <p className="mt-4 text-sm md:text-base leading-relaxed max-w-3xl mx-auto px-4">
-        J'ai également eu l'occasion de participer à un CTF avec <a href="https://gcc-ensibs.fr/" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: colors.primary }}>GCC</a> au format Box, le principe étant de pentester une machine (à la HackTheBox) en fournissant différentes informations trouvées pendant l'attaque. C'était une super expérience, j'ai trouvé ça plus motivant à l'ère de l'IA car il est moins possible d'envoyer des agents pour pentester tout ça.
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto py-6 px-4">
-        {ctfData.map((ctf, index) => (
-          <div
-            key={index}
-            className="p-5 rounded-2xl shadow-lg border"
-            style={{
-              backgroundColor: theme === "light" ? colors.bg_light_2 : colors.bg_dark_3,
-              borderColor: theme === "light" ? colors.bg_light_4 : colors.bg_dark_5,
-            }}
-          >
-            <div className="flex justify-between items-start mb-2">
-              <h3 className="text-lg font-bold text-left">{ctf.name}</h3>
-              <span className="text-xs whitespace-nowrap ml-2" style={{ color: theme === "light" ? "#6b7280" : "#9ca3af" }}>
-                {ctf.date}
-              </span>
+    <section className="border-y border-line bg-bg-alt">
+      <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
+        <SectionTitle eyebrow="Cybersécurité" title="Compétitions CTF" />
+
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-16">
+          <Reveal className="space-y-4 leading-relaxed text-muted">
+            <p>
+              Je me suis lancé dans les CTF (Capture The Flag, compétitions de
+              cybersécurité contenant différents challenges de multiples catégories)
+              en 2023. C'est vraiment comme un escape game : chaque challenge
+              fonctionne différemment et force à toujours plus se creuser la tête.
+            </p>
+            <p>
+              Avec l'arrivée de l'IA, je trouve moins intéressant de participer à des
+              compétitions où nos adversaires peuvent valider des challenges en
+              quelques secondes avec des agents. C'est pourquoi je me suis mis au
+              challmaking : un nouveau moyen de me creuser la tête, l'objectif étant
+              de concevoir des challenges que les joueurs ne puissent pas valider
+              avec de l'IA.
+            </p>
+            <p>
+              J'ai également participé à un CTF avec{" "}
+              <a
+                href="https://gcc-ensibs.fr/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-accent underline underline-offset-2 hover:text-accent-hover"
+              >
+                GCC
+              </a>{" "}
+              au format box : attaquer une machine (à la HackTheBox) en fournissant
+              les informations trouvées pendant l'attaque. J'ai trouvé ça plus
+              motivant à l'ère de l'IA, car il est bien plus difficile d'y envoyer
+              des agents.
+            </p>
+          </Reveal>
+
+          <Reveal delay={120} className="rounded-2xl border border-line bg-surface p-6 shadow-soft">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-sm font-semibold text-accent">Root-Me</p>
+                <p className="mt-1 text-4xl font-bold text-ink">
+                  {rootme.score} <span className="text-base font-medium text-muted">points</span>
+                </p>
+                <p className="mt-1 text-sm text-muted">{rootme.solved} challenges validés</p>
+              </div>
+              <a
+                href="https://www.root-me.org/0xSaegor"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-sm text-ink transition-colors hover:border-accent hover:text-accent"
+              >
+                Profil
+                <ExternalLink size={14} />
+              </a>
             </div>
-            <p
-              className="text-sm font-semibold mb-2 text-left"
-              style={{ color: colors.primary }}
-            >
-              {ctf.rank}
-            </p>
-            <p className="text-sm text-left" style={{ color: theme === "light" ? "#374151" : "#d1d5db" }}>
-              {ctf.description}
-            </p>
-            <p className="text-xs mt-3 text-left" style={{ color: theme === "light" ? "#6b7280" : "#9ca3af" }}>
-              {ctf.team ? "En équipe" : "Solo"}
-            </p>
-          </div>
-        ))}
+            <ul className="mt-6 space-y-3" aria-label="Points par catégorie">
+              {rootme.categories.map((cat) => (
+                <li key={cat.name} className="grid grid-cols-[7.5rem_minmax(0,1fr)_3rem] items-center gap-3 text-sm">
+                  <span className="text-muted">{cat.name}</span>
+                  <span className="h-2 overflow-hidden rounded-full bg-bg-alt" aria-hidden="true">
+                    <span
+                      className="bar-fill block h-full rounded-full bg-accent"
+                      style={{ "--value": cat.points / maxPoints }}
+                    />
+                  </span>
+                  <span className="text-right font-medium text-ink">{cat.points}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-5 text-xs text-muted">Relevé d'octobre 2026.</p>
+          </Reveal>
+        </div>
+
+        <ul className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {ctfData.map((ctf, index) => (
+            <Reveal as="li" key={`${ctf.name}-${ctf.date}`} delay={(index % 4) * 70}>
+              <div className="flex h-full flex-col rounded-2xl border border-line bg-surface p-5 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-accent">
+                <div className="flex items-center justify-between gap-2 text-xs text-muted">
+                  <span>{ctf.date}</span>
+                  <span className="inline-flex items-center gap-1">
+                    {ctf.team ? <Users size={14} /> : <User size={14} />}
+                    {ctf.team ? "En équipe" : "Solo"}
+                  </span>
+                </div>
+                <h3 className="mt-3 font-bold text-ink">{ctf.name}</h3>
+                <p className="mt-1 inline-flex items-center gap-1.5 font-semibold text-accent">
+                  <Trophy size={15} />
+                  {ctf.rank}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{ctf.description}</p>
+              </div>
+            </Reveal>
+          ))}
+        </ul>
+
+        <Reveal className="mx-auto mt-14 max-w-3xl">
+          <figure>
+            <img
+              src={interiutImg}
+              alt="L'équipe de l'IUT de Vannes au CTF InterIUT 2025"
+              loading="lazy"
+              className="max-h-80 w-full rounded-2xl object-cover shadow-soft"
+            />
+            <figcaption className="mt-3 text-center text-sm text-muted">
+              CTF InterIUT 2025, 2e sur 25 équipes avec l'IUT de Vannes
+            </figcaption>
+          </figure>
+        </Reveal>
       </div>
-      <div className="max-w-3xl mx-auto mt-8 px-4">
-        <p className="text-sm font-semibold mb-2 text-center">CTF InterIUT 2025 — 2ème / 25 équipes avec l'IUT de Vannes</p>
-        <img src={interiutImg} alt="CTF InterIUT" className="rounded-2xl shadow-lg w-full max-h-72 object-cover" />
-      </div>
-    </div>
+    </section>
   );
 }
 

@@ -1,32 +1,37 @@
-// Timeline.jsx
-import React from "react";
 import TimelineItem from "../../../components/TimelineItem";
+import SectionTitle from "../../../components/SectionTitle";
 import superprof from "../../../assets/timeline/superprof.png";
 import ng from "../../../assets/timeline/ng.png";
 import echalotes from "../../../assets/timeline/echalotes.jpg";
 import asten from "../../../assets/timeline/asten.png";
 import alcatel from "../../../assets/timeline/alcatel.jpg";
-import useTheme from "../../../utils/hooks";
-import colors from "../../../utils/style/colors";
 
 const experiences = [
   {
     title: "Développeur logiciel en alternance",
-    company: "Alcatel Lucent Enterprise",
+    company: "Alcatel-Lucent Enterprise, Brest",
     date: "Juillet 2025 - Aujourd'hui",
     logo: alcatel,
-    side: "left",
     points: [
-      "Je participe aux développement de logiciels et d'applications pour l'entreprise.",
-      "J'utilise VueJS, Golang, React Native, Docker et Ansible.",
+      "Backend Go et frontend Vue pour un panneau de configuration réseau (DNS, DHCP, NTP)",
+      "Déploiement automatisé avec Ansible, contrôle de checksum et rollback en cas d'échec",
+      "Maintenance d'un service interne : Vue, Sails et application mobile React Native",
+      "Conteneurisation Docker et déploiement sur Kubernetes",
     ],
   },
   {
-    title: "Professeur particulier mathématiques",
-    company: "Freelance",
+    title: "Réserviste, brigadier de réserve",
+    company: "Gendarmerie Nationale",
+    date: "Mars 2026 - Aujourd'hui",
+    points: [
+      "Interventions ponctuelles en équipe sur les dispositifs de la Gendarmerie du Finistère",
+    ],
+  },
+  {
+    title: "Professeur particulier de mathématiques",
+    company: "Freelance (Superprof)",
     date: "Mars 2025 - Aujourd'hui",
     logo: superprof,
-    side: "right",
     points: [
       "J'aide les élèves à régler leurs difficultés avec les mathématiques à travers des exercices et des activités",
       "Utilisation de métaphores et comparaisons pour vulgariser les problèmes mathématiques",
@@ -34,10 +39,9 @@ const experiences = [
   },
   {
     title: "Stage dans le domaine cyber, informatique, big data, innovation",
-    company: "NAVAL GROUP",
-    date: "Avril 2023 - Avril 2023",
+    company: "Naval Group, Brest",
+    date: "Avril 2023",
     logo: ng,
-    side: "left",
     points: [
       "Approfondissement de la cybersécurité des systèmes embarqués et réseaux",
       "Développement d'applications et programmation dans le domaine industriel",
@@ -45,20 +49,17 @@ const experiences = [
     ],
   },
   {
-    title: "Agent agricole - ramassage d'échalotes",
+    title: "Agent agricole, ramassage d'échalotes",
     company: "SAS CABON Ploudaniel",
-    date: "Juillet 2022 - Juillet 2022",
+    date: "Étés 2022 et 2023",
     logo: echalotes,
-    side: "right",
     points: ["Ramassage d'échalotes durant l'été 2022 et l'été 2023"],
   },
   {
-    title:
-      "Stage de découverte des domaines de l'informatique et cybersécurité",
+    title: "Stage de découverte de l'informatique et de la cybersécurité",
     company: "Groupe Asten",
-    date: "Juillet 2021 - Juillet 2021",
+    date: "Juillet 2021",
     logo: asten,
-    side: "left",
     points: [
       "Découverte du développement de logiciels et applications autour du big data",
       "Initiation à la cybersécurité et à l'hébergement/infogérance de données",
@@ -68,22 +69,20 @@ const experiences = [
 ];
 
 const TimelineJob = () => {
-const {theme, toggleTheme} = useTheme()
-
   return (
-    <div className="items-center text-center">
-      <h1 className="text-3xl font-bold text-center">
-        Mes expériences professionnelles
-      </h1>
-      <div className="relative max-w-5xl mx-auto py-6 px-4">
-        {/* Vertical line - hidden on devices smaller than 768px */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 hidden md:block" style={{backgroundColor:(theme === 'light' ? '#364153' : colors.bg_dark_5)}}></div>
-
-        {experiences.map((exp) => (
-          <TimelineItem {...exp} />
+    <section className="mx-auto max-w-5xl px-6 py-16 md:py-24">
+      <SectionTitle eyebrow="Parcours" title="Mes expériences professionnelles" center />
+      <ol className="relative">
+        {/* ligne verticale : à gauche sur mobile, au centre sur desktop */}
+        <span
+          className="absolute bottom-0 left-6 top-0 w-px bg-line md:left-1/2 md:-translate-x-1/2"
+          aria-hidden="true"
+        />
+        {experiences.map((exp, index) => (
+          <TimelineItem key={exp.title} {...exp} side={index % 2 === 0 ? "left" : "right"} />
         ))}
-      </div>
-    </div>
+      </ol>
+    </section>
   );
 };
 
