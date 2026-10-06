@@ -3,7 +3,7 @@ import Reveal from "../Reveal";
 
 function Logo({ logo, company }) {
   if (logo) {
-    return <img src={logo} alt="" className="h-9 w-9 object-contain" />;
+    return <img src={logo} alt="" className="h-10 w-10 object-contain" />;
   }
   // Pas de logo : initiales de l'organisme
   const initials = company

@@ -89,6 +89,7 @@ const projets = [
       "Seul Nginx est exposé, l'API reste sur le réseau interne Docker",
       "Publication via Cloudflare Tunnel, sans port ouvert sur la machine",
       "Déploiement continu sur un runner GitHub Actions auto-hébergé",
+      "Développé en partie avec Claude comme assistant, pour aller plus vite et lui confier les tâches répétitives",
     ],
   },
   {

@@ -5,6 +5,7 @@ import ng from "../../../assets/timeline/ng.png";
 import echalotes from "../../../assets/timeline/echalotes.jpg";
 import asten from "../../../assets/timeline/asten.png";
 import alcatel from "../../../assets/timeline/alcatel.jpg";
+import gendarmerie from "../../../assets/timeline/gendarmerie.webp";
 
 const experiences = [
   {
@@ -23,6 +24,7 @@ const experiences = [
     title: "Réserviste, brigadier de réserve",
     company: "Gendarmerie Nationale",
     date: "Mars 2026 - Aujourd'hui",
+    logo: gendarmerie,
     points: [
       "Interventions ponctuelles en équipe sur les dispositifs de la Gendarmerie du Finistère",
     ],
