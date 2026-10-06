@@ -11,25 +11,37 @@ import gendarmerie from "../../../assets/timeline/gendarmerie.webp";
 const experiences = [
   {
     title: { fr: "Développeur logiciel en alternance", en: "Work-study software developer" },
-    company: "Alcatel-Lucent Enterprise, Brest",
+    company: "Alcatel-Lucent Enterprise, R&D Brest",
     date: { fr: "Juillet 2025 - Aujourd'hui", en: "July 2025 - Present" },
     logo: alcatel,
     points: [
       {
-        fr: "Backend Go et frontend Vue pour un panneau de configuration réseau (DNS, DHCP, NTP)",
-        en: "Go backend and Vue frontend for a network configuration panel (DNS, DHCP, NTP)",
+        fr: "Équipe OmniVista Network Advisor (OVNA), un outil de supervision réseau qui détecte les anomalies avant qu'elles n'impactent les utilisateurs",
+        en: "OmniVista Network Advisor (OVNA) team, a network monitoring tool that detects anomalies before they affect users",
       },
       {
-        fr: "Déploiement automatisé avec Ansible, contrôle de checksum et rollback en cas d'échec",
-        en: "Automated deployment with Ansible, checksum verification and rollback on failure",
+        fr: "Portage de fonctionnalités vers la version intégrée au cloud OVCX, dont l'import/export d'anomalies réseau (NestJS et Go)",
+        en: "Porting features to the version integrated into the OVCX cloud, including network anomaly import/export (NestJS and Go)",
       },
       {
-        fr: "Maintenance d'un service interne : Vue, Sails et application mobile React Native",
-        en: "Maintenance of an internal service: Vue, Sails and a React Native mobile app",
+        fr: "Fichiers traités entièrement en mémoire pour respecter un disque en lecture seule, imposé pour la sécurité",
+        en: "Files processed entirely in memory to comply with a read-only disk, enforced for security",
       },
       {
-        fr: "Conteneurisation Docker et déploiement sur Kubernetes",
-        en: "Docker containerization and deployment on Kubernetes",
+        fr: "Micro-services orchestrés avec Kubernetes et Helm, messaging Apache Kafka, cache Redis, CI/CD GitLab",
+        en: "Microservices orchestrated with Kubernetes and Helm, Apache Kafka messaging, Redis cache, GitLab CI/CD",
+      },
+      {
+        fr: "OmniVista on-premise : setup du logiciel en Vue et Go, réglages NTP déployés avec Ansible (checksum et rollback)",
+        en: "On-premise OmniVista: software setup in Vue and Go, NTP settings deployed with Ansible (checksum and rollback)",
+      },
+      {
+        fr: "Asset Tracking : correction de bugs et maintenance de l'application mobile React Native",
+        en: "Asset Tracking: bug fixes and maintenance of the React Native mobile app",
+      },
+      {
+        fr: "Méthode agile : daily et weekly meetings, suivi des tickets sur YouTrack",
+        en: "Agile workflow: daily and weekly meetings, ticket tracking on YouTrack",
       },
     ],
   },
