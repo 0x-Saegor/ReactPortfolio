@@ -20,12 +20,17 @@ createRoot(document.getElementById("root")).render(
         <GlobalStyle />
         <Router>
           <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/projects" element={<Projets />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
-          <Footer />
+          {/* marge pour ne pas passer sous la barre de navigation (en bas sur mobile, à gauche sur desktop) */}
+          <div className="pb-16 md:pb-0 md:pl-20 xl:pl-0">
+            <main>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/projects" element={<Projets />} />
+                <Route path="/about" element={<About />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
         </Router>
       </ThemeProvider>
     </HelmetProvider>

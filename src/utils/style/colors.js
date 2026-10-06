@@ -1,25 +1,13 @@
+// Valeurs de référence de la palette. Les composants passent par les
+// variables CSS de index.css (bg-surface, text-accent...) pour suivre le thème.
 const colors = {
-  primary: '#335696',
-  secondary: '#5775b8',
-  tertiary: '#7a95db',
-  quaternary: '#9db6ff',
-  quinary: '#c1d9ff',
-  senary: '#27282F',
-  backgroundLight: '#F9F9FC',
-  // Darker tone similar to secondary
-  bg_light_1: '#f0f4ff',
-  bg_light_2: '#e6edff',
-  bg_light_3: '#dce6ff',
-  bg_light_4: '#d2dfff',
-  bg_light_5: '#c8d8ff',
-  bg_dark_1: '#252525',
-  bg_dark_2: '#1f1f1f',
-  bg_dark_3: '#2a2a2a', // Made lighter than bg_dark_2
-  bg_dark_4: '#343434', // Made lighter than bg_dark_3
-  bg_dark_5: '#3e3e3e', // Made lighter than bg_dark_4
-  button: '#4a90e2',
-  button_hover: '#3a78c2', // Added hover color for button
-  button_hover_senary: '#4a4b52', // Lighter senary hover color
+  primary: '#2f5bd3',
+  primaryHover: '#2448ad',
+  primaryDark: '#6e93ff',
+  backgroundLight: '#f6f8fc',
+  surfaceLight: '#ffffff',
+  backgroundDark: '#0b1120',
+  surfaceDark: '#111a2e',
 };
 
 export default colors;
