@@ -3,7 +3,7 @@ const groups = [
   { title: "Système & sécurité", skills: ["linux", "kali", "windows", "bash", "raspberrypi", "nginx", "cloudflare"] },
   { title: "Infra & DevOps", skills: ["docker", "kubernetes", "ansible", "githubactions", "gitlab", "azure", "git"] },
   { title: "Langages", skills: ["golang", "python", "java", "js", "ts", "php"] },
-  { title: "Web & mobile", skills: ["react", "vuejs", "nodejs", "express", "fastapi", "tailwind"] },
+  { title: "Web", skills: ["react", "vuejs", "nodejs", "express", "fastapi", "tailwind"] },
   { title: "Bases de données", skills: ["mysql", "sqlite", "mongodb"] },
 ];
 
