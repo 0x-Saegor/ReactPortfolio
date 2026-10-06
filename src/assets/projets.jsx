@@ -21,6 +21,8 @@ import shotInfra from "./projects/screens/infra-starttls.webp";
 import shotPentest from "./projects/screens/pentest-root.webp";
 import shotBadEncryption from "./projects/screens/badencryption-graph.webp";
 import shotDefiut from "./projects/screens/defiut-runners.webp";
+import shotDefiutHome from "./projects/screens/defiut-home.webp";
+import shotDefiutChallenge from "./projects/screens/defiut-challenge.webp";
 import shotSafeEvent from "./projects/screens/safeevent.webp";
 import shotBateauConnexion from "./projects/screens/codebateau-connexion.webp";
 import shotBateauSerie from "./projects/screens/codebateau-serie.webp";
@@ -101,7 +103,11 @@ const projets = [
     year: 2026,
     tags: ["React", "Node.js", "MySQL", "Caddy", "GitLab CI"],
     image: defiut,
-    screenshots: [{ src: shotDefiut, alt: "Les deux runners GitLab du projet, Raspberry Pi et VPS" }],
+    screenshots: [
+      { src: shotDefiutHome, alt: "Page d'accueil de Déf'IUT avec les actualités" },
+      { src: shotDefiutChallenge, alt: "Page d'un challenge web avec soumission du flag et indices" },
+      { src: shotDefiut, alt: "Les deux runners GitLab du projet, Raspberry Pi et VPS" },
+    ],
     description:
       "Classement, XP, collections et challenges servis dans leur propre conteneur. J'ai pris en charge l'essentiel de l'infrastructure et rédigé le guide d'installation.",
     points: [
