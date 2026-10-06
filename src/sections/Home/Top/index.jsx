@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Mail, ArrowRight, Github, Linkedin, Flag } from "lucide-react";
 import profile from "../../../assets/NoBG.webp";
 import TypeWriter from "../../../components/TypeWriter";
+import { useLang } from "../../../utils/i18n";
 
 const socials = [
   { href: "https://www.linkedin.com/in/arthur-le-gall-00116b266/", label: "LinkedIn", icon: Linkedin },
@@ -12,6 +13,7 @@ const socials = [
 
 function Top() {
   const [title, setTitle] = useState("");
+  const { lang, t } = useLang();
 
   return (
     <section className="relative overflow-hidden border-b border-line bg-bg-alt">
@@ -24,7 +26,7 @@ function Top() {
           <div className="relative aspect-square overflow-hidden rounded-full bg-accent-soft ring-1 ring-line">
             <img
               src={profile}
-              alt="Photo d'Arthur Le Gall"
+              alt={t({ fr: "Photo d'Arthur Le Gall", en: "Photo of Arthur Le Gall" })}
               width={720}
               height={1080}
               fetchpriority="high"
@@ -39,40 +41,52 @@ function Top() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60 motion-reduce:animate-none" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
-            Recherche une alternance en cybersécurité · 2027-2030
+            {t({ fr: "Recherche une alternance en cybersécurité · 2027-2030", en: "Looking for a cybersecurity work-study · 2027-2030" })}
           </p>
 
           <h1 className="hero-in mt-6 text-4xl font-bold tracking-tight text-ink md:text-6xl" style={{ "--hero-delay": "140ms" }}>
             Arthur Le Gall
           </h1>
           <p className="hero-in mt-3 h-9 text-xl font-semibold text-muted md:text-2xl" style={{ "--hero-delay": "200ms" }} aria-hidden="true">
-            Je suis <span className="text-accent">{title}</span>
+            {t({ fr: "Je suis", en: "I'm" })} <span className="text-accent">{title}</span>
             <span className="ml-0.5 inline-block w-0.5 animate-pulse bg-accent align-middle motion-reduce:animate-none" style={{ height: "1.1em" }} />
-            <TypeWriter setTitle={setTitle} />
+            <TypeWriter key={lang} setTitle={setTitle} />
           </p>
 
           <p className="hero-in mx-auto mt-6 max-w-xl leading-relaxed text-muted md:mx-0 md:text-lg" style={{ "--hero-delay": "260ms" }}>
-            Étudiant en 3<sup>e</sup> année de BUT Informatique (parcours déploiement
-            d'applications communicantes et sécurisées) à l'IUT de Vannes et développeur
-            en alternance chez Alcatel-Lucent Enterprise. Je fais de la <strong className="text-ink">cybersécurité</strong> depuis
-            le lycée et du <strong className="text-ink">développement logiciel</strong> au quotidien.
-            Je cherche une alternance en cybersécurité pour mon cycle d'ingénieur, de 2027 à 2030.
+            {lang === "fr" ? (
+              <>
+                Étudiant en 3<sup>e</sup> année de BUT Informatique (parcours déploiement
+                d'applications communicantes et sécurisées) à l'IUT de Vannes et développeur
+                en alternance chez Alcatel-Lucent Enterprise. Je fais de la <strong className="text-ink">cybersécurité</strong> depuis
+                le lycée et du <strong className="text-ink">développement logiciel</strong> au quotidien.
+                Je cherche une alternance en cybersécurité pour mon cycle d'ingénieur, de 2027 à 2030.
+              </>
+            ) : (
+              <>
+                Third-year Computer Science student (BUT Informatique, secure networked
+                applications track) at IUT de Vannes, France, and work-study software developer at
+                Alcatel-Lucent Enterprise. I've been doing <strong className="text-ink">cybersecurity</strong> since
+                high school and <strong className="text-ink">software development</strong> every day.
+                I'm looking for a cybersecurity work-study position for my engineering degree, from 2027 to 2030.
+              </>
+            )}
           </p>
 
           <div className="hero-in mt-8 flex flex-wrap justify-center gap-3 md:justify-start" style={{ "--hero-delay": "320ms" }}>
             <a
-              href="mailto:arthurleg29@gmail.com?subject=Alternance%20cybers%C3%A9curit%C3%A9"
+              href={t({ fr: "mailto:arthurleg29@gmail.com?subject=Alternance%20cybers%C3%A9curit%C3%A9", en: "mailto:arthurleg29@gmail.com?subject=Cybersecurity%20work-study" })}
               className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-3 font-medium text-on-accent shadow-soft transition-colors hover:bg-accent-hover"
             >
               <Mail size={18} />
-              Me contacter
+              {t({ fr: "Me contacter", en: "Contact me" })}
             </a>
             <Link
               to="/projects"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="group inline-flex items-center gap-2 rounded-lg border border-line bg-surface px-5 py-3 font-medium text-ink transition-colors hover:border-accent hover:text-accent"
             >
-              Voir mes projets
+              {t({ fr: "Voir mes projets", en: "See my projects" })}
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </Link>
           </div>

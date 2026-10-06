@@ -1,9 +1,21 @@
 import { useEffect, useState } from 'react';
-const titles = ["passionné de cybersécurité", "développeur", "joueur de CTF", "secouriste"];
+import { useLang } from '../../utils/i18n';
 
+const titlesByLang = {
+    fr: ["passionné de cybersécurité", "développeur", "CTF player", "secouriste"],
+    en: ["into cybersecurity", "a software developer", "a CTF player", "a first aider"],
+};
+
+// Remonté avec une key par langue (voir sections/Home/Top) pour repartir de zéro
 function TypeWriter({ setTitle }) {
+    const { lang } = useLang();
+    const titles = titlesByLang[lang];
     const [index, setIndex] = useState(0);
     const [charIndex, setCharIndex] = useState(0);
+
+    useEffect(() => {
+        setTitle("");
+    }, [setTitle]);
 
     useEffect(() => {
         if (charIndex < titles[index].length) {
@@ -22,7 +34,7 @@ function TypeWriter({ setTitle }) {
 
             return () => clearTimeout(timeout);
         }
-    }, [charIndex, index, setTitle]);
+    }, [charIndex, index, setTitle, titles]);
 
     return null;
 }

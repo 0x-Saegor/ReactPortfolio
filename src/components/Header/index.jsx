@@ -1,6 +1,7 @@
 import { Home, User, Hammer, Sun, Moon, Github, Edit3 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import useTheme from "../../utils/hooks";
+import { useLang } from "../../utils/i18n";
 
 const itemClass =
   "group relative flex items-center justify-center rounded-full p-2.5 transition-colors duration-200";
@@ -54,15 +55,16 @@ function ExternalItem({ href, label, icon }) {
 
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
+  const { lang, toggleLang, t } = useLang();
 
   return (
     <nav
-      aria-label="Navigation principale"
+      aria-label={t({ fr: "Navigation principale", en: "Main navigation" })}
       className="fixed inset-x-0 bottom-0 z-50 flex flex-row items-center justify-around border-t border-line bg-surface/90 px-2 py-2 backdrop-blur-md md:inset-x-auto md:bottom-auto md:left-6 md:top-1/2 md:-translate-y-1/2 md:flex-col md:gap-3 md:rounded-full md:border md:px-2 md:py-3 md:shadow-soft"
     >
-      <NavItem to="/" label="Accueil" icon={Home} />
-      <NavItem to="/about" label="À propos" icon={User} />
-      <NavItem to="/projects" label="Projets" icon={Hammer} />
+      <NavItem to="/" label={t({ fr: "Accueil", en: "Home" })} icon={Home} />
+      <NavItem to="/about" label={t({ fr: "À propos", en: "About" })} icon={User} />
+      <NavItem to="/projects" label={t({ fr: "Projets", en: "Projects" })} icon={Hammer} />
 
       <span className="hidden h-px w-6 bg-line md:block" aria-hidden="true" />
 
@@ -72,11 +74,28 @@ const Header = () => {
       <button
         type="button"
         onClick={toggleTheme}
-        aria-label={theme === "light" ? "Passer au thème sombre" : "Passer au thème clair"}
+        aria-label={
+          theme === "light"
+            ? t({ fr: "Passer au thème sombre", en: "Switch to dark theme" })
+            : t({ fr: "Passer au thème clair", en: "Switch to light theme" })
+        }
         className={`${itemClass} cursor-pointer text-muted hover:bg-accent-soft hover:text-accent`}
       >
         {theme === "light" ? <Moon size={22} strokeWidth={1.8} /> : <Sun size={22} strokeWidth={1.8} />}
-        <Tooltip>{theme === "light" ? "Thème sombre" : "Thème clair"}</Tooltip>
+        <Tooltip>
+          {theme === "light" ? t({ fr: "Thème sombre", en: "Dark theme" }) : t({ fr: "Thème clair", en: "Light theme" })}
+        </Tooltip>
+      </button>
+
+      <button
+        type="button"
+        onClick={toggleLang}
+        aria-label={lang === "fr" ? "Switch to English" : "Passer en français"}
+        lang={lang === "fr" ? "en" : "fr"}
+        className={`${itemClass} h-[42px] w-[42px] cursor-pointer text-sm font-bold text-muted hover:bg-accent-soft hover:text-accent`}
+      >
+        {lang === "fr" ? "EN" : "FR"}
+        <Tooltip>{lang === "fr" ? "English" : "Français"}</Tooltip>
       </button>
     </nav>
   );

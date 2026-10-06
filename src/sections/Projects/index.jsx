@@ -7,13 +7,20 @@ import CardProject from "../../components/CardProjects";
 import ProjectDialog from "../../components/ProjectDialog";
 import SectionTitle from "../../components/SectionTitle";
 import Reveal from "../../components/Reveal";
+import { useLang } from "../../utils/i18n";
 
-const filterLabels = { All: "Tous", Perso: "Personnels", IUT: "IUT", Alternance: "Alternance" };
+const filterLabels = {
+  All: { fr: "Tous", en: "All" },
+  Perso: { fr: "Personnels", en: "Personal" },
+  IUT: { fr: "IUT", en: "University" },
+  Alternance: { fr: "Alternance", en: "Work-study" },
+};
 
 // featured : n'affiche que les projets mis en avant, sans filtres (accueil)
 function Projects({ featured = false }) {
   const [active, setActive] = useState("All");
   const [selected, setSelected] = useState(null);
+  const { t } = useLang();
 
   const list = featured
     ? projets.filter((p) => p.featured)
@@ -25,12 +32,17 @@ function Projects({ featured = false }) {
   return (
     <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
       {featured ? (
-        <SectionTitle eyebrow="Projets" title="Quelques projets à la une">
-          Cybersécurité et développement logiciel. Les projets réalisés pendant le BUT
-          sont marqués IUT avec le module concerné.
+        <SectionTitle
+          eyebrow={t({ fr: "Projets", en: "Projects" })}
+          title={t({ fr: "Quelques projets à la une", en: "Featured projects" })}
+        >
+          {t({
+            fr: "Cybersécurité et développement logiciel. Les projets réalisés pendant le BUT sont marqués IUT avec le module concerné.",
+            en: "Cybersecurity and software development. Projects done during my degree are tagged IUT with the related course.",
+          })}
         </SectionTitle>
       ) : (
-        <Reveal className="mb-10 flex flex-wrap gap-2" role="group" aria-label="Filtrer les projets">
+        <Reveal className="mb-10 flex flex-wrap gap-2" role="group" aria-label={t({ fr: "Filtrer les projets", en: "Filter projects" })}>
           {["All", ...origins].map((origin) => (
             <button
               key={origin}
@@ -43,7 +55,7 @@ function Projects({ featured = false }) {
                   : "border-line bg-surface text-muted hover:border-accent hover:text-accent"
               }`}
             >
-              {filterLabels[origin]}
+              {t(filterLabels[origin])}
               <span className="ml-1.5 opacity-70">{count(origin)}</span>
             </button>
           ))}
@@ -65,7 +77,7 @@ function Projects({ featured = false }) {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="group inline-flex items-center gap-2 font-semibold text-accent hover:text-accent-hover"
           >
-            Voir tous les projets
+            {t({ fr: "Voir tous les projets", en: "See all projects" })}
             <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
           </Link>
         </Reveal>

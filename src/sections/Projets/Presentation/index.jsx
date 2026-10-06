@@ -3,8 +3,10 @@ import { Github, BookOpen } from "lucide-react";
 import projets from "../../../assets/projets";
 import { OriginBadge } from "../../../components/CardProjects";
 import Reveal from "../../../components/Reveal";
+import { useLang } from "../../../utils/i18n";
 
 function Presentation({ projectId, reverse = false }) {
+  const { t } = useLang();
   const projet = projets.find((p) => p.id === projectId);
   if (!projet) return null;
   const shot = projet.screenshots?.[0];
@@ -17,13 +19,13 @@ function Presentation({ projectId, reverse = false }) {
             <OriginBadge projet={projet} />
             <span className="text-sm text-muted">{projet.year}</span>
           </div>
-          <h2 className="mt-3 text-2xl font-bold text-ink md:text-3xl">{projet.title}</h2>
-          <p className="mt-4 leading-relaxed text-muted">{projet.description}</p>
+          <h2 className="mt-3 text-2xl font-bold text-ink md:text-3xl">{t(projet.title)}</h2>
+          <p className="mt-4 leading-relaxed text-muted">{t(projet.description)}</p>
           <ul className="mt-5 space-y-2">
             {projet.points.map((point) => (
-              <li key={point} className="flex gap-3 text-sm leading-relaxed md:text-base">
+              <li key={t(point)} className="flex gap-3 text-sm leading-relaxed md:text-base">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
-                <span>{point}</span>
+                <span>{t(point)}</span>
               </li>
             ))}
           </ul>
@@ -36,7 +38,7 @@ function Presentation({ projectId, reverse = false }) {
                 className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover"
               >
                 <Github size={16} />
-                Code sur GitHub
+                {t({ fr: "Code sur GitHub", en: "Code on GitHub" })}
               </a>
             )}
             {projet.blog && (
@@ -47,7 +49,7 @@ function Presentation({ projectId, reverse = false }) {
                 className="inline-flex items-center gap-2 rounded-lg border border-line px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent"
               >
                 <BookOpen size={16} />
-                Article de blog
+                {t({ fr: "Article de blog", en: "Blog post" })}
               </a>
             )}
           </div>
@@ -56,7 +58,7 @@ function Presentation({ projectId, reverse = false }) {
           <Reveal className="w-full md:w-1/2" delay={120}>
             <img
               src={shot.src}
-              alt={shot.alt}
+              alt={t(shot.alt)}
               loading="lazy"
               className="w-full rounded-2xl border border-line shadow-soft"
             />
