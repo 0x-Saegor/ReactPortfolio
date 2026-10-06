@@ -1,9 +1,9 @@
 // Icônes fournies par skillicons.dev, regroupées par domaine
 const groups = [
   { title: "Système & sécurité", skills: ["linux", "kali", "windows", "bash", "raspberrypi", "nginx", "cloudflare"] },
-  { title: "Infra & DevOps", skills: ["docker", "kubernetes", "ansible", "githubactions", "gitlab", "azure", "prometheus", "grafana", "git"] },
-  { title: "Langages", skills: ["c", "cpp", "golang", "python", "java", "js", "ts", "php"] },
-  { title: "Web & mobile", skills: ["react", "vuejs", "nodejs", "express", "flask", "fastapi", "tailwind", "flutter", "firebase"] },
+  { title: "Infra & DevOps", skills: ["docker", "kubernetes", "ansible", "githubactions", "gitlab", "azure", "git"] },
+  { title: "Langages", skills: ["golang", "python", "java", "js", "ts", "php"] },
+  { title: "Web & mobile", skills: ["react", "vuejs", "nodejs", "express", "fastapi", "tailwind"] },
   { title: "Bases de données", skills: ["mysql", "sqlite", "mongodb"] },
 ];
 
@@ -21,11 +21,7 @@ const names = {
   githubactions: "GitHub Actions",
   gitlab: "GitLab CI",
   azure: "Azure",
-  prometheus: "Prometheus",
-  grafana: "Grafana",
   git: "Git",
-  c: "C",
-  cpp: "C++",
   golang: "Go",
   python: "Python",
   java: "Java",
@@ -36,11 +32,8 @@ const names = {
   vuejs: "Vue",
   nodejs: "Node.js",
   express: "Express",
-  flask: "Flask",
   fastapi: "FastAPI",
   tailwind: "Tailwind CSS",
-  flutter: "Flutter",
-  firebase: "Firebase",
   mysql: "MySQL",
   sqlite: "SQLite",
   mongodb: "MongoDB",
