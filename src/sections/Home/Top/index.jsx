@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Mail, ArrowRight, Github, Linkedin, Flag } from "lucide-react";
+import { Mail, ArrowRight, Github, Linkedin, Flag, FileText } from "lucide-react";
 import profile from "../../../assets/NoBG.webp";
 import TypeWriter from "../../../components/TypeWriter";
 import { useLang } from "../../../utils/i18n";
@@ -80,6 +80,15 @@ function Top() {
             >
               <Mail size={18} />
               {t({ fr: "Me contacter", en: "Contact me" })}
+            </a>
+            <a
+              href="/CV_Arthur_LE-GALL.pdf"
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-2 rounded-lg border border-line bg-surface px-5 py-3 font-medium text-ink transition-colors hover:border-accent hover:text-accent"
+            >
+              <FileText size={18} />
+              {t({ fr: "Mon CV", en: "Resume (FR)" })}
             </a>
             <Link
               to="/projects"
