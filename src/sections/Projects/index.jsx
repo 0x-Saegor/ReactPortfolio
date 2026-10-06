@@ -1,61 +1,83 @@
-import { Link } from "react-router-dom";
-import colors from "../../utils/style/colors";
-import projets from "../../assets/projets.jsx";
 import { useState } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import projets, { origins } from "../../assets/projets.jsx";
 import CardProject from "../../components/CardProjects";
-import useTheme from "../../utils/hooks/index.jsx";
+import ProjectDialog from "../../components/ProjectDialog";
+import SectionTitle from "../../components/SectionTitle";
+import Reveal from "../../components/Reveal";
 
-function Projects({ max }) {
-  const [activeProjects, setActiveProjects] = useState("All");
-  const { theme, _ } = useTheme();
+const filterLabels = { All: "Tous", Perso: "Personnels", IUT: "IUT", Alternance: "Alternance" };
 
-  const categories = Array.from(
-    new Set(projets.map((projet) => projet.category).filter(Boolean))
-  );
+// featured : n'affiche que les projets mis en avant, sans filtres (accueil)
+function Projects({ featured = false }) {
+  const [active, setActive] = useState("All");
+  const [selected, setSelected] = useState(null);
+
+  const list = featured
+    ? projets.filter((p) => p.featured)
+    : projets.filter((p) => active === "All" || p.origin === active);
+
+  const count = (origin) =>
+    origin === "All" ? projets.length : projets.filter((p) => p.origin === origin).length;
 
   return (
-    <div
-      className="flex flex-col justify-center items-center"
-      style={{ backgroundColor: (theme === 'light' ? colors.bg_light_1 : colors.bg_dark_) }}
-    >
-      <div className="container p-4 mx-auto w-full items-center flex justify-center">
-        <div className="flex flex-wrap place-items-center space-x-4">
-          <Link
-            style={activeProjects === "All" ? { color: (theme === 'light' ? colors.primary : colors.secondary) } : {}}
-            className={`${activeProjects === "All" ? "font-bold" : ""}`}
-            onClick={() => setActiveProjects("All")}
-          >
-            Toutes les catégories
-          </Link>
-          {categories.map((category) => (
-            <Link
-              key={category}
-              style={activeProjects === category ? { color: (theme === "light" ? colors.primary : colors.secondary) } : {}}
-              className={activeProjects === category ? "font-bold" : ""}
-              onClick={() => setActiveProjects(category)}
+    <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
+      {featured ? (
+        <SectionTitle eyebrow="Projets" title="Quelques projets à la une">
+          Réseau, sécurité et développement. Les projets réalisés pendant le BUT
+          sont marqués IUT avec le module concerné.
+        </SectionTitle>
+      ) : (
+        <Reveal className="mb-10 flex flex-wrap gap-2" role="group" aria-label="Filtrer les projets">
+          {["All", ...origins].map((origin) => (
+            <button
+              key={origin}
+              type="button"
+              onClick={() => setActive(origin)}
+              aria-pressed={active === origin}
+              className={`cursor-pointer rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
+                active === origin
+                  ? "border-accent bg-accent text-on-accent"
+                  : "border-line bg-surface text-muted hover:border-accent hover:text-accent"
+              }`}
             >
-              {category}
-            </Link>
+              {filterLabels[origin]}
+              <span className="ml-1.5 opacity-70">{count(origin)}</span>
+            </button>
           ))}
-        </div>
+        </Reveal>
+      )}
+
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {list.map((projet, index) => (
+          <Reveal key={projet.id} delay={(index % 3) * 80}>
+            <CardProject projet={projet} onOpen={setSelected} />
+          </Reveal>
+        ))}
       </div>
 
-      <div
-        className={`mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4`}
-      >
-        {[...projets]
-          .reverse()
-          .filter(
-            (projet) =>
-              activeProjects === "All" || projet.category === activeProjects
-          )
-          .slice(0, max !== 0 ? max : projets.length)
-          .map((projet, index) => (
-            <CardProject key={projet.id || index} projet={projet} index={index} />
-          ))}
-      </div>
-    </div>
+      {featured && (
+        <Reveal className="mt-10 text-center">
+          <Link
+            to="/projects"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="group inline-flex items-center gap-2 font-semibold text-accent hover:text-accent-hover"
+          >
+            Voir tous les projets
+            <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+          </Link>
+        </Reveal>
+      )}
+
+      <ProjectDialog projet={selected} onClose={() => setSelected(null)} />
+    </section>
   );
 }
+
+Projects.propTypes = {
+  featured: PropTypes.bool,
+};
 
 export default Projects;
