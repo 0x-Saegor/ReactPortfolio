@@ -1,35 +1,55 @@
-import React from "react";
-
-const skills = [
-    "react",
-    "vuejs",
-    "js",
-    "php",
-    "python",
-    "java",
-    "golang",
-    "mysql",
-    "docker",
-    "git"
+// Icônes fournies par skillicons.dev, regroupées par domaine
+const groups = [
+  { title: "Système & réseau", skills: ["linux", "kali", "bash", "nginx"] },
+  { title: "Infra & DevOps", skills: ["docker", "kubernetes", "ansible", "prometheus", "grafana", "git"] },
+  { title: "Développement", skills: ["golang", "python", "cpp", "java", "react", "vuejs", "mysql"] },
 ];
 
+const names = {
+  linux: "Linux",
+  kali: "Kali Linux",
+  bash: "Bash",
+  nginx: "Nginx",
+  docker: "Docker",
+  kubernetes: "Kubernetes",
+  ansible: "Ansible",
+  prometheus: "Prometheus",
+  grafana: "Grafana",
+  git: "Git",
+  golang: "Go",
+  python: "Python",
+  cpp: "C++",
+  java: "Java",
+  react: "React",
+  vuejs: "Vue",
+  mysql: "MySQL",
+};
+
 const SkillIcons = () => {
-return (
-    <div className="flex flex-wrap justify-center gap-4 p-4 mb-4">
-        {skills.map((skill) => (
-            <div key={skill} className="relative group">
+  return (
+    <div className="flex flex-col gap-6">
+      {groups.map((group) => (
+        <div key={group.title}>
+          <p className="mb-3 text-sm font-semibold text-ink">{group.title}</p>
+          <ul className="flex flex-wrap gap-3">
+            {group.skills.map((skill) => (
+              <li key={skill} className="group relative">
                 <img
-                    src={`https://skillicons.dev/icons?i=${skill}`}
-                    alt={skill}
-                    className="w-16 h-16"
+                  src={`https://skillicons.dev/icons?i=${skill}`}
+                  alt={names[skill]}
+                  title={names[skill]}
+                  width={48}
+                  height={48}
+                  loading="lazy"
+                  className="h-12 w-12 transition-transform duration-200 group-hover:-translate-y-0.5"
                 />
-                <p className="absolute bottom-0 left-0 right-0 text-center text-sm opacity-0 group-hover:opacity-100 transition-opacity bg-gray-800 text-white p-1 rounded-xl">
-                    {skill}
-                </p>
-            </div>
-        ))}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
-);
+  );
 };
 
 export default SkillIcons;

@@ -1,110 +1,84 @@
 import { Home, User, Hammer, Sun, Moon, Github, Edit3 } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
-import colors from "../../utils/style/colors";
-import styled from "styled-components";
-import useTheme from "../../utils/hooks"
+import { NavLink } from "react-router-dom";
+import useTheme from "../../utils/hooks";
 
-const StyledLink = styled(Link)`
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 9999px;
-  background-color: ${({ $isActive, $theme }) =>
-    $isActive ? ($theme === 'light' ? colors.secondary : colors.bg_dark_5) : "transparent"};
-  color: ${({ $isActive, $theme }) => ($isActive ? "white" : ($theme === 'light' ? "text-gray-900" : "black"))};
-  text-decoration: none;
+const itemClass =
+  "group relative flex items-center justify-center rounded-full p-2.5 transition-colors duration-200";
 
-  &:hover {
-    opacity: 0.9;
-  }
-`;
+// Petite étiquette qui apparaît au survol, à droite de la barre (desktop)
+function Tooltip({ children }) {
+  return (
+    <span className="pointer-events-none absolute left-full ml-3 hidden whitespace-nowrap rounded-md bg-ink px-2 py-1 text-xs font-medium text-bg opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 md:block">
+      {children}
+    </span>
+  );
+}
 
-const HeaderContainer = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 2%;
-  transform: translateY(-50%);
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  background-color: #f3f4f6;
-  padding: 1rem;
-  border-radius: 9999px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+function NavItem({ to, label, icon }) {
+  const Icon = icon;
+  return (
+    <NavLink
+      to={to}
+      end
+      aria-label={label}
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      className={({ isActive }) =>
+        `${itemClass} ${
+          isActive
+            ? "bg-accent text-on-accent shadow-soft"
+            : "text-muted hover:bg-accent-soft hover:text-accent"
+        }`
+      }
+    >
+      <Icon size={22} strokeWidth={1.8} />
+      <Tooltip>{label}</Tooltip>
+    </NavLink>
+  );
+}
 
-  @media (max-width: 768px) {
-    top: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    transform: none;
-    flex-direction: row;
-    justify-content: space-around;
-    border-radius: 0;
-    padding: 0.5rem 0;
-  }
-`;
+function ExternalItem({ href, label, icon }) {
+  const Icon = icon;
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className={`${itemClass} text-muted hover:bg-accent-soft hover:text-accent`}
+    >
+      <Icon size={22} strokeWidth={1.8} />
+      <Tooltip>{label}</Tooltip>
+    </a>
+  );
+}
 
 const Header = () => {
-  const location = useLocation(); // Get the current route
-
-  const {theme, toggleTheme} = useTheme()
-
-  const CustomLink = ({ to, children, onClick }) => {
-    const isActive = location.pathname === to;
-    return (
-      <StyledLink $isActive={isActive} to={to} onClick={onClick} $theme={theme}>
-        {children}
-      </StyledLink>
-    );
-  };
+  const { theme, toggleTheme } = useTheme();
 
   return (
-    <HeaderContainer>
-      <CustomLink
-        to="/"
-        onClick={() => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }}
-      >
-        <Home size={24} />
-      </CustomLink>
+    <nav
+      aria-label="Navigation principale"
+      className="fixed inset-x-0 bottom-0 z-50 flex flex-row items-center justify-around border-t border-line bg-surface/90 px-2 py-2 backdrop-blur-md md:inset-x-auto md:bottom-auto md:left-6 md:top-1/2 md:-translate-y-1/2 md:flex-col md:gap-3 md:rounded-full md:border md:px-2 md:py-3 md:shadow-soft"
+    >
+      <NavItem to="/" label="Accueil" icon={Home} />
+      <NavItem to="/about" label="À propos" icon={User} />
+      <NavItem to="/projects" label="Projets" icon={Hammer} />
 
-      <CustomLink
-        to="/about"
-        onClick={() => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }}
-      >
-        <User size={24} />
-      </CustomLink>
+      <span className="hidden h-px w-6 bg-line md:block" aria-hidden="true" />
 
-      <CustomLink
-        to="/projects"
-        onClick={() => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }}
+      <ExternalItem href="https://github.com/0x-Saegor" label="GitHub" icon={Github} />
+      <ExternalItem href="https://blog.arthurlg.fr" label="Blog" icon={Edit3} />
+
+      <button
+        type="button"
+        onClick={toggleTheme}
+        aria-label={theme === "light" ? "Passer au thème sombre" : "Passer au thème clair"}
+        className={`${itemClass} cursor-pointer text-muted hover:bg-accent-soft hover:text-accent`}
       >
-        <Hammer size={24} />
-      </CustomLink>
-      <CustomLink
-        onClick={() => {
-          window.open("https://github.com/0x-Saegor", "_blank");
-        }}
-      >
-        <Github size={24} />
-      </CustomLink>
-      <CustomLink
-        onClick={() => {
-          window.open("https://blog.arthurlg.fr", "_blank");
-        }}
-      >
-        <Edit3 size={24} />
-      </CustomLink>
-      <CustomLink onClick={toggleTheme}>
-        {theme === 'light' ? <Sun size={24} /> : <Moon size={24} />}
-      </CustomLink>
-    </HeaderContainer>
+        {theme === "light" ? <Moon size={22} strokeWidth={1.8} /> : <Sun size={22} strokeWidth={1.8} />}
+        <Tooltip>{theme === "light" ? "Thème sombre" : "Thème clair"}</Tooltip>
+      </button>
+    </nav>
   );
 };
 
