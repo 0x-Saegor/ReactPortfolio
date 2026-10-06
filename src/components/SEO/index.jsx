@@ -6,7 +6,7 @@ const SITE_URL = "https://arthurlg.fr";
 function SEO({ title, description, path = "/" }) {
   const fullTitle = title
     ? `${title} — Arthur Le Gall`
-    : "Arthur Le Gall — Développeur Logiciel | Portfolio";
+    : "Arthur Le Gall — Cybersécurité et développement | Portfolio";
   const url = `${SITE_URL}${path}`;
 
   return (
