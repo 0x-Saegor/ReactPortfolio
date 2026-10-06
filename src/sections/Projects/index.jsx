@@ -26,7 +26,7 @@ function Projects({ featured = false }) {
     <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
       {featured ? (
         <SectionTitle eyebrow="Projets" title="Quelques projets à la une">
-          Réseau, sécurité et développement. Les projets réalisés pendant le BUT
+          Cybersécurité et développement logiciel. Les projets réalisés pendant le BUT
           sont marqués IUT avec le module concerné.
         </SectionTitle>
       ) : (

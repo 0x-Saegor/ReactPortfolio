@@ -7,7 +7,7 @@ import Reveal from "../../../components/Reveal";
 const cyber = [
   "Audit et test d'intrusion",
   "Sécurité web",
-  "Réseau et pare-feu",
+  "Sécurité applicative",
   "Rétro-ingénierie",
   "OSINT",
   "Durcissement Linux",
@@ -18,11 +18,11 @@ function About() {
     <section className="mx-auto max-w-6xl px-6 pt-16 md:pt-24">
       <div className="grid gap-12 md:grid-cols-2 md:gap-16">
         <div>
-          <SectionTitle eyebrow="À propos" title="Du développement à la cybersécurité">
-            J'ai commencé par le code : jeux en réseau, applications web, outils en
+          <SectionTitle eyebrow="À propos" title="Cybersécurité et développement logiciel">
+            J'ai commencé par le code : applications web, outils en
             Python, puis du Go et du Vue en alternance. Depuis la deuxième année de
-            BUT, mes cours et mes projets tournent autour du réseau, de
-            l'administration système et de la sécurité.
+            BUT, je me tourne de plus en plus vers la cybersécurité, sans lâcher le
+            développement logiciel.
           </SectionTitle>
           <Reveal>
             <p className="mb-3 text-sm font-semibold text-ink">Côté cyber</p>

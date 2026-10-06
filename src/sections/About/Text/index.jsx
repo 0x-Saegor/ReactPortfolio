@@ -19,12 +19,12 @@ function Text() {
               découvert l'informatique en classe de 3<sup>e</sup> avec un stage, j'ai
               tout de suite su que c'était un domaine qui me passionnerait. Depuis, je
               n'ai cessé d'apprendre, d'abord en développement, puis de plus en plus en
-              réseau et en cybersécurité.
+              cybersécurité.
             </p>
             <p>
               Mon alternance chez Alcatel-Lucent Enterprise m'apprend à travailler sur
-              du vrai code en équipe, et mes deux dernières années de BUT sont centrées
-              sur le réseau, l'administration système et la sécurité. Les CTF, Root-Me
+              du vrai code en équipe, et mes deux dernières années de BUT m'ont fait
+              travailler la sécurité et l'administration système. Les CTF, Root-Me
               et HackTheBox complètent le tout en pratique.
             </p>
             <p>

@@ -11,7 +11,7 @@ const studies = [
     logo: iut,
     points: [
       "En alternance depuis la deuxième année",
-      "Troisième année orientée réseau et sécurité : services réseau complexes, analyse et test d'intrusion, virtualisation, chaîne de production",
+      "Troisième année : analyse et test d'intrusion, installation de services, virtualisation, chaîne de production",
       "Projets en équipe : plateforme de challenges, applications web et mobiles",
     ],
   },

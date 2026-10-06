@@ -1,6 +1,6 @@
 // Icônes fournies par skillicons.dev, regroupées par domaine
 const groups = [
-  { title: "Système & réseau", skills: ["linux", "kali", "bash", "nginx"] },
+  { title: "Système & sécurité", skills: ["linux", "kali", "bash", "nginx"] },
   { title: "Infra & DevOps", skills: ["docker", "kubernetes", "ansible", "prometheus", "grafana", "git"] },
   { title: "Développement", skills: ["golang", "python", "cpp", "java", "react", "vuejs", "mysql"] },
 ];
