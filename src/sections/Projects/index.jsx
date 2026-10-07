@@ -37,8 +37,8 @@ function Projects({ featured = false }) {
           title={t({ fr: "Quelques projets à la une", en: "Featured projects" })}
         >
           {t({
-            fr: "Cybersécurité et développement logiciel. Les projets réalisés pendant le BUT sont marqués IUT avec le module concerné.",
-            en: "Cybersecurity and software development. Projects done during my degree are tagged IUT with the related course.",
+            fr: "Cybersécurité et développement logiciel. Les projets réalisés pendant le BUT sont marqués IUT avec l'année concernée.",
+            en: "Cybersecurity and software development. Projects done during my degree are tagged IUT with the year.",
           })}
         </SectionTitle>
       ) : (
