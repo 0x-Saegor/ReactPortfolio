@@ -4,7 +4,7 @@ import { useLang } from "../../utils/i18n";
 // Icônes fournies par skillicons.dev, regroupées par domaine
 const groups = [
   { title: { fr: "Système & sécurité", en: "Systems & security" }, skills: ["linux", "kali", "windows", "bash", "raspberrypi", "nginx", "cloudflare"] },
-  { title: "Infra & DevOps", skills: ["docker", "kubernetes", "ansible", "githubactions", "gitlab", "azure", "git"] },
+  { title: "Infra & DevSecOps", skills: ["docker", "kubernetes", "ansible", "githubactions", "gitlab", "azure", "git"] },
   { title: { fr: "Langages", en: "Languages" }, skills: ["golang", "python", "java", "js", "ts", "php"] },
   { title: "Web", skills: ["react", "vuejs", "nodejs", "express", "fastapi", "tailwind"] },
   { title: { fr: "Bases de données", en: "Databases" }, skills: ["mysql", "sqlite", "mongodb"] },

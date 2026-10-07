@@ -24,24 +24,32 @@ const experiences = [
         en: "Porting features to the version integrated into the OVCX cloud, including network anomaly import/export (NestJS and Go)",
       },
       {
+        fr: "Micro-services orchestrés avec Kubernetes et Helm, messaging Apache Kafka, cache Redis",
+        en: "Microservices orchestrated with Kubernetes and Helm, Apache Kafka messaging, Redis cache",
+      },
+      {
+        fr: "SecOps : déploiements sur le cluster Kubernetes via la CI/CD GitLab, pour tester dans un environnement proche de la production",
+        en: "SecOps: deployments to the Kubernetes cluster through GitLab CI/CD, to test in a production-like environment",
+      },
+      {
+        fr: "Sécurité en production : mise à jour des images Docker et des librairies Go/JS pour corriger les CVE publiques",
+        en: "Production security: updating Docker images and Go/JS libraries to patch public CVEs",
+      },
+      {
         fr: "Fichiers traités entièrement en mémoire pour respecter un disque en lecture seule, imposé pour la sécurité",
         en: "Files processed entirely in memory to comply with a read-only disk, enforced for security",
       },
       {
-        fr: "Micro-services orchestrés avec Kubernetes et Helm, messaging Apache Kafka, cache Redis, CI/CD GitLab",
-        en: "Microservices orchestrated with Kubernetes and Helm, Apache Kafka messaging, Redis cache, GitLab CI/CD",
-      },
-      {
-        fr: "OmniVista on-premise : setup du logiciel en Vue et Go, réglages NTP déployés avec Ansible (checksum et rollback)",
-        en: "On-premise OmniVista: software setup in Vue and Go, NTP settings deployed with Ansible (checksum and rollback)",
+        fr: "OmniVista on-premise : setup du logiciel en Vue et Go, configuration des serveurs (NTP) par playbooks Ansible avec checksum et rollback",
+        en: "On-premise OmniVista: software setup in Vue and Go, server configuration (NTP) through Ansible playbooks with checksum and rollback",
       },
       {
         fr: "Asset Tracking : correction de bugs et maintenance de l'application mobile React Native",
         en: "Asset Tracking: bug fixes and maintenance of the React Native mobile app",
       },
       {
-        fr: "Méthode agile : daily et weekly meetings, suivi des tickets sur YouTrack",
-        en: "Agile workflow: daily and weekly meetings, ticket tracking on YouTrack",
+        fr: "Méthode agile en équipe : daily meetings pour remonter avancées et blocages, weekly meetings pour planifier la semaine, tickets YouTrack et entraide entre collègues",
+        en: "Agile teamwork: daily meetings to share progress and blockers, weekly meetings to plan ahead, YouTrack tickets and helping teammates",
       },
     ],
   },
