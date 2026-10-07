@@ -28,8 +28,8 @@ const experiences = [
         en: "Microservices orchestrated with Kubernetes and Helm, Apache Kafka messaging, Redis cache",
       },
       {
-        fr: "SecOps : déploiements sur le cluster Kubernetes via la CI/CD GitLab, pour tester dans un environnement proche de la production",
-        en: "SecOps: deployments to the Kubernetes cluster through GitLab CI/CD, to test in a production-like environment",
+        fr: "Tests en conditions réelles : après les tests en local, je build l'image dans la CI/CD GitLab puis je remplace moi-même les images sur le cluster Kubernetes avec k9s, dans un environnement type production",
+        en: "Real-world testing: after local tests, I build the image in GitLab CI/CD, then swap the images myself on the Kubernetes cluster with k9s, in a production-like environment",
       },
       {
         fr: "Sécurité en production : mise à jour des images Docker et des librairies Go/JS pour corriger les CVE publiques",

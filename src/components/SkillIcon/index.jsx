@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
 import { useLang } from "../../utils/i18n";
+import k9s from "../../assets/skills/k9s.svg";
 
 // Icônes fournies par skillicons.dev, regroupées par domaine
 const groups = [
   { title: { fr: "Système & sécurité", en: "Systems & security" }, skills: ["linux", "kali", "windows", "bash", "raspberrypi", "nginx", "cloudflare"] },
-  { title: "Infra & DevSecOps", skills: ["docker", "kubernetes", "ansible", "githubactions", "gitlab", "azure", "git"] },
+  { title: "Infra & DevSecOps", skills: ["docker", "kubernetes", "k9s", "ansible", "githubactions", "gitlab", "azure", "git"] },
   { title: { fr: "Langages", en: "Languages" }, skills: ["golang", "python", "java", "js", "ts", "php"] },
   { title: "Web", skills: ["react", "vuejs", "nodejs", "express", "fastapi", "tailwind"] },
   { title: { fr: "Bases de données", en: "Databases" }, skills: ["mysql", "sqlite", "mongodb"] },
 ];
+
+// Outils absents de skillicons.dev : icône locale dans le même style
+const localIcons = { k9s };
 
 const names = {
   linux: "Linux",
@@ -20,6 +24,7 @@ const names = {
   cloudflare: "Cloudflare",
   docker: "Docker",
   kubernetes: "Kubernetes",
+  k9s: "k9s",
   ansible: "Ansible",
   githubactions: "GitHub Actions",
   gitlab: "GitLab CI",
@@ -73,7 +78,7 @@ const SkillIcons = () => {
                   className="group block cursor-pointer rounded-xl"
                 >
                   <img
-                    src={`https://skillicons.dev/icons?i=${skill}`}
+                    src={localIcons[skill] ?? `https://skillicons.dev/icons?i=${skill}`}
                     alt=""
                     width={40}
                     height={40}
