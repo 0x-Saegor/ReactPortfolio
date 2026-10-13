@@ -124,10 +124,17 @@ function ProjectDialog({ projet, onClose }) {
                   {t({ fr: "Code sur GitHub", en: "Code on GitHub" })}
                 </LinkButton>
               )}
-              {projet.blog && (
-                <LinkButton href={projet.blog} icon={BookOpen}>
-                  {t({ fr: "Article de blog", en: "Blog post" })}
-                </LinkButton>
+              {/* blog : une chaîne, ou une liste {href, label} pour plusieurs articles */}
+              {[].concat(projet.blog ?? []).map((b) =>
+                typeof b === "string" ? (
+                  <LinkButton key={b} href={b} icon={BookOpen}>
+                    {t({ fr: "Article de blog", en: "Blog post" })}
+                  </LinkButton>
+                ) : (
+                  <LinkButton key={b.href} href={b.href} icon={BookOpen}>
+                    {t(b.label)}
+                  </LinkButton>
+                )
               )}
               {projet.report && (
                 <LinkButton href={projet.report} icon={FileText}>
