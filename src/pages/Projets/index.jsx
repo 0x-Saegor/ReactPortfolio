@@ -12,8 +12,8 @@ function Projets() {
       <SEO
         title={{ fr: "Projets", en: "Projects" }}
         description={{
-          fr: "Projets d'Arthur Le Gall : audits de sécurité, infrastructure sécurisée, rétro-ingénierie, challenges CTF, applications web et mobiles. Projets personnels, IUT et alternance.",
-          en: "Projects by Arthur Le Gall: security audits, secure infrastructure, reverse engineering, CTF challenges, web and mobile apps. Personal, university and work-study projects.",
+          fr: "Projets d'Arthur Le Gall : audits et pentest, infrastructure réseau sécurisée, rétro-ingénierie, challenges CTF, applications web et mobiles.",
+          en: "Projects by Arthur Le Gall: security audits and pentesting, secure network infrastructure, reverse engineering, CTF challenges, web and mobile apps.",
         }}
         path="/projects"
       />

@@ -4,31 +4,45 @@ export const LanguageContext = createContext();
 
 // Langue mémorisée, sinon celle du navigateur (français par défaut)
 function getInitialLang() {
+  if (typeof window === "undefined") return "fr";
   try {
     const saved = localStorage.getItem("lang");
     if (saved === "fr" || saved === "en") return saved;
   } catch {
     // stockage indisponible
   }
-  if (typeof navigator !== "undefined" && navigator.language && !navigator.language.toLowerCase().startsWith("fr")) {
+  if (navigator.language && !navigator.language.toLowerCase().startsWith("fr")) {
     return "en";
   }
   return "fr";
 }
 
+// Langue voulue par le visiteur, lue une seule fois au chargement
+const preferredLang = getInitialLang();
+// Page pré-rendue au build (en français) : on démarre pareil pour l'hydratation
+const prerendered = typeof document !== "undefined" && Boolean(document.getElementById("root")?.hasChildNodes());
+
 export const LanguageProvider = ({ children }) => {
-  const [lang, setLang] = useState(getInitialLang);
+  const [lang, setLang] = useState(prerendered ? "fr" : preferredLang);
+
+  // Après l'hydratation, passe à la langue du visiteur si ce n'est pas le français
+  useEffect(() => {
+    setLang(preferredLang);
+  }, []);
 
   useEffect(() => {
     document.documentElement.lang = lang;
+  }, [lang]);
+
+  const toggleLang = () => {
+    const next = lang === "fr" ? "en" : "fr";
+    setLang(next);
     try {
-      localStorage.setItem("lang", lang);
+      localStorage.setItem("lang", next);
     } catch {
       // stockage indisponible
     }
-  }, [lang]);
-
-  const toggleLang = () => setLang((current) => (current === "fr" ? "en" : "fr"));
+  };
 
   return (
     <LanguageContext.Provider value={{ lang, toggleLang }}>

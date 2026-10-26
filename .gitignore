@@ -27,3 +27,4 @@ dist-ssr
 .impeccable/
 .github/hooks/
 PRODUCT.md
+dist-server

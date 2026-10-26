@@ -68,7 +68,7 @@ const TimelineStudy = () => {
             <div className="h-full rounded-lg border border-line bg-surface p-6">
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-line bg-white">
-                  <img src={study.logo} alt="" className="h-9 w-9 object-contain" />
+                  <img src={study.logo} alt="" loading="lazy" className="h-9 w-9 object-contain" />
                 </div>
                 <div>
                   <p className="text-sm font-medium text-accent">{t(study.date)}</p>

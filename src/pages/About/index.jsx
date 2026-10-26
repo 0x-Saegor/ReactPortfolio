@@ -14,8 +14,8 @@ function About() {
             <SEO
                 title={{ fr: "À propos", en: "About" }}
                 description={{
-                    fr: "Parcours d'Arthur Le Gall : alternance chez Alcatel-Lucent Enterprise, BUT Informatique à l'IUT de Vannes, résultats en CTF et sur Root-Me. Recherche d'une alternance en cybersécurité de 2027 à 2030.",
-                    en: "Background of Arthur Le Gall: work-study at Alcatel-Lucent Enterprise, Computer Science degree at IUT de Vannes, CTF and Root-Me results. Looking for a cybersecurity work-study position from 2027 to 2030.",
+                    fr: "Parcours d'Arthur Le Gall : cybersécurité (CTF, Root-Me, challmaking), alternance chez Alcatel-Lucent Enterprise, BUT Informatique à l'IUT de Vannes.",
+                    en: "Arthur Le Gall's background: cybersecurity (CTFs, Root-Me, challenge design), work-study at Alcatel-Lucent Enterprise, Computer Science degree in Vannes.",
                 }}
                 path="/about"
             />

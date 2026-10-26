@@ -1,51 +1,50 @@
 // Après le build : prépare dist/ pour GitHub Pages.
 // - CNAME pour le domaine
-// - 404.html pour les routes inconnues
-// - une page HTML par route (servie en 200, avec son titre, sa description
-//   et son URL canonique) pour que Google indexe correctement chaque page
-import { readFileSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+// - 404.html pour les routes inconnues (rendu côté navigateur)
+// - une page HTML pré-rendue par route : le contenu est dans le HTML servi
+//   (en 200), avec le titre, la description et l'URL canonique de la page,
+//   pour que tous les moteurs et les aperçus de liens voient la vraie page
+import { readFileSync, writeFileSync, rmSync } from "node:fs";
+import { join, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 
 const DIST = "dist";
-const SITE = "https://arthurlg.fr";
+const SERVER = "dist-server";
+const routes = ["/", "/about", "/projects"];
 
-const routes = [
-  {
-    path: "/about",
-    title: "À propos — Arthur Le Gall",
-    description:
-      "Parcours d'Arthur Le Gall : alternance chez Alcatel-Lucent Enterprise, BUT Informatique à l'IUT de Vannes, résultats en CTF et sur Root-Me. Recherche d'une alternance en cybersécurité de 2027 à 2030.",
-  },
-  {
-    path: "/projects",
-    title: "Projets — Arthur Le Gall",
-    description:
-      "Projets d'Arthur Le Gall : audits de sécurité, infrastructure sécurisée, rétro-ingénierie, challenges CTF, applications web et mobiles. Projets personnels, IUT et alternance.",
-  },
-];
+const { render } = await import(pathToFileURL(resolve(SERVER, "entry-server.js")).href);
 
-const escape = (text) => text.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
-
-const html = readFileSync(join(DIST, "index.html"), "utf8");
+const template = readFileSync(join(DIST, "index.html"), "utf8");
 
 writeFileSync(join(DIST, "CNAME"), "arthurlg.fr\n");
-writeFileSync(join(DIST, "404.html"), html);
+writeFileSync(join(DIST, "404.html"), template);
+
+// Balises propres à chaque page : celles du composant SEO remplacent celles du modèle
+const managed = [
+  /\s*<title>[^<]*<\/title>/,
+  /\s*<meta name="description"[^>]*>/,
+  /\s*<link rel="canonical"[^>]*>/,
+  /\s*<meta property="og:(title|description|url|locale)"[^>]*>/g,
+  /\s*<meta name="twitter:(title|description)"[^>]*>/g,
+];
+const base = managed.reduce((html, pattern) => html.replace(pattern, ""), template);
+
+// React 19 place les <title>, <meta> et <link> de la page en tête du rendu :
+// on les déplace dans le <head>, où l'hydratation les retrouve
+const hoisted = /^(?:<title>[^<]*<\/title>|<(?:meta|link)\b[^>]*\/?>)*/;
 
 for (const route of routes) {
-  const url = `${SITE}${route.path}`;
-  const description = escape(route.description);
-  const page = html
-    .replace(/<title>[^<]*<\/title>/, `<title>${route.title}</title>`)
-    .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`)
-    .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${url}$2`)
-    .replace(/(<meta property="og:title" content=")[^"]*(")/, `$1${route.title}$2`)
-    .replace(/(<meta name="twitter:title" content=")[^"]*(")/, `$1${route.title}$2`)
-    .replace(/(<meta name="description" content=")[^"]*(")/, `$1${description}$2`)
-    .replace(/(<meta property="og:description" content=")[^"]*(")/, `$1${description}$2`)
-    .replace(/(<meta name="twitter:description" content=")[^"]*(")/, `$1${description}$2`);
+  const rendered = render(route);
+  const head = rendered.match(hoisted)[0];
+  const body = rendered.slice(head.length);
+  const page = base
+    .replace("</head>", `    ${head.replace(/></g, ">\n    <")}\n  </head>`)
+    .replace('<div id="root"></div>', `<div id="root">${body}</div>`);
 
   // GitHub Pages sert /about depuis about.html, sans redirection vers /about/
-  const file = join(DIST, `${route.path.slice(1)}.html`);
+  const file = join(DIST, route === "/" ? "index.html" : `${route.slice(1)}.html`);
   writeFileSync(file, page);
   console.log(`postbuild: ${file}`);
 }
+
+rmSync(SERVER, { recursive: true, force: true });
