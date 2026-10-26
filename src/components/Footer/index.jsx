@@ -16,12 +16,12 @@ function Footer() {
     <footer className="mt-24 border-t border-line bg-bg-alt">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 md:grid-cols-2 md:gap-20">
         <div>
-          <h2 className="mb-4 text-lg font-bold text-ink">{t({ fr: "Pourquoi ce site ?", en: "Why this site?" })}</h2>
+          <h2 className="mb-4 text-lg font-bold text-ink">{t({ fr: "Ce site", en: "This site" })}</h2>
           <div className="flex flex-col gap-y-3 text-sm leading-relaxed text-muted md:text-base">
             <p>
               {t({
-                fr: "Ce portfolio rassemble mes projets, mon parcours et mes résultats en CTF. C'est aussi l'endroit où je montre ce qui m'anime : comprendre comment les systèmes fonctionnent, et comment on les protège.",
-                en: "This portfolio brings together my projects, my background and my CTF results. It's also where I show what drives me: understanding how systems work, and how to protect them.",
+                fr: "Mes projets, mon parcours et mes résultats en CTF, au même endroit. Le détail technique de certains projets est sur mon blog.",
+                en: "My projects, background and CTF results in one place. Technical write-ups for some projects are on my blog.",
               })}
             </p>
             <p>

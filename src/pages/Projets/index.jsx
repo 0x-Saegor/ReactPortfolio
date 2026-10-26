@@ -19,14 +19,16 @@ function Projets() {
       />
       <All_Top page_name={t({ fr: "Mes projets", en: "My projects" })}>
         {t({
-          fr: "Cybersécurité et développement logiciel. Clique sur un projet pour voir le détail.",
+          fr: "Cybersécurité et développement logiciel. Cliquez sur un projet pour voir le détail.",
           en: "Cybersecurity and software development. Click a project to see the details.",
         })}
       </All_Top>
 
-      <Presentation projectId="infra-segmentee" />
+      <Presentation projectId="audits" />
 
-      <Presentation projectId="gamehacking" reverse={true} />
+      <Presentation projectId="infra-segmentee" reverse />
+
+      <Presentation projectId="gamehacking" />
 
       <Projects />
     </>

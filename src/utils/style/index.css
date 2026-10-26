@@ -1,18 +1,17 @@
 @import "tailwindcss";
 
-/* Palette : un seul bleu d'accent, des fonds propres, deux thèmes */
+/* Palette : fonds blanc et blanc bleuté, un bleu encre profond, pas d'ombres */
 :root {
   --bg: #f6f8fc;
   --bg-alt: #edf1f9;
   --surface: #ffffff;
-  --border: #e2e8f0;
+  --border: #dde3ee;
   --text: #0f172a;
   --muted: #475569;
-  --accent: #2f5bd3;
-  --accent-hover: #2448ad;
-  --accent-soft: #e6edfc;
+  --accent: #1c3a8f;
+  --accent-hover: #142b6b;
+  --accent-soft: #e6eaf4;
   --on-accent: #ffffff;
-  --shadow: 0 1px 2px rgb(15 23 42 / 0.04), 0 8px 24px rgb(15 23 42 / 0.06);
   color-scheme: light;
 }
 
@@ -23,11 +22,10 @@
   --border: #1f2b45;
   --text: #e2e8f0;
   --muted: #94a3b8;
-  --accent: #6e93ff;
-  --accent-hover: #8daaff;
+  --accent: #93a9e8;
+  --accent-hover: #b3c3f0;
   --accent-soft: #17264a;
   --on-accent: #0b1120;
-  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.25);
   color-scheme: dark;
 }
 
@@ -43,7 +41,6 @@
   --color-accent-soft: var(--accent-soft);
   --color-on-accent: var(--on-accent);
   --font-sans: "Heebo", ui-sans-serif, system-ui, sans-serif;
-  --shadow-soft: var(--shadow);
 }
 
 html {
@@ -71,32 +68,14 @@ body {
   border-radius: 6px;
 }
 
-* {
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none; /* Firefox */
-}
-*::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
-}
-
-/* Apparition douce au scroll (voir components/Reveal) */
-.reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
-    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
-  transition-delay: var(--reveal-delay, 0ms);
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--bg);
 }
 
 /* Entrée de l'accueil au chargement */
 .hero-in {
   animation: hero-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-  animation-delay: var(--hero-delay, 0ms);
 }
 
 @keyframes hero-in {
@@ -147,7 +126,6 @@ dialog.project-dialog[open] {
     scroll-behavior: auto;
   }
 
-  .reveal,
   .bar-fill,
   .hero-in,
   dialog.project-dialog[open] {

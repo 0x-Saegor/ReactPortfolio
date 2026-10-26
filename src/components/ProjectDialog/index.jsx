@@ -1,23 +1,21 @@
 import { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import { X, Github, ExternalLink, FileText, BookOpen } from "lucide-react";
+import { X } from "lucide-react";
 import { OriginBadge } from "../CardProjects";
 import { useLang } from "../../utils/i18n";
 
-function LinkButton({ href, icon, children, primary = false }) {
-  const Icon = icon;
+function LinkButton({ href, children, primary = false }) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+      className={`inline-flex items-center rounded-md px-4 py-2 text-sm font-medium transition-colors ${
         primary
           ? "bg-accent text-on-accent hover:bg-accent-hover"
           : "border border-line text-ink hover:border-accent hover:text-accent"
       }`}
     >
-      <Icon size={16} />
       {children}
     </a>
   );
@@ -25,7 +23,6 @@ function LinkButton({ href, icon, children, primary = false }) {
 
 LinkButton.propTypes = {
   href: PropTypes.string.isRequired,
-  icon: PropTypes.elementType.isRequired,
   children: PropTypes.node,
   primary: PropTypes.bool,
 };
@@ -53,7 +50,7 @@ function ProjectDialog({ projet, onClose }) {
         if (e.target === ref.current) onClose();
       }}
       aria-labelledby="project-dialog-title"
-      className="project-dialog m-auto max-h-[90vh] w-[min(56rem,calc(100%-2rem))] overflow-y-auto rounded-2xl border border-line bg-surface p-0 text-ink shadow-soft"
+      className="project-dialog m-auto max-h-[90vh] w-[min(56rem,calc(100%-2rem))] overflow-y-auto rounded-lg border border-line bg-surface p-0 text-ink"
     >
       {projet && (
         <div className="p-6 md:p-8">
@@ -71,7 +68,7 @@ function ProjectDialog({ projet, onClose }) {
               type="button"
               onClick={onClose}
               aria-label={t({ fr: "Fermer", en: "Close" })}
-              className="cursor-pointer rounded-full p-2 text-muted transition-colors hover:bg-accent-soft hover:text-accent"
+              className="cursor-pointer rounded-md p-2 text-muted transition-colors hover:bg-accent-soft hover:text-accent"
             >
               <X size={22} />
             </button>
@@ -85,7 +82,7 @@ function ProjectDialog({ projet, onClose }) {
                   src={shot.src}
                   alt={t(shot.alt)}
                   loading="lazy"
-                  className="w-full rounded-xl border border-line"
+                  className="w-full rounded-md border border-line"
                 />
               ))}
             </div>
@@ -94,12 +91,9 @@ function ProjectDialog({ projet, onClose }) {
           <p className="mt-6 leading-relaxed text-muted">{t(projet.description)}</p>
 
           {projet.points?.length > 0 && (
-            <ul className="mt-5 space-y-2">
+            <ul className="mt-5 list-disc space-y-1.5 pl-5 text-sm leading-relaxed marker:text-line md:text-base">
               {projet.points.map((point) => (
-                <li key={t(point)} className="flex gap-3 text-sm leading-relaxed md:text-base">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
-                  <span>{t(point)}</span>
-                </li>
+                <li key={t(point)}>{t(point)}</li>
               ))}
             </ul>
           )}
@@ -115,29 +109,29 @@ function ProjectDialog({ projet, onClose }) {
           {(projet.url || projet.site || projet.blog || projet.report) && (
             <div className="mt-8 flex flex-wrap gap-3 border-t border-line pt-6">
               {projet.site && (
-                <LinkButton href={projet.site} icon={ExternalLink} primary>
+                <LinkButton href={projet.site} primary>
                   {t({ fr: "Voir le site", en: "Visit the site" })}
                 </LinkButton>
               )}
               {projet.url && (
-                <LinkButton href={projet.url} icon={Github} primary={!projet.site}>
+                <LinkButton href={projet.url} primary={!projet.site}>
                   {t({ fr: "Code sur GitHub", en: "Code on GitHub" })}
                 </LinkButton>
               )}
               {/* blog : une chaîne, ou une liste {href, label} pour plusieurs articles */}
               {[].concat(projet.blog ?? []).map((b) =>
                 typeof b === "string" ? (
-                  <LinkButton key={b} href={b} icon={BookOpen}>
+                  <LinkButton key={b} href={b}>
                     {t({ fr: "Article de blog", en: "Blog post" })}
                   </LinkButton>
                 ) : (
-                  <LinkButton key={b.href} href={b.href} icon={BookOpen}>
+                  <LinkButton key={b.href} href={b.href}>
                     {t(b.label)}
                   </LinkButton>
                 )
               )}
               {projet.report && (
-                <LinkButton href={projet.report} icon={FileText}>
+                <LinkButton href={projet.report}>
                   {t({ fr: "Rapport", en: "Report" })}
                 </LinkButton>
               )}

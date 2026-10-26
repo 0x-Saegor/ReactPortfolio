@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 
-// Fait apparaître son contenu en fondu quand il entre dans l'écran
-function Reveal({ as = "div", delay = 0, className = "", children, ...rest }) {
+// Ajoute is-visible quand le contenu entre dans l'écran (barres Root-Me)
+function Reveal({ as = "div", className = "", children, ...rest }) {
   const Tag = as;
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -33,8 +33,7 @@ function Reveal({ as = "div", delay = 0, className = "", children, ...rest }) {
   return (
     <Tag
       ref={ref}
-      className={`reveal ${visible ? "is-visible" : ""} ${className}`}
-      style={{ "--reveal-delay": `${delay}ms` }}
+      className={`${visible ? "is-visible" : ""} ${className}`}
       {...rest}
     >
       {children}
@@ -44,7 +43,6 @@ function Reveal({ as = "div", delay = 0, className = "", children, ...rest }) {
 
 Reveal.propTypes = {
   as: PropTypes.elementType,
-  delay: PropTypes.number,
   className: PropTypes.string,
   children: PropTypes.node,
 };

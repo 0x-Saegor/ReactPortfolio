@@ -75,7 +75,7 @@ const SkillIcons = () => {
                   onClick={() => setActive((current) => (current === skill ? null : skill))}
                   aria-label={names[skill]}
                   aria-expanded={active === skill}
-                  className="group block cursor-pointer rounded-xl"
+                  className="group block cursor-pointer rounded-md"
                 >
                   <img
                     src={localIcons[skill] ?? `https://skillicons.dev/icons?i=${skill}`}
@@ -83,11 +83,11 @@ const SkillIcons = () => {
                     width={40}
                     height={40}
                     loading="lazy"
-                    className="h-10 w-10 transition-transform duration-200 group-hover:-translate-y-0.5"
+                    className="h-10 w-10"
                   />
                   <span
                     role="tooltip"
-                    className={`pointer-events-none absolute bottom-full left-1/2 z-10 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-ink px-2 py-1 text-xs font-medium text-bg shadow-soft transition-opacity duration-150 ${
+                    className={`pointer-events-none absolute bottom-full left-1/2 z-10 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-ink px-2 py-1 text-xs font-medium text-bg transition-opacity duration-150 ${
                       active === skill ? "opacity-100" : "opacity-0 group-hover:opacity-100"
                     }`}
                   >

@@ -5,14 +5,14 @@ import { useLang } from "../../utils/i18n";
 const SITE_URL = "https://arthurlg.fr";
 
 const defaultTitle = {
-  fr: "Arthur Le Gall — Cybersécurité et développement | Portfolio",
-  en: "Arthur Le Gall — Cybersecurity and software development | Portfolio",
+  fr: "Arthur Le Gall, cybersécurité et développement | Portfolio",
+  en: "Arthur Le Gall, cybersecurity and software development | Portfolio",
 };
 
 // title et description acceptent une chaîne ou un objet { fr, en }
 function SEO({ title, description, path = "/" }) {
   const { lang, t } = useLang();
-  const fullTitle = title ? `${t(title)} — Arthur Le Gall` : defaultTitle[lang];
+  const fullTitle = title ? `${t(title)} | Arthur Le Gall` : defaultTitle[lang];
   const text = t(description);
   const url = `${SITE_URL}${path}`;
 

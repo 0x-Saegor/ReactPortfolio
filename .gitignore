@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Outils de design (impeccable) : captures, maquettes et hooks locaux
+.impeccable/
+.github/hooks/
+PRODUCT.md

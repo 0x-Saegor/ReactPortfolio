@@ -1,6 +1,6 @@
 import Top from "../../sections/Home/Top";
-import Highlights from "../../sections/Home/Highlights";
 import About from "../../sections/Home/About";
+import CTF from "../../sections/Home/CTF";
 import Projects from "../../sections/Projects";
 import SEO from "../../components/SEO";
 
@@ -16,11 +16,11 @@ function Home() {
       />
       <Top />
 
-      <Highlights />
+      <Projects featured />
+
+      <CTF />
 
       <About />
-
-      <Projects featured />
     </>
   );
 }

@@ -26,14 +26,14 @@ const TimelineItem = ({ title, company, date, logo, points, side }) => {
 
   return (
     <li className="relative grid grid-cols-[3rem_minmax(0,1fr)] gap-4 pb-8 md:grid-cols-[minmax(0,1fr)_4rem_minmax(0,1fr)] md:gap-0">
-      <div className="z-10 flex h-12 w-12 items-center justify-center rounded-full border border-line bg-white shadow-soft md:col-start-2 md:mx-auto">
+      <div className="z-10 flex h-12 w-12 items-center justify-center rounded-full border border-line bg-white md:col-start-2 md:mx-auto">
         <Logo logo={logo} company={company} />
       </div>
 
       <Reveal
         className={`md:row-start-1 ${isLeft ? "md:col-start-1 md:pr-6 md:text-right" : "md:col-start-3 md:pl-6"}`}
       >
-        <div className="rounded-2xl border border-line bg-surface p-5 shadow-soft transition duration-300 hover:border-accent">
+        <div className="rounded-lg border border-line bg-surface p-5 transition duration-300 hover:border-accent">
           <p className="text-sm font-medium text-accent">{date}</p>
           <h3 className="mt-1 text-lg font-bold text-ink">{title}</h3>
           <p className="text-sm italic text-muted">{company}</p>

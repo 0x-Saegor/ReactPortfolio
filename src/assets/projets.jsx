@@ -18,6 +18,9 @@ import wallhack from "./projects/wallhack.webp";
 import shotTransavia from "./projects/screens/transavia.webp";
 import shotEssence from "./projects/screens/essence.webp";
 import shotInfra from "./projects/screens/infra-starttls.webp";
+import shotInfraDns from "./projects/screens/infra-dns-spf-dkim.webp";
+import shotInfraClamav from "./projects/screens/infra-clamav-eicar.webp";
+import shotInfraRoundcube from "./projects/screens/infra-roundcube.webp";
 import shotPentest from "./projects/screens/pentest-root.webp";
 import shotBadEncryption from "./projects/screens/badencryption-graph.webp";
 import shotDefiut from "./projects/screens/defiut-runners.webp";
@@ -29,31 +32,40 @@ import shotBateauSerie from "./projects/screens/codebateau-serie.webp";
 import shotBateauMeteo from "./projects/screens/codebateau-meteo.webp";
 
 // origin : "Perso", "IUT" ou "Alternance"
+// domain : "cyber" ou "dev", les projets cyber passent en premier
 // featured : mis en avant sur l'accueil et en tête de la page projets
 const projets = [
   {
     id: "infra-segmentee",
+    domain: "cyber",
     title: { fr: "Infrastructure d'entreprise segmentée", en: "Segmented company infrastructure" },
     label: { fr: "Le réseau d'une petite entreprise monté de zéro : DMZ, LAN, VPN, pare-feu et services.", en: "A small company's network built from scratch: DMZ, LAN, VPN, firewall and services." },
     origin: "IUT",
     module: { fr: "Projet 3e année", en: "3rd-year project" },
     year: 2026,
-    tags: ["nftables", "WireGuard", "BIND9", "Postfix", "Samba AD"],
+    tags: ["nftables", "WireGuard", "BIND9", "Postfix", "Samba AD", "OpenLDAP", "Docker"],
     image: infra,
-    screenshots: [{ src: shotInfra, alt: { fr: "Test du chiffrement STARTTLS du serveur mail avec openssl", en: "Testing the mail server's STARTTLS encryption with openssl" } }],
+    screenshots: [
+      { src: shotInfra, alt: { fr: "Test du chiffrement STARTTLS du serveur mail avec openssl", en: "Testing the mail server's STARTTLS encryption with openssl" } },
+      { src: shotInfraDns, alt: { fr: "Zone DNS BIND9 avec les enregistrements MX, SPF, DKIM et DMARC", en: "BIND9 DNS zone with MX, SPF, DKIM and DMARC records" } },
+      { src: shotInfraClamav, alt: { fr: "Fichier de test EICAR bloqué par ClamAV via Amavis", en: "EICAR test file blocked by ClamAV through Amavis" } },
+      { src: shotInfraRoundcube, alt: { fr: "Webmail Roundcube : Alice reçoit le courriel de Bob", en: "Roundcube webmail: Alice receives Bob's email" } },
+    ],
     featured: true,
     description:
-      { fr: "Projet réalisé seul : concevoir un réseau segmenté en trois zones et y déployer les services qu'on attend en entreprise, en ne laissant passer que le strict nécessaire.", en: "Solo project: designing a network split into three zones and deploying the services a company expects, letting through only what's strictly needed." },
+      { fr: "Projet réalisé seul, sur plusieurs TP : un réseau d'entreprise segmenté en WAN, DMZ et LAN, sur lequel j'ai déployé les services qu'on attend en entreprise, en ne laissant passer que le strict nécessaire. Chaque étape est documentée dans un rapport.", en: "Solo project over several lab sessions: a company network split into WAN, DMZ and LAN, on which I deployed the services a company expects, letting through only what's strictly needed. Each step is documented in a report." },
     points: [
-      { fr: "Routeur Alpine et pare-feu nftables, règles de filtrage service par service entre DMZ et LAN", en: "Alpine router and nftables firewall, per-service filtering rules between DMZ and LAN" },
+      { fr: "Routeur Alpine (NAT) et pare-feu nftables en refus par défaut : seuls le mail et le VPN sont ouverts vers la DMZ, et la DMZ ne peut pas joindre le LAN", en: "Alpine router (NAT) and nftables firewall with a default-deny policy: only mail and VPN are open to the DMZ, and the DMZ cannot reach the LAN" },
       { fr: "VPN WireGuard site à site", en: "Site-to-site WireGuard VPN" },
-      { fr: "DNS faisant autorité avec BIND9 (zone, enregistrements MX)", en: "Authoritative DNS with BIND9 (zone, MX records)" },
-      { fr: "Messagerie Postfix et Dovecot conteneurisée, chiffrée avec TLS", en: "Containerized Postfix and Dovecot mail server, encrypted with TLS" },
-      { fr: "Samba en contrôleur de domaine Active Directory avec Kerberos et postes Windows", en: "Samba as an Active Directory domain controller with Kerberos and Windows clients" },
+      { fr: "DNS faisant autorité avec BIND9, et SPF, DKIM (OpenDKIM) et DMARC pour la messagerie", en: "Authoritative DNS with BIND9, plus SPF, DKIM (OpenDKIM) and DMARC for email" },
+      { fr: "Messagerie Postfix et Dovecot sous Docker, chiffrée en TLS, avec webmail Roundcube, antivirus ClamAV et antispam SpamAssassin via Amavis, testés avec EICAR et GTUBE", en: "Postfix and Dovecot mail server on Docker, TLS-encrypted, with Roundcube webmail, ClamAV antivirus and SpamAssassin through Amavis, tested with EICAR and GTUBE" },
+      { fr: "Samba : partage de fichiers et d'imprimante, puis contrôleur de domaine Active Directory avec Kerberos, postes Windows dans le domaine et profils itinérants", en: "Samba: file and printer sharing, then an Active Directory domain controller with Kerberos, Windows clients joined to the domain and roaming profiles" },
+      { fr: "Annuaires : OpenLDAP sécurisé en LDAPS, et NIS", en: "Directories: OpenLDAP secured with LDAPS, and NIS" },
     ],
   },
   {
     id: "audits",
+    domain: "cyber",
     title: { fr: "Audits et pentest", en: "Audits and pentesting" },
     label: { fr: "Des machines menées de la reconnaissance au root, rédigées comme de vraies missions avec rapport et recommandations.", en: "Machines taken from recon to root, written up like real engagements with a report and recommendations." },
     origin: "IUT",
@@ -78,6 +90,7 @@ const projets = [
   },
   {
     id: "gamehacking",
+    domain: "cyber",
     title: "Gamehacking Journey",
     label: { fr: "Rétro-ingénierie et manipulation mémoire sur des jeux open source, en C++.", en: "Reverse engineering and memory manipulation on open source games, in C++." },
     origin: "Perso",
@@ -99,6 +112,7 @@ const projets = [
   },
   {
     id: "transavia",
+    domain: "dev",
     title: "Transavia France VA",
     label: { fr: "La plateforme d'une compagnie aérienne virtuelle sur le réseau IVAO, en production.", en: "The platform of a virtual airline on the IVAO network, in production." },
     origin: "Perso",
@@ -119,6 +133,7 @@ const projets = [
   },
   {
     id: "defiut",
+    domain: "dev",
     title: "Déf'IUT",
     label: { fr: "Une plateforme de challenges type CTF, du code jusqu'à la production. Équipe de quatre.", en: "A CTF-style challenge platform, from code to production. Team of four." },
     origin: "IUT",
@@ -142,6 +157,7 @@ const projets = [
   },
   {
     id: "codebateau",
+    domain: "dev",
     title: "Mon Code Bateau",
     label: { fr: "Application mobile de révision du permis bateau côtier, faite avec FlutterFlow.", en: "Mobile app to study for the French coastal boating license, built with FlutterFlow." },
     origin: "IUT",
@@ -165,6 +181,7 @@ const projets = [
   },
   {
     id: "challmaker",
+    domain: "cyber",
     title: { fr: "Challmaker au Bl'Hack CTF", en: "Challmaker at Bl'Hack CTF" },
     label: { fr: "Conception de challenges pour le CTF de l'IUT de Vannes, édition 2025.", en: "Designing challenges for the IUT de Vannes CTF, 2025 edition." },
     origin: "Perso",
@@ -182,6 +199,7 @@ const projets = [
   },
   {
     id: "homelab",
+    domain: "dev",
     title: "Homelab",
     label: { fr: "Un Raspberry Pi qui héberge et surveille mes projets, sans rien exposer directement.", en: "A Raspberry Pi that hosts and monitors my projects, without exposing anything directly." },
     origin: "Perso",
@@ -201,6 +219,7 @@ const projets = [
   },
   {
     id: "data-transfer",
+    domain: "dev",
     title: "Data Transfer Server",
     label: { fr: "Frontend en Vue et backend en Go pour tester la fiabilité du suivi de trafic sur des switchs.", en: "Vue frontend and Go backend to test the reliability of traffic tracking on switches." },
     origin: "Alternance",
@@ -218,6 +237,7 @@ const projets = [
   },
   {
     id: "cluster-config",
+    domain: "dev",
     title: "POC Cluster Config",
     label: { fr: "Configurer DNS et NTP sur un parc de machines depuis une interface web.", en: "Configuring DNS and NTP across a fleet of machines from a web interface." },
     origin: "IUT",
@@ -235,6 +255,7 @@ const projets = [
   },
   {
     id: "wordpress",
+    domain: "dev",
     title: "Carcassonne WordPress",
     label: { fr: "Le site fictif d'une ville, du serveur Linux sur Azure jusqu'à la boutique. Chef de projet.", en: "A fictional city website, from the Linux server on Azure to the online shop. Project lead." },
     origin: "IUT",
@@ -256,6 +277,7 @@ const projets = [
   },
   {
     id: "secours",
+    domain: "dev",
     title: "SafeEvent",
     label: { fr: "Application de gestion des secouristes sur les événements. Équipe de quatre.", en: "An app to manage first aiders at events. Team of four." },
     origin: "IUT",
@@ -276,5 +298,6 @@ const projets = [
 ];
 
 export const origins = ["Perso", "IUT", "Alternance"];
+export const domains = ["cyber", "dev"];
 
 export default projets;

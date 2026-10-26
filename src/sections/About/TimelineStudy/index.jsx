@@ -59,14 +59,13 @@ const TimelineStudy = () => {
   return (
     <section className="mx-auto max-w-5xl px-6 pb-8">
       <SectionTitle
-        eyebrow={t({ fr: "Formation", en: "Education" })}
         title={t({ fr: "Mon parcours scolaire", en: "Education" })}
         center
       />
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        {studies.map((study, index) => (
-          <Reveal key={study.title.fr} delay={index * 100}>
-            <div className="h-full rounded-2xl border border-line bg-surface p-6 shadow-soft">
+        {studies.map((study) => (
+          <Reveal key={study.title.fr}>
+            <div className="h-full rounded-lg border border-line bg-surface p-6">
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-line bg-white">
                   <img src={study.logo} alt="" className="h-9 w-9 object-contain" />
@@ -88,7 +87,7 @@ const TimelineStudy = () => {
       </div>
       <Reveal className="mt-8 flex flex-wrap justify-center gap-2">
         {certifications.map((cert) => (
-          <span key={t(cert)} className="rounded-full border border-line bg-surface px-3 py-1 text-sm text-muted">
+          <span key={t(cert)} className="rounded-md border border-line bg-surface px-3 py-1 text-sm text-muted">
             {t(cert)}
           </span>
         ))}

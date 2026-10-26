@@ -21,8 +21,8 @@ function About() {
             />
             <All_Top page_name={t({ fr: "À propos de moi", en: "About me" })}>
                 {t({
-                    fr: "Mon parcours, mes expériences et mes résultats en compétition.",
-                    en: "My background, my experience and my competition results.",
+                    fr: "La cybersécurité en pratique, mon parcours et mes expériences.",
+                    en: "Cybersecurity in practice, my background and my experience.",
                 })}
             </All_Top>
 

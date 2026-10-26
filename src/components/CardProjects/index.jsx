@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { ArrowUpRight } from "lucide-react";
 import { useLang } from "../../utils/i18n";
 
 const originLabels = {
@@ -20,7 +19,7 @@ export function OriginBadge({ projet }) {
       : "bg-accent-soft text-accent";
 
   return (
-    <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${style}`}>
+    <span className={`inline-flex items-center rounded px-2 py-0.5 text-xs font-semibold ${style}`}>
       {label}
     </span>
   );
@@ -32,19 +31,36 @@ OriginBadge.propTypes = {
 
 function CardProject({ projet, onOpen }) {
   const { t } = useLang();
+  // Vraie capture du projet ; l'ancienne image sert de repli s'il n'y en a pas
+  const shots = projet.screenshots ?? [];
+  const phones = shots.length > 0 && shots.every((s) => s.phone);
   return (
     <button
       type="button"
       onClick={() => onOpen(projet)}
-      className="group flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-line bg-surface text-left shadow-soft transition duration-300 hover:-translate-y-1 hover:border-accent"
+      className="group flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-lg border border-line bg-surface text-left transition-colors duration-200 hover:border-accent"
     >
-      <div className="aspect-[360/215] overflow-hidden">
-        <img
-          src={projet.image}
-          alt=""
-          loading="lazy"
-          className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
-        />
+      <div className="aspect-[360/215] overflow-hidden border-b border-line bg-bg-alt">
+        {phones ? (
+          <div className="flex h-full items-start justify-center gap-3 px-4 pt-4">
+            {shots.slice(0, 3).map((shot) => (
+              <img
+                key={shot.src}
+                src={shot.src}
+                alt=""
+                loading="lazy"
+                className="h-[115%] w-auto rounded-md border border-line"
+              />
+            ))}
+          </div>
+        ) : (
+          <img
+            src={shots[0]?.src ?? projet.image}
+            alt=""
+            loading="lazy"
+            className="h-full w-full object-cover object-left-top"
+          />
+        )}
       </div>
       <div className="flex flex-1 flex-col gap-3 p-5">
         <div className="flex items-center justify-between gap-3">
@@ -63,11 +79,6 @@ function CardProject({ projet, onOpen }) {
               </li>
             ))}
           </ul>
-          <ArrowUpRight
-            size={18}
-            className="shrink-0 text-muted transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
-            aria-hidden="true"
-          />
         </div>
       </div>
     </button>

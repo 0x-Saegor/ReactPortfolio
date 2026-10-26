@@ -1,8 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import projets, { origins } from "../../assets/projets.jsx";
+import projets, { domains } from "../../assets/projets.jsx";
 import CardProject from "../../components/CardProjects";
 import ProjectDialog from "../../components/ProjectDialog";
 import SectionTitle from "../../components/SectionTitle";
@@ -11,9 +10,8 @@ import { useLang } from "../../utils/i18n";
 
 const filterLabels = {
   All: { fr: "Tous", en: "All" },
-  Perso: { fr: "Personnels", en: "Personal" },
-  IUT: { fr: "IUT", en: "University" },
-  Alternance: { fr: "Alternance", en: "Work-study" },
+  cyber: { fr: "Cybersécurité", en: "Cybersecurity" },
+  dev: { fr: "Développement", en: "Software development" },
 };
 
 // featured : n'affiche que les projets mis en avant, sans filtres (accueil)
@@ -22,34 +20,35 @@ function Projects({ featured = false }) {
   const [selected, setSelected] = useState(null);
   const { t } = useLang();
 
+  // Les projets cyber d'abord, l'ordre du fichier est gardé dans chaque groupe
+  const sorted = [...projets].sort((a, b) => (a.domain === "cyber" ? 0 : 1) - (b.domain === "cyber" ? 0 : 1));
   const list = featured
-    ? projets.filter((p) => p.featured)
-    : projets.filter((p) => active === "All" || p.origin === active);
+    ? sorted.filter((p) => p.featured)
+    : sorted.filter((p) => active === "All" || p.domain === active);
 
-  const count = (origin) =>
-    origin === "All" ? projets.length : projets.filter((p) => p.origin === origin).length;
+  const count = (domain) =>
+    domain === "All" ? projets.length : projets.filter((p) => p.domain === domain).length;
 
   return (
     <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
       {featured ? (
         <SectionTitle
-          eyebrow={t({ fr: "Projets", en: "Projects" })}
-          title={t({ fr: "Quelques projets à la une", en: "Featured projects" })}
+          title={t({ fr: "Projets en cybersécurité", en: "Cybersecurity projects" })}
         >
           {t({
-            fr: "Cybersécurité et développement logiciel. Les projets réalisés pendant le BUT sont marqués IUT avec l'année concernée.",
-            en: "Cybersecurity and software development. Projects done during my degree are tagged IUT with the year.",
+            fr: "Test d'intrusion, infrastructure sécurisée, rétro-ingénierie. Les projets réalisés pendant le BUT sont marqués IUT avec l'année concernée.",
+            en: "Penetration testing, secure infrastructure, reverse engineering. Projects done during my degree are tagged IUT with the year.",
           })}
         </SectionTitle>
       ) : (
         <Reveal className="mb-10 flex flex-wrap gap-2" role="group" aria-label={t({ fr: "Filtrer les projets", en: "Filter projects" })}>
-          {["All", ...origins].map((origin) => (
+          {["All", ...domains].map((origin) => (
             <button
               key={origin}
               type="button"
               onClick={() => setActive(origin)}
               aria-pressed={active === origin}
-              className={`cursor-pointer rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
+              className={`cursor-pointer rounded-md border px-4 py-1.5 text-sm font-medium transition-colors ${
                 active === origin
                   ? "border-accent bg-accent text-on-accent"
                   : "border-line bg-surface text-muted hover:border-accent hover:text-accent"
@@ -63,22 +62,21 @@ function Projects({ featured = false }) {
       )}
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {list.map((projet, index) => (
-          <Reveal key={projet.id} delay={(index % 3) * 80}>
+        {list.map((projet) => (
+          <Reveal key={projet.id}>
             <CardProject projet={projet} onOpen={setSelected} />
           </Reveal>
         ))}
       </div>
 
       {featured && (
-        <Reveal className="mt-10 text-center">
+        <Reveal className="mt-10">
           <Link
             to="/projects"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="group inline-flex items-center gap-2 font-semibold text-accent hover:text-accent-hover"
+            className="font-medium text-accent underline decoration-accent/30 underline-offset-4 transition-colors hover:decoration-accent"
           >
             {t({ fr: "Voir tous les projets", en: "See all projects" })}
-            <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
           </Link>
         </Reveal>
       )}

@@ -42,51 +42,47 @@ function Text() {
           {lang === "fr" ? (
             <div className="mt-6 space-y-4 leading-relaxed text-muted md:text-lg">
               <p>
-                Depuis toujours j'adore découvrir de nouvelles choses. Lorsque j'ai
-                découvert l'informatique en classe de 3<sup>e</sup> avec un stage, j'ai
-                tout de suite su que c'était un domaine qui me passionnerait. Depuis, je
-                n'ai cessé d'apprendre, en développement comme en cybersécurité, que je
-                pratique depuis le lycée avec les CTF.
+                J'ai découvert l'informatique pendant mon stage de 3<sup>e</sup>. Au lycée,
+                j'ai commencé les CTF, puis Root-Me et HackTheBox : c'est comme ça que je
+                suis arrivé à la cybersécurité.
               </p>
               <p>
-                Mon alternance chez Alcatel-Lucent Enterprise m'apprend à travailler sur
-                du vrai code en équipe, et au BUT je suis le parcours déploiement
-                d'applications communicantes et sécurisées. Les CTF, Root-Me
-                et HackTheBox complètent le tout en pratique.
+                En alternance chez Alcatel-Lucent Enterprise, je travaille en équipe sur un
+                logiciel en production : développement, déploiement sur Kubernetes,
+                correction de vulnérabilités. Au BUT, je suis le parcours déploiement
+                d'applications communicantes et sécurisées.
               </p>
               <p>
-                Après le BUT, je vise une <strong className="text-ink">école d'ingénieur en alternance, spécialité cybersécurité</strong>.
-                Je cherche donc une entreprise pour m'accueillir trois ans, de 2027 à 2030,
-                au sein d'une équipe sécurité.
+                Après le BUT, je vise une école d'ingénieur en cybersécurité, en alternance.
+                Je cherche une entreprise qui m'accueille dans une équipe sécurité pendant
+                trois ans, de 2027 à 2030.
               </p>
             </div>
           ) : (
             <div className="mt-6 space-y-4 leading-relaxed text-muted md:text-lg">
               <p>
-                I've always loved discovering new things. When I first tried computer
-                science during a school internship at 14, I knew right away it was a
-                field I'd be passionate about. Since then I've kept learning, both in
-                software development and in cybersecurity, which I've been practicing
-                since high school through CTFs.
+                I discovered computer science during a school internship at 14. In high
+                school I started doing CTFs, then Root-Me and HackTheBox: that's how I got
+                into cybersecurity.
               </p>
               <p>
-                My work-study at Alcatel-Lucent Enterprise teaches me to work on real
-                code within a team, and at university I follow a track focused on
-                secure networked applications. CTFs, Root-Me and HackTheBox complete
-                it all with hands-on practice.
+                As a work-study student at Alcatel-Lucent Enterprise, I work in a team on
+                software running in production: development, deployment on Kubernetes,
+                vulnerability fixes. At university I follow a track focused on secure
+                networked applications.
               </p>
               <p>
-                After my degree, I'm aiming for an <strong className="text-ink">engineering school with a cybersecurity specialization, as a work-study student</strong>.
-                I'm looking for a company to host me for three years, from 2027 to 2030,
-                within a security team.
+                After my degree, I'm aiming for a cybersecurity engineering school as a
+                work-study student. I'm looking for a company to host me in a security team
+                for three years, from 2027 to 2030.
               </p>
             </div>
           )}
         </Reveal>
-        <Reveal delay={120}>
-          <dl className="divide-y divide-line rounded-2xl border border-line bg-surface shadow-soft">
+        <Reveal>
+          <dl className="divide-y divide-line border-y-2 border-t-ink border-b-line">
             {facts.map((fact) => (
-              <div key={fact.label.fr} className="p-5">
+              <div key={fact.label.fr} className="py-4">
                 <dt className="text-sm font-semibold text-accent">{t(fact.label)}</dt>
                 <dd className="mt-1 text-ink">{t(fact.value)}</dd>
               </div>

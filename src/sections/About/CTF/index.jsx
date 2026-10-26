@@ -1,100 +1,8 @@
-import { Trophy, Users, User, ExternalLink } from "lucide-react";
 import interiutImg from "../../../assets/ctf/Interiut.webp";
 import SectionTitle from "../../../components/SectionTitle";
 import Reveal from "../../../components/Reveal";
 import { useLang } from "../../../utils/i18n";
-
-const ctfData = [
-  {
-    name: "Bl'Hack CTF, IUT de Vannes",
-    date: { fr: "Décembre 2025", en: "December 2025" },
-    rank: "Challmaker",
-    description: {
-      fr: "Création de challenges d'OSINT (suite de 4 challenges de Easy à Very Hard) et d'un challenge de reverse engineering en Go.",
-      en: "Created OSINT challenges (a series of 4, from Easy to Very Hard) and a reverse engineering challenge in Go.",
-    },
-    team: false,
-  },
-  {
-    name: "HelloWorld",
-    date: { fr: "Septembre 2025", en: "September 2025" },
-    rank: { fr: "4e / 19 équipes", en: "4th / 19 teams" },
-    description: {
-      fr: "Premier CTF au format box, organisé par GCC-ENSIBS et HACK2G2.",
-      en: "First box-format CTF, organized by GCC-ENSIBS and HACK2G2.",
-    },
-    team: true,
-  },
-  {
-    name: "404CTF",
-    date: { fr: "Mai 2025", en: "May 2025" },
-    rank: { fr: "159e / 2 893 participants", en: "159th / 2,893 players" },
-    description: {
-      fr: "Deuxième participation au CTF organisé par la DGSE et HackademINT.",
-      en: "Second time at the CTF run by the DGSE (French intelligence) and HackademINT.",
-    },
-    team: false,
-  },
-  {
-    name: "CTF InterIUT",
-    date: { fr: "Mai 2025", en: "May 2025" },
-    rank: { fr: "2e / 25 équipes", en: "2nd / 25 teams" },
-    description: {
-      fr: "Équipe Alt+kids de l'IUT de Vannes, 8 heures d'épreuves.",
-      en: "Team Alt+kids from IUT de Vannes, 8 hours of challenges.",
-    },
-    team: true,
-  },
-  {
-    name: "CTF IUT de Vannes",
-    date: { fr: "Décembre 2024", en: "December 2024" },
-    rank: { fr: "6e / 17 équipes", en: "6th / 17 teams" },
-    description: { fr: "3e équipe parmi les premières années.", en: "3rd team among first-year students." },
-    team: true,
-  },
-  {
-    name: "Pass Ton Hack",
-    date: { fr: "Février 2024", en: "February 2024" },
-    rank: { fr: "3e / 270 équipes", en: "3rd / 270 teams" },
-    description: { fr: "Compétition nationale de cybersécurité.", en: "National cybersecurity competition." },
-    team: true,
-  },
-  {
-    name: "NoBrackets CTF",
-    date: { fr: "Novembre 2023", en: "November 2023" },
-    rank: { fr: "4e / 70 équipes", en: "4th / 70 teams" },
-    description: {
-      fr: "Qualifiés pour la finale à l'European Cyber Week, encore au lycée.",
-      en: "Qualified for the final at the European Cyber Week, while still in high school.",
-    },
-    team: true,
-  },
-  {
-    name: "404CTF",
-    date: { fr: "Mai 2023", en: "May 2023" },
-    rank: { fr: "39e / 2 847 participants", en: "39th / 2,847 players" },
-    description: {
-      fr: "Mon premier CTF, organisé par la DGSE et Télécom SudParis.",
-      en: "My first CTF, run by the DGSE and Télécom SudParis.",
-    },
-    team: false,
-  },
-];
-
-// Points Root-Me par catégorie (relevé d'octobre 2026)
-const rootme = {
-  score: { fr: "2 065", en: "2,065" },
-  solved: 117,
-  categories: [
-    { name: { fr: "Web serveur", en: "Web server" }, points: 1025 },
-    { name: { fr: "Réseau", en: "Network" }, points: 275 },
-    { name: { fr: "Web client", en: "Web client" }, points: 170 },
-    { name: "Forensic", points: 160 },
-    { name: "Cracking", points: 150 },
-    { name: { fr: "Stéganographie", en: "Steganography" }, points: 125 },
-    { name: { fr: "Programmation", en: "Programming" }, points: 105 },
-  ],
-};
+import { ctfData, rootme } from "../../../assets/ctf";
 
 const maxPoints = Math.max(...rootme.categories.map((c) => c.points));
 
@@ -102,11 +10,10 @@ function CTF() {
   const { lang, t } = useLang();
 
   return (
-    <section className="border-y border-line bg-bg-alt">
+    <section className="border-y border-line">
       <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
         <SectionTitle
-          eyebrow={t({ fr: "Cybersécurité", en: "Cybersecurity" })}
-          title={t({ fr: "Compétitions CTF", en: "CTF competitions" })}
+          title={t({ fr: "La cybersécurité en pratique", en: "Cybersecurity in practice" })}
         />
 
         <div className="grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-16">
@@ -173,7 +80,7 @@ function CTF() {
             </Reveal>
           )}
 
-          <Reveal delay={120} className="rounded-2xl border border-line bg-surface p-6 shadow-soft">
+          <Reveal className="border-t-2 border-ink pt-5">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-sm font-semibold text-accent">Root-Me</p>
@@ -188,23 +95,22 @@ function CTF() {
                 href="https://www.root-me.org/0xSaegor"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-sm text-ink transition-colors hover:border-accent hover:text-accent"
+                className="text-sm font-medium text-accent underline decoration-accent/30 underline-offset-4 transition-colors hover:decoration-accent"
               >
-                {t({ fr: "Profil", en: "Profile" })}
-                <ExternalLink size={14} />
+                {t({ fr: "Voir le profil", en: "View profile" })}
               </a>
             </div>
             <ul className="mt-6 space-y-3" aria-label={t({ fr: "Points par catégorie", en: "Points by category" })}>
               {rootme.categories.map((cat) => (
                 <li key={cat.points} className="grid grid-cols-[7.5rem_minmax(0,1fr)_3rem] items-center gap-3 text-sm">
                   <span className="text-muted">{t(cat.name)}</span>
-                  <span className="h-2 overflow-hidden rounded-full bg-bg-alt" aria-hidden="true">
+                  <span className="h-1.5 overflow-hidden bg-line" aria-hidden="true">
                     <span
-                      className="bar-fill block h-full rounded-full bg-accent"
+                      className="bar-fill block h-full bg-accent"
                       style={{ "--value": cat.points / maxPoints }}
                     />
                   </span>
-                  <span className="text-right font-medium text-ink">{cat.points}</span>
+                  <span className="text-right font-medium tabular-nums text-ink">{cat.points}</span>
                 </li>
               ))}
             </ul>
@@ -212,25 +118,27 @@ function CTF() {
           </Reveal>
         </div>
 
-        <ul className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {ctfData.map((ctf, index) => (
-            <Reveal as="li" key={`${ctf.name}-${ctf.date.fr}`} delay={(index % 4) * 70}>
-              <div className="flex h-full flex-col rounded-2xl border border-line bg-surface p-5 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-accent">
-                <div className="flex items-center justify-between gap-2 text-xs text-muted">
-                  <span>{t(ctf.date)}</span>
-                  <span className="inline-flex items-center gap-1">
-                    {ctf.team ? <Users size={14} /> : <User size={14} />}
-                    {ctf.team ? t({ fr: "En équipe", en: "Team" }) : "Solo"}
+        <h3 className="mt-16 text-xl font-bold text-ink md:text-2xl">
+          {t({ fr: "Compétitions CTF", en: "CTF competitions" })}
+        </h3>
+        <ul className="mt-6 divide-y divide-line border-y border-line">
+          {ctfData.map((ctf) => (
+            <li
+              key={`${ctf.name}-${ctf.date.fr}`}
+              className="grid gap-1 py-4 md:grid-cols-[9rem_minmax(0,1fr)_14rem] md:gap-6"
+            >
+              <span className="text-sm text-muted md:pt-0.5">{t(ctf.date)}</span>
+              <div>
+                <h3 className="font-semibold text-ink">
+                  {ctf.name}
+                  <span className="ml-2 text-sm font-normal text-muted">
+                    {ctf.team ? t({ fr: "en équipe", en: "team" }) : "solo"}
                   </span>
-                </div>
-                <h3 className="mt-3 font-bold text-ink">{ctf.name}</h3>
-                <p className="mt-1 inline-flex items-center gap-1.5 font-semibold text-accent">
-                  <Trophy size={15} />
-                  {t(ctf.rank)}
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{t(ctf.description)}</p>
+                </h3>
+                <p className="mt-1 text-sm leading-relaxed text-muted">{t(ctf.description)}</p>
               </div>
-            </Reveal>
+              <span className="font-semibold tabular-nums text-ink md:text-right">{t(ctf.rank)}</span>
+            </li>
           ))}
         </ul>
 
@@ -243,7 +151,7 @@ function CTF() {
                 en: "The IUT de Vannes team at CTF InterIUT 2025",
               })}
               loading="lazy"
-              className="max-h-80 w-full rounded-2xl object-cover shadow-soft"
+              className="max-h-80 w-full rounded-md object-cover"
             />
             <figcaption className="mt-3 text-center text-sm text-muted">
               {t({

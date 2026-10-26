@@ -4,7 +4,7 @@ import useTheme from "../../utils/hooks";
 import { useLang } from "../../utils/i18n";
 
 const itemClass =
-  "group relative flex items-center justify-center rounded-full p-2.5 transition-colors duration-200";
+  "group relative flex items-center justify-center rounded-md p-2.5 transition-colors duration-200";
 
 // Petite étiquette qui apparaît au survol, à droite de la barre (desktop)
 function Tooltip({ children }) {
@@ -26,7 +26,7 @@ function NavItem({ to, label, icon }) {
       className={({ isActive }) =>
         `${itemClass} ${
           isActive
-            ? "bg-accent text-on-accent shadow-soft"
+            ? "bg-accent text-on-accent"
             : "text-muted hover:bg-accent-soft hover:text-accent"
         }`
       }
@@ -60,7 +60,7 @@ const Header = () => {
   return (
     <nav
       aria-label={t({ fr: "Navigation principale", en: "Main navigation" })}
-      className="fixed inset-x-0 bottom-0 z-50 flex flex-row items-center justify-around border-t border-line bg-surface/90 px-2 py-2 backdrop-blur-md md:inset-x-auto md:bottom-auto md:left-6 md:top-1/2 md:-translate-y-1/2 md:flex-col md:gap-3 md:rounded-full md:border md:px-2 md:py-3 md:shadow-soft"
+      className="fixed inset-x-0 bottom-0 z-50 flex flex-row items-center justify-around border-t border-line bg-surface px-2 py-2 md:inset-x-auto md:bottom-auto md:left-6 md:top-1/2 md:-translate-y-1/2 md:flex-col md:gap-3 md:rounded-lg md:border md:px-2 md:py-3"
     >
       <NavItem to="/" label={t({ fr: "Accueil", en: "Home" })} icon={Home} />
       <NavItem to="/about" label={t({ fr: "À propos", en: "About" })} icon={User} />

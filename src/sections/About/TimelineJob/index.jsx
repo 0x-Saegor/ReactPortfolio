@@ -16,40 +16,24 @@ const experiences = [
     logo: alcatel,
     points: [
       {
-        fr: "Équipe OmniVista Network Advisor (OVNA), un outil de supervision réseau qui détecte les anomalies avant qu'elles n'impactent les utilisateurs",
-        en: "OmniVista Network Advisor (OVNA) team, a network monitoring tool that detects anomalies before they affect users",
+        fr: "Équipe OmniVista Network Advisor (OVNA), un outil de supervision qui détecte les anomalies réseau avant qu'elles ne touchent les utilisateurs",
+        en: "OmniVista Network Advisor (OVNA) team, a monitoring tool that detects network anomalies before they affect users",
       },
       {
-        fr: "Portage de fonctionnalités vers la version intégrée au cloud OVCX, dont l'import/export d'anomalies réseau (NestJS et Go)",
-        en: "Porting features to the version integrated into the OVCX cloud, including network anomaly import/export (NestJS and Go)",
+        fr: "Sécurité : correction des CVE publiques dans les images Docker et les librairies Go/JS, traitement des fichiers entièrement en mémoire sur un disque en lecture seule",
+        en: "Security: patching public CVEs in Docker images and Go/JS libraries, processing files entirely in memory on a read-only disk",
       },
       {
-        fr: "Micro-services orchestrés avec Kubernetes et Helm, messaging Apache Kafka, cache Redis",
-        en: "Microservices orchestrated with Kubernetes and Helm, Apache Kafka messaging, Redis cache",
+        fr: "Développement : portage de fonctionnalités vers la version cloud OVCX (NestJS, Go), interface on-premise en Vue, maintenance de l'application mobile Asset Tracking (React Native)",
+        en: "Development: porting features to the OVCX cloud version (NestJS, Go), on-premise interface in Vue, maintenance of the Asset Tracking mobile app (React Native)",
       },
       {
-        fr: "Tests en conditions réelles : après les tests en local, je build l'image dans la CI/CD GitLab puis je remplace moi-même les images sur le cluster Kubernetes avec k9s, dans un environnement type production",
-        en: "Real-world testing: after local tests, I build the image in GitLab CI/CD, then swap the images myself on the Kubernetes cluster with k9s, in a production-like environment",
+        fr: "Déploiement : micro-services sur Kubernetes et Helm avec Kafka et Redis, images construites dans la CI GitLab et déployées moi-même sur un cluster de test, serveurs configurés par playbooks Ansible",
+        en: "Deployment: microservices on Kubernetes and Helm with Kafka and Redis, images built in GitLab CI and deployed myself on a test cluster, servers configured with Ansible playbooks",
       },
       {
-        fr: "Sécurité en production : mise à jour des images Docker et des librairies Go/JS pour corriger les CVE publiques",
-        en: "Production security: updating Docker images and Go/JS libraries to patch public CVEs",
-      },
-      {
-        fr: "Fichiers traités entièrement en mémoire pour respecter un disque en lecture seule, imposé pour la sécurité",
-        en: "Files processed entirely in memory to comply with a read-only disk, enforced for security",
-      },
-      {
-        fr: "OmniVista on-premise : setup du logiciel en Vue et Go, configuration des serveurs (NTP) par playbooks Ansible avec checksum et rollback",
-        en: "On-premise OmniVista: software setup in Vue and Go, server configuration (NTP) through Ansible playbooks with checksum and rollback",
-      },
-      {
-        fr: "Asset Tracking : correction de bugs et maintenance de l'application mobile React Native",
-        en: "Asset Tracking: bug fixes and maintenance of the React Native mobile app",
-      },
-      {
-        fr: "Méthode agile en équipe : daily meetings pour remonter avancées et blocages, weekly meetings pour planifier la semaine, tickets YouTrack et entraide entre collègues",
-        en: "Agile teamwork: daily meetings to share progress and blockers, weekly meetings to plan ahead, YouTrack tickets and helping teammates",
+        fr: "Équipe agile : points quotidiens et hebdomadaires, tickets YouTrack",
+        en: "Agile team: daily and weekly meetings, YouTrack tickets",
       },
     ],
   },
@@ -147,7 +131,6 @@ const TimelineJob = () => {
   return (
     <section className="mx-auto max-w-5xl px-6 py-16 md:py-24">
       <SectionTitle
-        eyebrow={t({ fr: "Parcours", en: "Experience" })}
         title={t({ fr: "Mes expériences professionnelles", en: "Work experience" })}
         center
       />

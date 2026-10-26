@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useLang } from '../../utils/i18n';
 
 const titlesByLang = {
-    fr: ["passionné de cybersécurité", "développeur", "CTF player", "secouriste"],
-    en: ["into cybersecurity", "a software developer", "a CTF player", "a first aider"],
+    fr: ["en recherche d'alternance", "joueur de CTF", "challmaker", "développeur en alternance"],
+    en: ["looking for a work-study", "a CTF player", "a CTF challenge maker", "a work-study developer"],
 };
 
 // Remonté avec une key par langue (voir sections/Home/Top) pour repartir de zéro
